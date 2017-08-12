@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="100">
+    <md-card class="user-card p-0">
+      <md-card-title class="mat-bg-primary">
+        <div class="card-title-text">
+          <span>{{ course.id }}</span>
+          <span fxFlex></span>
+          <button md-icon-button [mdMenuTriggerFor]="userMenu" class="">
+            <md-icon class="">more_vert</md-icon>
+          </button>
+          <md-menu #userMenu="mdMenu">
+            <button md-menu-item>Save</button>
+          </md-menu>
+        </div>
+        <md-divider></md-divider>
+      </md-card-title>
+      <md-card-content>
+        <!-- user detail lines-->
+        <div class="user-details">
+          <p>
+            <md-icon class="text-muted">card_membership</md-icon>
+            {{ course.name }}
+          </p>
+          <p>
+            <md-icon class="text-muted">date_range</md-icon>
+            {{ course.tag }}
+          </p>
+          <p>
+            <md-icon class="text-muted">location_on</md-icon>
+            {{ course.school }}
+          </p>
+          <p>
+            <md-icon class="text-muted">drafts</md-icon>
+            {{ course.description }}
+          </p>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+
+

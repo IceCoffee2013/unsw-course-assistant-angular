@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "courseID": "COMP9323",
+    "courseName": "e-Enterprise Project *",
+    "author": "Frank",
+    "likes": 10,
+    "postTime": "2016-09-09 12:00:09",
+    "content": "This is the first answer."
+  },
+  {
+    "id": 2,
+    "courseID": "COMP9323",
+    "courseName": "e-Enterprise Project *",
+    "author": "Jack",
+    "likes": 12,
+    "postTime": "2016-09-09 13:00:09",
+    "content": "This is the second answer."
+  },
+  {
+    "id": 3,
+    "courseID": "COMP9323",
+    "courseName": "e-Enterprise Project *",
+    "author": "Suzie",
+    "likes": 8,
+    "postTime": "2016-09-12 12:00:09",
+    "content": "This is the third answer."
+  },
+  {
+    "id": 4,
+    "courseID": "COMP9900",
+    "courseName": "Information Technology Project *",
+    "author": "Frank",
+    "likes": 10,
+    "postTime": "2016-09-09 12:10:09",
+    "content": "This is an answer."
+  },
+  {
+    "id": 5,
+    "courseID": "COMP9020",
+    "courseName": "Foundations of Computer Science",
+    "author": "Frank",
+    "likes": 10,
+    "postTime": "2016-09-09 12:30:09",
+    "content": "This is an answer."
+  },
+  {
+    "id": 6,
+    "courseID": "GSOE9820",
+    "courseName": "Engineering Project Management",
+    "author": "Jack",
+    "likes": 10,
+    "postTime": "2016-09-09 12:00:09",
+    "content": "This is an answer."
+  },
+  {
+    "id": 7,
+    "courseID": "GMAT9600",
+    "courseName": "Principles of Remote Sensing *",
+    "author": "Frank",
+    "likes": 10,
+    "postTime": "2016-09-09 12:00:09",
+    "content": "This is an answer."
+  }
+]

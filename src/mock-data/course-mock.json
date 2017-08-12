@@ -1,0 +1,10 @@
+{
+  "id": "COMP9020",
+  "name": "Foundations of Computer Science",
+  "school": "UNSW",
+  "tag": [
+    "CSE"
+  ],
+  "likes": 12,
+  "description": "Mathematical methods for designing correct and efficient programs."
+}

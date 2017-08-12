@@ -1,0 +1,26 @@
+[
+  {
+    "id":"COMP9020",
+    "name":"Foundations of Computer Science",
+    "school": "UNSW",
+    "tag": ["CSE"],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id":"COMP9021",
+    "name":"Principles of Programming",
+    "school": "UNSW",
+    "tag": ["CSE"],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id":"COMP9900",
+    "name":"Information Technology Project *",
+    "school": "UNSW",
+    "tag": ["CSE"],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  }
+]

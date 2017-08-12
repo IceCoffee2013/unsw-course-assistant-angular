@@ -1,0 +1,163 @@
+<md-card class="p-0">
+  <md-sidenav-container class="chat-container">
+    <!-- Left sidebar -->
+    <md-sidenav class="chat-sidenav" #chatSidebar [opened]="isSidenavOpen" mode="side">
+      <!-- Left side topbar -->
+      <md-toolbar color="primary" class="chat-sidebar-toolbar">
+        <a href="" class="toolbar-avatar online">
+          <img src="assets/images/face-3.jpg" alt="">
+          <span class="status-dot"></span>
+        </a>
+      </md-toolbar>
+      <!-- Left side contact list -->
+      <md-nav-list class="inbox-nav-list" role="list">
+        <md-list-item
+        *ngFor="let user of connectedUsers"
+        (click)="changeActiveUser(user)">
+          <a 
+          md-list-avatar 
+          [ngClass]="{online: user.isOnline}"
+          class="toolbar-avatar">
+            <img [src]="user.photo" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <h6 md-line>{{user.name}}</h6>
+          <p md-line class="text-muted">{{user.lastMsg}}</p>
+        </md-list-item>
+        
+      </md-nav-list>
+    </md-sidenav>
+
+    <!-- Right side -->
+    <div class="chats-wrap">
+      <!-- Right side topbar -->
+      <md-toolbar color="primary" class="chat-toolbar mb-1">
+        <!-- sidebar toggle button -->
+        <button 
+        md-icon-button
+        [style.alignSelf]="'center'"
+        class="mr-1" 
+        (click)="chatSidebar.toggle()"><md-icon>short_text</md-icon>
+        </button>
+
+        <!-- Selected active user -->
+        <div 
+        class="active-chat-user" 
+        fxLayout="row" 
+        fxLayoutAlign="start center">
+          <a 
+          [ngClass]="{online: activeChatUser.isOnline}" 
+          class="toolbar-avatar mr-1">
+            <img [src]="activeChatUser.photo" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <div fxLayout="column">
+            <h6 class="m-0 font-normal fz-1">{{activeChatUser.name}}</h6>
+          </div>
+        </div>
+
+        <!-- Right side top menu -->
+        <span fxFlex></span>
+        <button 
+        [style.alignSelf]="'center'" 
+        md-icon-button 
+        [mdMenuTriggerFor]="toolbarDDMenu" 
+        class="topbar-button-right hidden-on-open">
+            <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu #toolbarDDMenu="mdMenu">
+            <button md-menu-item><md-icon>account_circle</md-icon>Contact info</button>
+            <button md-menu-item><md-icon>volume_mute</md-icon>Mute</button>
+            <button md-menu-item><md-icon>delete</md-icon>Clear chat</button>
+        </md-menu>
+      </md-toolbar>
+
+      <!-- Main chat body -->
+      <div class="conversations-hold">
+        <!-- single chat item -->
+        <div class="single-conversation sender" fxLayout="row">
+          <a href="" class="toolbar-avatar online">
+            <img src="assets/images/face-2.jpg" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <div>
+            <h5 class="chat-username text-muted">Gevorg Spartak</h5>
+            <div class="conversation-msg">
+              Hello, How are you
+            </div>
+            <p class="chat-date text-muted">10 min ago</p>
+          </div>
+        </div>
+        <!-- single chat item -->
+        <div class="single-conversation me" fxLayout="row">
+          <a href="" class="toolbar-avatar online">
+            <img src="assets/images/face-3.jpg" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <div>
+            <h5 class="chat-username text-muted">Dave Wolf</h5>
+            <div class="conversation-msg">
+              I'm good, Thanks
+            </div>
+            <p class="chat-date text-muted">10 min ago</p>
+          </div>
+        </div>
+        <!-- single chat item -->
+        <div class="single-conversation sender" fxLayout="row">
+          <a href="" class="toolbar-avatar online">
+            <img src="assets/images/face-2.jpg" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <div>
+            <h5 class="chat-username text-muted">Gevorg Spartak</h5>
+            <div class="conversation-msg">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, obcaecati!
+            </div>
+            <p class="chat-date text-muted">10 min ago</p>
+          </div>
+        </div>
+        <!-- single chat item -->
+        <div class="single-conversation me" fxLayout="row">
+          <a href="" class="toolbar-avatar online">
+            <img src="assets/images/face-3.jpg" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <div>
+            <h5 class="chat-username text-muted">Dave Wolf</h5>
+            <div class="conversation-msg">
+              Consectetur adipisicing elit. Delectus, obcaecati!
+            </div>
+            <p class="chat-date text-muted">10 min ago</p>
+          </div>
+        </div>
+        <!-- single chat item -->
+        <div class="single-conversation sender" fxLayout="row">
+          <a href="" class="toolbar-avatar online">
+            <img src="assets/images/face-2.jpg" alt="">
+            <span class="status-dot"></span>
+          </a>
+          <div>
+            <h5 class="chat-username text-muted">Gevorg Spartak</h5>
+            <div class="conversation-msg">
+              Consectetur adipisicing elit. Delectus, obcaecati!
+            </div>
+            <p class="chat-date text-muted">10 min ago</p>
+          </div>
+        </div>
+      </div>
+      <md-divider></md-divider>
+
+      <!-- Input box and send button -->
+      <div class="chat-input-actions" fxLayout="row">
+        <md-input-container class="full-width mr-1">
+          <input
+          mdInput
+          placeholder="Type your message"
+          value="">
+        </md-input-container>
+        <button md-fab color="primary"><md-icon>send</md-icon></button>
+      </div>
+
+    </div>
+  </md-sidenav-container>
+</md-card>

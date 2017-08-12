@@ -1,0 +1,132 @@
+[
+  {
+    "id": "COMP9020",
+    "name": "Foundations of Computer Science",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9021",
+    "name": "Principles of Programming",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "GSOE9820",
+    "name": "Engineering Project Management",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "GMAT9600",
+    "name": "Principles of Remote Sensing *",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9900",
+    "name": "Information Technology Project *",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9323",
+    "name": "e-Enterprise Project *",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9024",
+    "name": "Data Structures and Algorithms",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9322",
+    "name": "Service-Oriented Architectures",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP6714",
+    "name": "Information Retrieval and Web Search",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9319",
+    "name": "Web Data Compression and Search",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9318",
+    "name": "Data Warehousing and Data Mining",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9517",
+    "name": "Computer Vision",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  },
+  {
+    "id": "COMP9444",
+    "name": "Neural Networks and Deep Learning",
+    "school": "UNSW",
+    "tag": [
+      "CSE"
+    ],
+    "likes": 12,
+    "description": "Mathematical methods for designing correct and efficient programs."
+  }
+]
