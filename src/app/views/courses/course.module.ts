@@ -14,6 +14,7 @@ import {
   MdCardModule,
   MdMenuModule,
   MdSlideToggleModule,
+  MdInputModule,
   MdGridListModule, MdChipsModule, MdPaginatorModule,
 } from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -21,7 +22,9 @@ import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {CourseListService} from "../../services/course/course-list.service";
 import {CourseDetailService} from "../../services/course/course-detail.service";
-
+import {CourseCommentComponent} from "./course-comment/course-comment.component"
+import {CommentService} from "../../services/course/course-comment.service";
+import {CourseRelatityComponent} from "./course-related/course-related.component";
 @NgModule({
   imports: [
     // SharedModule,
@@ -36,6 +39,7 @@ import {CourseDetailService} from "../../services/course/course-detail.service";
     MdSlideToggleModule,
     MdGridListModule,
     MdPaginatorModule,
+    MdInputModule,
     FlexLayoutModule,
     RouterModule,
     // PaginationModule.forRoot(),
@@ -44,12 +48,15 @@ import {CourseDetailService} from "../../services/course/course-detail.service";
   declarations: [
     CourseListComponent,
     CourseDetailMainComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CourseCommentComponent,
+    CourseRelatityComponent
   ],
   exports: [],
   providers: [
     CourseListService,
-    CourseDetailService
+    CourseDetailService,
+    CommentService
   ]
 })
 export class CourseModule {

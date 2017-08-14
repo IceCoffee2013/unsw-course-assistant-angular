@@ -13,6 +13,8 @@ import { RoutePartsService } from './services/route-parts/route-parts.service';
 import { NavigationService } from "./services/navigation/navigation.service";
 import { AuthService } from './services/auth/auth.service';
 
+
+
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }

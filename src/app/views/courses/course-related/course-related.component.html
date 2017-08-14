@@ -1,0 +1,18 @@
+
+<md-card class="user-card p-0">
+  <md-card-title class="mat-bg-primary">
+    <div class="card-title-text-relatity">
+      <span fxFlex="4"></span>
+    <p>Related Courses</p>
+    </div>
+  </md-card-title>
+<md-nav-list>
+  <md-list-item *ngFor="let cour of course">
+    <a md-line [routerLink]="['/course/detail',cour.id]">{{ cour.id }}</a>
+    <button md-icon-button>
+      <md-icon>info_outline</md-icon>
+    </button>
+  </md-list-item>
+</md-nav-list>
+</md-card>
+
