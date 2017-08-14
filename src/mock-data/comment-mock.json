@@ -2,20 +2,20 @@
     "items":[{
         "id":1,
         "postId":1,
-        "content":"这是评论的内容。。。",
-        "date":"2016-09-09 12:00:09",
+        "content":"comment form someone,he thinks this course is great。。。",
+        "date":"2017-08-09 12:00:09",
         "username":"frank"
     },{
         "id":2,
         "postId":1,
-        "content":"这是评论的内容。。。",
-        "date":"2016-09-09 12:00:09",
+        "content":"comment form someone,he thinks this course is great。。。",
+        "date":"2017-08-09 12:00:09",
         "username":"frank2"
     },{
         "id":3,
         "postId":1,
-        "content":"这是评论的内容。。。",
-        "date":"2016-09-09 12:00:09",
+        "content":"comment form someone,he thinks this course is great。。。",
+        "date":"2017-08-09 12:00:09",
         "username":"frank3"
     }]
 }
