@@ -1,0 +1,10 @@
+<md-card class="p-0">
+
+  <md-card-content class="p-0">
+    <quill-editor
+      theme="snow"
+      [(ngModel)]="editorData"
+      (onContentChanged)="onContentChanged()"
+      onSelectionChanged="onSelectionChanged()"></quill-editor>
+  </md-card-content>
+</md-card>

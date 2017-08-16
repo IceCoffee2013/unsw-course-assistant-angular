@@ -5,6 +5,7 @@ import { ThemeService } from '../../../services/theme/theme.service';
 @Component({
   selector: 'topbar',
   templateUrl: 'topbar.component.html'
+
 })
 export class TopbarComponent implements OnInit {
   @Input() sidenav;

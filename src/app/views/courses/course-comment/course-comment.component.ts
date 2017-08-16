@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import {CommentService} from "../../../services/course/course-comment.service";
 import {Comment} from "../../../models/course/comment-model";
 
+
 @Component({
   selector: 'app-course-comment',
   templateUrl: './course-comment.component.html',

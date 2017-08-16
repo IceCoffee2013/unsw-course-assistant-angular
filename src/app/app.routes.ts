@@ -42,6 +42,11 @@ export const rootRouterConfig: Routes = [
         loadChildren: './views/app-chats/app-chats.module#AppChatsModule',
         data: { title: 'Messages', breadcrumb: 'MESSAGES'}
       },
+      {
+        path: 'experience',
+        loadChildren: './views/experience/experience.module#ExperienceModule',
+        data: { title: 'Experience', breadcrumb: 'EXPERIENCE'}
+      },
     ]
   },
   {

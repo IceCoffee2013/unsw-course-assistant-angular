@@ -3,10 +3,6 @@
     <md-card-content>
       <form role="form">
         <div fxLayout="row">
-          <button color="primary" md-icon-button fxFlex="5" fxFlexAlign="center">
-            <md-icon>launch</md-icon>
-          </button>
-          <span fxFlex="2"></span>
           <md-input-container class="comment-full-width" fxFlex="90">
         <textarea mdInput
                   #characterCountTextareaHintExample
@@ -16,19 +12,31 @@
               {{characterCountTextareaHintExample.value.length}} / 200
             </md-hint>
           </md-input-container>
+
         </div>
       </form>
     </md-card-content>
   </md-card>
 </div>
 <div *ngFor="let comment of comments" class="comment-item-container">
-  <md-card class="comment-card">
-    <md-card-title>
-      <div class="card-title-text">
-        <span> {{comment.username}}</span>
-        <span fxFlex></span>{{comment.date}}
-      </div>
-    </md-card-title>
+    <md-card class="user-card p-0">
+      <md-card-title class="mat-bg-primary">
+        <div class="card-title-text">
+          <a href="" class="toolbar-avatar md mr-1"><img src="../../../assets/images/face-2.jpg" alt=""></a>
+          <span>{{comment.username}}</span>
+          <span fxFlex></span>
+          <button md-icon-button [mdMenuTriggerFor]="userMenu" class="">
+            <md-icon class="">more_vert</md-icon>
+          </button>
+          <md-menu #userMenu="mdMenu">
+            <button md-menu-item>Follow</button>
+            <button md-menu-item>Message</button>
+            <button md-menu-item>Block</button>
+            <button md-menu-item>Delete</button>
+          </md-menu>
+        </div>
+        <md-divider></md-divider>
+      </md-card-title>
     <md-card-content>
       <h5>{{comment.content}}</h5>
     </md-card-content>

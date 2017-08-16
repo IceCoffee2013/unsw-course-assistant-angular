@@ -4,12 +4,12 @@ import {ActivatedRoute} from "@angular/router";
 import {CourseListService} from "app/services/course/course-list.service";
 
 @Component({
-  selector: 'app-course-relatity',
+  selector: 'app-course-related',
   templateUrl: 'course-related.component.html',
   styleUrls: ['course-related.component.scss']
 })
 
-export class CourseRelatityComponent implements OnInit {
+export class CourseRelatedComponent implements OnInit {
   public course: Array<Course>;
 
   constructor(public courseListService: CourseListService,

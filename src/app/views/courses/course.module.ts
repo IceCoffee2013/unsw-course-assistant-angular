@@ -7,6 +7,7 @@ import {CourseListComponent} from "./course-list/course-list.component";
 import {CourseDetailMainComponent} from "./course-detail-main/course-detail-main.component";
 import {CourseDetailComponent} from "./course-detail/course-detail.component";
 // import {MyCustomMaterialModule} from "../utils/my-custom-material.module";
+import { DatePipe } from '@angular/common';
 import {
   MdListModule,
   MdIconModule,
@@ -24,7 +25,7 @@ import {CourseListService} from "../../services/course/course-list.service";
 import {CourseDetailService} from "../../services/course/course-detail.service";
 import {CourseCommentComponent} from "./course-comment/course-comment.component"
 import {CommentService} from "../../services/course/course-comment.service";
-import {CourseRelatityComponent} from "./course-related/course-related.component";
+import {CourseRelatedComponent} from "./course-related/course-related.component";
 @NgModule({
   imports: [
     // SharedModule,
@@ -50,9 +51,10 @@ import {CourseRelatityComponent} from "./course-related/course-related.component
     CourseDetailMainComponent,
     CourseDetailComponent,
     CourseCommentComponent,
-    CourseRelatityComponent
+    CourseRelatedComponent,
   ],
-  exports: [],
+  exports: [
+  ],
   providers: [
     CourseListService,
     CourseDetailService,
