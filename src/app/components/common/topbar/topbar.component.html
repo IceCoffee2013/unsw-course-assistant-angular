@@ -74,7 +74,11 @@
     <span class="notification-number mat-bg-warn">3</span>
   </button>
 
-  <button *ngIf="!currentUser?.userName" md-icon-button [routerLink]="['/sessions/signin']" class="topbar-button-right">
+  <button *ngIf="!currentUser?.userName"
+          md-icon-button
+          mdTooltip="SignIn"
+          [routerLink]="['/sessions/signin']"
+          class="topbar-button-right">
     <md-icon>input</md-icon>
   </button>
 
