@@ -73,8 +73,17 @@
     <md-icon>notifications</md-icon>
     <span class="notification-number mat-bg-warn">3</span>
   </button>
+
+  <button *ngIf="!currentUser?.userName"
+          md-icon-button
+          mdTooltip="SignIn"
+          [routerLink]="['/sessions/signin']"
+          class="topbar-button-right">
+    <md-icon>input</md-icon>
+  </button>
+
   <!-- Top left user menu -->
-  <button md-icon-button [mdMenuTriggerFor]="accountMenu" class="topbar-button-right">
+  <button *ngIf="currentUser?.userName" md-icon-button [mdMenuTriggerFor]="accountMenu" class="topbar-button-right">
     <md-icon>person</md-icon>
   </button>
   <md-menu #accountMenu="mdMenu">
@@ -90,10 +99,9 @@
       <md-icon>notifications_off</md-icon>
       <span>Disable alerts</span>
     </button>
-    <button md-menu-item [routerLink]="['/sessions/signin']">
+    <button md-menu-item (click)="doLogout()">
       <md-icon>exit_to_app</md-icon>
       <span>Sign out</span>
     </button>
   </md-menu>
 </md-toolbar>
-

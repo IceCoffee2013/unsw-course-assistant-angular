@@ -8,6 +8,38 @@
           <p class="text-muted">Sign up to use our service</p>
         </div>
         <form #signupForm="ngForm" (ngSubmit)="signup()">
+
+          <div class="">
+            <md-input-container class="full-width">
+              <input
+                mdInput
+                type="username"
+                name="username"
+                required
+                [(ngModel)]="signupData.userName"
+                #userName="ngModel"
+                placeholder="Username (no less the 4 character)"
+                minlength="4"
+                maxlength="20"
+                value="">
+            </md-input-container>
+            <small
+              *ngIf="userName.errors && (userName.dirty || userName.touched) && (userName.errors.required)"
+              class="form-error-msg"> Username is required
+            </small>
+
+            <small
+              *ngIf="userName.errors && (userName.dirty || userName.touched) && (userName.errors.minLength)"
+              class="form-error-msg"> min length is 4 characters
+            </small>
+
+            <small
+              *ngIf="userName.errors && (userName.dirty || userName.touched) && (userName.errors.maxLength)"
+              class="form-error-msg"> max length is 20 characters
+            </small>
+
+          </div>
+
           <div class="">
             <md-input-container class="full-width">
               <input
@@ -21,34 +53,47 @@
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                 value="">
             </md-input-container>
-            <small 
-              *ngIf="email.errors && (email.dirty || email.touched) && (email.errors.required)" 
-              class="form-error-msg"> Email is required </small>
+            <small
+              *ngIf="email.errors && (email.dirty || email.touched) && (email.errors.required)"
+              class="form-error-msg"> Email is required
+            </small>
 
-              <small 
-                *ngIf="email.errors && (email.dirty || email.touched) && (email.errors.pattern)" 
-                class="form-error-msg"> Invaild email address </small>
+            <small
+              *ngIf="email.errors && (email.dirty || email.touched) && (email.errors.pattern)"
+              class="form-error-msg"> Invaild email address
+            </small>
           </div>
 
           <div class="">
             <md-input-container class="full-width">
-              <input 
+              <input
                 type="password"
                 name="password"
                 required
                 mdInput
+                minlength="6"
+                maxlength="20"
                 appEqualValidator="confirmPassword"
                 reverse="true"
                 [(ngModel)]="signupData.password"
                 #password="ngModel"
-                placeholder="Password" 
+                placeholder="Password (no less the 6 character)"
                 value="">
             </md-input-container>
-            <small 
-              *ngIf="password.errors && (password.dirty || password.touched) && (password.errors.required)" 
-              class="form-error-msg"> Password is required </small>
+            <small
+              *ngIf="password.errors && (password.dirty || password.touched) && (password.errors.required)"
+              class="form-error-msg"> Password is required
+            </small>
+            <small
+              *ngIf="password.errors && (password.dirty || password.touched) && (password.errors.minLength)"
+              class="form-error-msg"> min length is 6 characters
+            </small>
+            <small
+              *ngIf="password.errors && (password.dirty || password.touched) && (password.errors.maxLength)"
+              class="form-error-msg"> max length is 20 characters
+            </small>
           </div>
-          
+
           <div class="">
             <md-input-container class="full-width">
               <input
@@ -62,27 +107,33 @@
                 placeholder="Confirm Password"
                 value="">
             </md-input-container>
-            <small 
-              *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)" 
-              class="form-error-msg"> Password mismatch </small>
+            <small
+              *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)"
+              class="form-error-msg"> Password mismatch
+            </small>
           </div>
-          
+
           <div class="pb-1">
             <md-checkbox
               name="isAgreed"
               required
               [(ngModel)]="signupData.isAgreed"
-              #isAgreed="ngModel" 
-              class="pb-1">I have read and agree to the terms of service.</md-checkbox>
+              #isAgreed="ngModel"
+              class="pb-1">I have read and agree to the terms of service.
+            </md-checkbox>
 
-              <small 
-                *ngIf="!isAgreed.value && (isAgreed.dirty || isAgreed.touched)" 
-                class="form-error-msg"> You must agree to the terms and conditions </small>
+            <small
+              *ngIf="!isAgreed.value && (isAgreed.dirty || isAgreed.touched)"
+              class="form-error-msg"> You must agree to the terms and conditions
+            </small>
           </div>
 
-          <button md-raised-button class="mat-primary full-width mb-1" [disabled]="signupForm.invalid || !isAgreed.value">Sign up</button>
+          <button md-raised-button class="mat-primary full-width mb-1"
+                  [disabled]="signupForm.invalid || !isAgreed.value">Sign up
+          </button>
           <div class="text-center">
-            <a [routerLink]="['/sessions/signin']" class="mat-primary text-center full-width">Sign in to existing account</a>
+            <a [routerLink]="['/sessions/signin']" class="mat-primary text-center full-width">Sign in to existing
+              account</a>
           </div>
         </form>
       </md-card-content>

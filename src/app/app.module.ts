@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
-import { Http, HttpModule } from '@angular/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
-
-import { rootRouterConfig } from './app.routes';
-import { AppCommonModule } from "./components/common/app-common.module";
-import { AppComponent } from './app.component';
-
-import { RoutePartsService } from './services/route-parts/route-parts.service';
-import { NavigationService } from "./services/navigation/navigation.service";
-import { AuthService } from './services/auth/auth.service';
-
+import {NgModule} from "@angular/core";
+import {RouterModule} from "@angular/router";
+import {BrowserModule} from "@angular/platform-browser";
+import {Http, HttpModule} from "@angular/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from "ng2-translate/ng2-translate";
+import {rootRouterConfig} from "./app.routes";
+import {AppCommonModule} from "./components/common/app-common.module";
+import {AppComponent} from "./app.component";
+import {RoutePartsService} from "./services/route-parts/route-parts.service";
+import {NavigationService} from "./services/navigation/navigation.service";
+import {AuthService} from "./services/auth/auth.service";
+import {UserRegisterService} from "./services/user/user-register.service";
+import {UserLoginService} from "./services/user/user-login.service";
+import {ForgetPwdService} from "./services/user/forget-pwd.service";
 
 
 export function createTranslateLoader(http: Http) {
@@ -30,10 +30,20 @@ export function createTranslateLoader(http: Http) {
       useFactory: (createTranslateLoader),
       deps: [Http]
     }),
-    RouterModule.forRoot(rootRouterConfig, { useHash: false })
+    RouterModule.forRoot(rootRouterConfig, {useHash: false})
   ],
-  declarations: [AppComponent],
-  providers: [RoutePartsService, NavigationService, AuthService],
+  declarations: [
+    AppComponent
+  ],
+  providers: [
+    RoutePartsService,
+    NavigationService,
+    AuthService,
+    UserRegisterService,
+    UserLoginService,
+    ForgetPwdService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
