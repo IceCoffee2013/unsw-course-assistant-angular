@@ -1,20 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdProgressBar, MdButton } from '@angular/material';
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {MdProgressBar, MdButton} from "@angular/material";
+import {UserLoginService} from "../../../services/user/user-login.service";
+import {User} from "../../../models/user/user-model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['signin.component.scss']
 })
 export class SigninComponent implements OnInit {
   @ViewChild(MdProgressBar) progressBar: MdProgressBar;
   @ViewChild(MdButton) submitButton: MdButton;
 
   signinData = {
-    username: '',
-    password: ''
+    email: '',
+    password: '',
+    rememberMe:''
   }
-  constructor() { }
+
+  constructor(public userLoginService: UserLoginService,
+              public router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -24,6 +31,23 @@ export class SigninComponent implements OnInit {
 
     this.submitButton.disabled = true;
     this.progressBar.mode = 'indeterminate';
+
+    let user = new User();
+    user.email = this.signinData.email;
+    user.password = this.signinData.password;
+    console.log(user);
+    this.userLoginService.login(user).subscribe(
+      data => {
+        console.log("login success>" + data)
+        this.router.navigateByUrl("home");
+      },
+      error => {
+        console.error(error);
+      }
+    );
+
+    // TODO deal with login result
+
   }
 
 }

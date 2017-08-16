@@ -4,7 +4,7 @@ import { MdProgressBar, MdButton } from '@angular/material';
 @Component({
   selector: 'app-lockscreen',
   templateUrl: './lockscreen.component.html',
-  styleUrls: ['./lockscreen.component.css']
+  styleUrls: ['lockscreen.component.scss']
 })
 export class LockscreenComponent implements OnInit {
   @ViewChild(MdProgressBar) progressBar: MdProgressBar;
