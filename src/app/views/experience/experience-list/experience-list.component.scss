@@ -1,7 +1,44 @@
+
+
 .publish-button {
   top: auto;
   right: 20px;
   bottom: 20px;
   left: auto;
   position: fixed;
+}
+
+.comment-input {
+  width: 450px;
+  height: 80px;
+  top: auto;
+  bottom: 10px;
+}
+
+.at-color {
+  color: black;
+}
+
+.delete {
+  float: right;
+  font-size: 18px;
+}
+
+.reply {
+  float: left;
+  font-size: 18px;
+}
+
+.second-level {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.comment-divider {
+  margin-top: 30px;
+}
+.comment-summit{
+  float: right;
+  font-size: 18px;
+  display: inline-block;
 }

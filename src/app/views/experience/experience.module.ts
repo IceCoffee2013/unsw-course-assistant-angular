@@ -20,6 +20,7 @@ import {ExperiencePublishComponent} from "./experience-publish/experience-publis
 import { QuillModule } from 'ngx-quill';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import {ExperienceCommentComponent} from "./experience-comment/experience-comment.component";
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
   declarations: [
     ExperienceListComponent,
     ExperienceDetailMianComponent,
-    ExperiencePublishComponent
+    ExperiencePublishComponent,
+    ExperienceCommentComponent
   ],
   exports: [],
   providers: [

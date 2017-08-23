@@ -26,6 +26,7 @@ import {CourseDetailService} from "../../services/course/course-detail.service";
 import {CourseCommentComponent} from "./course-comment/course-comment.component"
 import {CommentService} from "../../services/course/course-comment.service";
 import {CourseRelatedComponent} from "./course-related/course-related.component";
+
 @NgModule({
   imports: [
     // SharedModule,
