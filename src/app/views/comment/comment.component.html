@@ -1,0 +1,117 @@
+<div class="alert alert-warning hintDiv" id="hintDiv">
+  <strong>Comment should not be empty.</strong>
+</div>
+
+<!--comment text-->
+<form id="comment" *ngIf="isShowComment" novalidate>
+  <div class="comment-text">
+    <textarea name="content" autofocus placeholder="add a comment..." maxlength="2000" [(ngModel)]="newCommentContent"></textarea>
+    <div style="text-align:right;">
+      <button class="btn btn-sm btn-default" style="float:left;" (click)="showComment()">Cancel</button>
+      <button class="btn btn-sm btn-info" (click)="addComment(postId)">Comment</button>
+    </div>
+  </div>
+</form>
+
+<div class="comment-list">
+  <!--first level comment-->
+  <div class="first-level" *ngFor="let comment of comments">
+    <div class="meta-top">
+      <a href="javascript:void(0);">
+        <img class="avatar" [src]="comment.avatar">
+      </a>
+      <p class="author">
+        <a class="name" href="javascript:void(0);">{{comment.commenter}}</a>
+      </p>
+      <div class="comment-footer clearfix">
+        <span class="publish-time pull-left" style="margin-top:0px;">{{comment.postTime}}</span>
+        <a *ngIf="comment.commenter == userName" class="like delete" href="javascript:void(0);" (click)="deleteComment(comment)">
+          <span>delete</span>
+        </a>
+        <a class="like delete-reply" href="javascript:void(0);" (click)="showComment()">
+          <span>reply</span>
+        </a>
+      </div>
+    </div>
+    <p class="content">{{comment.content}}</p>
+
+    <!--&lt;!&ndash;second level comment&ndash;&gt;-->
+    <!--<div class="second-level" ng-repeat="childComment in comment.slcs">-->
+      <!--<p class="reply">-->
+        <!--<a href="javascript:void(0);" class="blue-link">{{childComment.replier}}</a>:-->
+        <!--<a href="javascript:void(0);" class="blue-link">@{{childComment.toCommenter}}</a>-->
+        <!--<span>{{childComment.replyContent}}</span>-->
+      <!--</p>-->
+      <!--<div class="comment-footer clearfix">-->
+              <!--<span class="publish-time pull-left" style="margin-top:0px;">-->
+                <!--{{childComment.replyTime}}-->
+              <!--</span>-->
+        <!--<a ng-if="childComment.replier == user.username" class="like delete" href="javascript:void(0);" ng-click="deletescndcmt(saying.id, comment.id, childComment.id)">-->
+          <!--<span>删除</span>-->
+        <!--</a>-->
+        <!--<a class="like delete-reply" href="javascript:void(0);" ng-click="showSecondComment(comment, childComment.replier)">-->
+          <!--<span>回复</span>-->
+        <!--</a>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<form id="childComment" ng-if="comment.isShowChildComment" novalidate>-->
+      <!--<div class="comment-text">-->
+        <!--<textarea autofocus maxlength="2000" ng-model="comment.scndlvlcmt"></textarea>-->
+        <!--<div style="text-align:right;">-->
+          <!--<button class="btn btn-sm btn-default" style="float:left;" ng-click="hideSecondComment(comment)">取消</button>-->
+          <!--<button class="btn btn-sm btn-info" ng-click="reply(saying.id, comment)">提交</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</form>-->
+  </div>
+</div>
+<!--</div>-->
+
+<!--<div class="modal fade" id="commentModal" tabindex="-1" role="dialog"-->
+     <!--aria-labelledby="myModalLabel" aria-hidden="true">-->
+  <!--<div class="modal-dialog">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close"-->
+                <!--data-dismiss="modal" aria-hidden="true">-->
+          <!--&times;-->
+        <!--</button>-->
+        <!--<h4 class="modal-title" id="myModalLabel">-->
+          <!--Delete-->
+        <!--</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!--确定删除评论?-->
+      <!--</div>-->
+      <!--<div class="modal-footer">-->
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+        <!--<button type="button" class="btn btn-danger" ng-click="confirm()">确认</button>-->
+      <!--</div>-->
+    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+  <!--</div>-->
+<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+
+<!--<div class="modal fade" id="slcModal" tabindex="-1" role="dialog"-->
+     <!--aria-labelledby="myModalLabel" aria-hidden="true">-->
+  <!--<div class="modal-dialog">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close"-->
+                <!--data-dismiss="modal" aria-hidden="true">-->
+          <!--&times;-->
+        <!--</button>-->
+        <!--<h4 class="modal-title" id="myModalLabel">-->
+          <!--Delete-->
+        <!--</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!--确定删除评论?-->
+      <!--</div>-->
+      <!--<div class="modal-footer">-->
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+        <!--<button type="button" class="btn btn-danger" ng-click="confirmSlc()">确认</button>-->
+      <!--</div>-->
+    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+  <!--</div>-->
+<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->

@@ -13,6 +13,7 @@ import {AuthService} from "./services/auth/auth.service";
 import {UserRegisterService} from "./services/user/user-register.service";
 import {UserLoginService} from "./services/user/user-login.service";
 import {ForgetPwdService} from "./services/user/forget-pwd.service";
+import {CommentModule} from "./views/comment/comment.module";
 
 
 export function createTranslateLoader(http: Http) {

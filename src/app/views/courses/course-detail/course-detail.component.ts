@@ -10,6 +10,8 @@ import {CourseDetailService} from "../../../services/course/course-detail.servic
   styleUrls: ['course-detail.component.scss']
 })
 export class CourseDetailComponent implements OnInit {
+
+  public commentType: string = "course";
   public course: Course = new Course();
 
   constructor(public courseDetailService: CourseDetailService,
