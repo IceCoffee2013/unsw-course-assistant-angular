@@ -7,7 +7,10 @@ import {Component, NgModule, OnInit} from '@angular/core';
   styleUrls: ['experience-detail-main.component.scss']
 })
 
-export class ExperienceDetailMianComponent implements OnInit {
+export class ExperienceDetailMainComponent implements OnInit {
+
+  public commentType: string = "experience";
+
   ngOnInit() {
   }
 }

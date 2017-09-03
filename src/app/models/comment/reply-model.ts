@@ -9,5 +9,5 @@ export class Reply {
   replier: string;
   to: string;
   replyTime: Date;
-
+  isShow: boolean = false; // using to fold reply dialog
 }

@@ -5,7 +5,7 @@
     "content": "hello world!",
     "postTime": "2017-08-09 12:00:09",
     "commenter": "admin",
-    "avatar": "",
+    "avatar": "assets/images/face-1.jpg",
     "replies": [
       {
         "id": "1",
@@ -31,7 +31,7 @@
     "content": "nice to see u!",
     "postTime": "2017-08-09 12:10:09",
     "commenter": "admin",
-    "avatar": "",
+    "avatar": "assets/images/face-2.jpg",
     "replies": [
       {
         "id": "3",
@@ -57,7 +57,7 @@
     "content": "nice to see u!",
     "postTime": "2017-08-09 12:10:09",
     "commenter": "Tom",
-    "avatar": "",
+    "avatar": "assets/images/face-3.jpg",
     "replies": [
       {
         "id": "5",
