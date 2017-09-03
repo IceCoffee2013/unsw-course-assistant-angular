@@ -1,3 +1,21 @@
+
+
+
+.comment-input-card{
+  padding: 10px 30px;
+  .cancel-button{
+    display: inline-block;
+    float: right;
+  }
+}
+
+.sec-editer{
+  padding: 5px;
+  padding-left: 15px;
+  button{
+    margin-left: 20px;
+  }
+}
 .hintDiv {
   width: 100%;
   display: none;
@@ -98,23 +116,6 @@ p.content {
   text-decoration: none;
 }
 
-.reply a:link {
-  color: #4094C7;
-  font-size: 13px;
-  text-decoration: none;
-}
-
-.reply a:hover {
-  color: #075B8D;
-  font-size: 13px;
-  text-decoration: none;
-}
-
-.reply a:visited {
-  color: #4094C7;
-  font-size: 13px;
-  text-decoration: none;
-}
 
 .comment-text {
   padding: 10px;
@@ -139,21 +140,21 @@ p.content {
 }
 
 .comment-list {
+  padding-top: 10px;
   padding-bottom: 30px;
-  margin-top: 25px;
-  border-top: 1px dashed #EEE;
-  width: 450px;
-  margin-left:20px;
+  margin-top: 5px;
+  md-icon{
+    font-size: 18px;
+  }
 }
 
 .first-level {
-  padding: 15px 0px 15px 10px;
-  border-left: 3px solid #38c4a9;
+  padding: 5px 0px 15px 0px;
   font-size: 13px;
 }
 
 .second-level {
-  margin-left:20px;
+  margin-left:10px;
   padding: 15px 0px 15px 10px;
   border-bottom: 1px dashed #D9D9D9;
   border-left: 3px solid #D9D9D9;

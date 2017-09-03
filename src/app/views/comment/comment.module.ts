@@ -14,7 +14,7 @@ import {
   MdSnackBarModule,
   MdSelectModule,
   MdOptionModule,
-  MdTooltipModule,
+  MdTooltipModule,  MdInputModule,
   MdListModule
 } from "@angular/material";
 import {CommentComponent} from "./comment.component";
@@ -36,7 +36,7 @@ import {CommentService} from "../../services/comment/comment.service";
     MdToolbarModule,
     MdButtonModule,
     MdRadioModule,
-    MdCardModule,
+    MdCardModule,  MdInputModule,
   ],
   declarations: [
     CommentComponent

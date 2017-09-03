@@ -2,18 +2,28 @@
   <strong>Comment should not be empty.</strong>
 </div>
 
-<!--comment text-->
-<form id="comment" *ngIf="isShowComment" novalidate>
-  <div class="comment-text">
-    <textarea name="content" autofocus placeholder="add a comment..." maxlength="2000" [(ngModel)]="newCommentContent"></textarea>
-    <div style="text-align:right;">
-      <button class="btn btn-sm btn-default" style="float:left;" (click)="showComment()">Cancel</button>
-      <button class="btn btn-sm btn-info" (click)="addComment(postId)">Comment</button>
-    </div>
-  </div>
-</form>
 
-<div class="comment-list">
+
+<md-card class="comment-input-card" *ngIf="isShowComment">
+<form id="comment"  novalidate>
+  <md-input-container floatPlaceholder="auto" fxFlexFill>
+      <textarea mdInput name="content" autofocus placeholder="add a comment..." maxlength="2000" [(ngModel)]="newCommentContent"></textarea>
+  </md-input-container>
+   <button md-button color="primary" (click)="showComment()">Cancel</button>
+  <button md-button color="primary" (click)="addComment(postId)" class="cancel-button">Comment</button>
+</form>
+</md-card>
+
+<!--<form id="comment0" *ngIf="isShowComment" novalidate>-->
+  <!--<div class="comment-text">-->
+    <!--<textarea name="content" autofocus placeholder="add a comment..." maxlength="2000" [(ngModel)]="newCommentContent"></textarea>-->
+    <!--<div style="text-align:right;">-->
+      <!--<button class="btn btn-sm btn-default" style="float:left;" (click)="showComment()">Cancel</button>-->
+      <!--<button class="btn btn-sm btn-info" (click)="addComment(postId)">Comment</button>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</form>-->
+<md-card class="comment-list">
   <!--first level comment-->
   <div class="first-level" *ngFor="let comment of comments">
     <div class="meta-top">
@@ -26,10 +36,10 @@
       <div class="comment-footer clearfix">
         <span class="publish-time pull-left" style="margin-top:0px;">{{comment.postTime}}</span>
         <a *ngIf="comment.commenter == userName" class="like delete" href="javascript:void(0);" (click)="deleteComment(comment)">
-          <span>delete</span>
+          <span><md-icon color="primary">delete</md-icon></span>
         </a>
         <a class="like delete-reply" href="javascript:void(0);" (click)="showComment()">
-          <span>reply</span>
+          <span><md-icon color="primary">reply</md-icon></span>
         </a>
       </div>
     </div>
@@ -47,27 +57,23 @@
                 {{reply.replyTime}}
               </span>
         <a ng-if="childComment.replier == user.username" class="like delete" href="javascript:void(0);" (click)="deleteReply(comment, reply)">
-          <span>delete</span>
+          <span><md-icon color="primary">delete</md-icon></span>
         </a>
         <a class="like delete-reply" href="javascript:void(0);" (click)="showReplyDialog(comment, reply.replier)">
-          <span>reply</span>
+         <md-icon color="primary"><span>reply</span></md-icon>
         </a>
       </div>
     </div>
-
-    <form id="childComment" *ngIf="tmpReply.isShow && tmpReply.commentId == comment.id" novalidate>
-      <div class="comment-text">
-        <textarea name="content" autofocus maxlength="2000" [(ngModel)]="tmpReply.replyContent"></textarea>
-        <div style="text-align:right;">
-          <button class="btn btn-sm btn-default" style="float:left;" (click)="hideReplyDialog()">Cancel</button>
-          <button class="btn btn-sm btn-info" (click)="addReply()">Submit</button>
-        </div>
-      </div>
+    <div class="sec-editer">
+    <form *ngIf="tmpReply.isShow && tmpReply.commentId == comment.id" id="childComment" novalidate>
+     <md-input-container floatPlaceholder="auto" fxFlex="94">
+        <textarea mdInput name="content" autofocus maxlength="2000" [(ngModel)]="tmpReply.replyContent"></textarea>
+     </md-input-container>
+      <button md-raised-button color="primary" (click)="addReply()" fxFlexAlign="center">Submit</button>
     </form>
+    </div>
   </div>
-</div>
-
-
+</md-card>
 <!--</div>-->
 
 <!--<div class="modal fade" id="commentModal" tabindex="-1" role="dialog"-->

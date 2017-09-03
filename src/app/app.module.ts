@@ -44,7 +44,8 @@ export function createTranslateLoader(http: Http) {
     AuthService,
     UserRegisterService,
     UserLoginService,
-    ForgetPwdService
+    ForgetPwdService,
+    CommentModule
   ],
   bootstrap: [AppComponent]
 })

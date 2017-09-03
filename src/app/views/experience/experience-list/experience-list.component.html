@@ -1,5 +1,5 @@
 <div fxLayout="row">
-  <md-card fxFlex="80">
+  <md-card fxFlex="50">
     <md-card-header>
       <div md-card-avatar>
         <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
@@ -27,77 +27,51 @@
         <md-icon color="primary" aria-hidden="true">favorite_border</md-icon>
       </button>
       <span fxFlex="83"></span>
-
-
       <!--this is comment-->
-      <button md-icon-button (click)=showComment()>
-        <md-icon color="primary" aria-hidden="true">comment_border</md-icon>
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
       </button>
     </md-card-actions>
-    <div *ngIf="show">
-      <md-card>
-        <md-input-container floatPlaceholder="auto" fxFlexFill>
-          <input mdInput type="text" required
-                 placeholder="comment">
-        </md-input-container>
-        <a routerLink="." ><md-icon class="comment-summit" color="primary">send</md-icon></a>
-      </md-card>
-      <div class="comment-list">
-        <!--first level comment-->
-        <md-card *ngFor="let comment of flcs">
-          <md-card-header>
-            <div md-card-avatar class="example-header-image mat-bg-primary"></div>
-            <md-card-title>
-              <strong>{{comment.commenter}}</strong><br>{{comment.createTime}}</md-card-title>
-          </md-card-header>
-          <md-card-content>
-            <p class="content">{{comment.content}}</p>
-            <div class="comment-footer clearfix">
-              <a class="replay" href="javascript:void(0);" (click)="showSecondComment(comment, comment.commenter)">
-                <md-icon color="primary">reply</md-icon>
-              </a>
-              <a ng-if="comment.commenter == user.username" class="delete" href="javascript:void(0);"
-                 (click)="deletefslcmt(saying.id, comment.id)">
-                <md-icon color="primary">delete</md-icon>
-              </a>
-            </div>
-            <md-divider></md-divider>
-            <!--second level comment-->
-            <div class="second-level" *ngFor="let childComment of comment.slcs">
-              <p>
-                <a href="javascript:void(0);" class="blue-link">{{childComment.replier}}</a>:
-                <a href="javascript:void(0);" class="blue-link"><span class="at-color">@</span>{{childComment.toCommenter}}</a>
-                <span>{{childComment.replyContent}}</span></p>
-              <p>
-              <span>
-                {{childComment.replyTime}}
-              </span></p>
-              <div fxFlexFill="100">
-                <a class="reply" (click)="showSlvComment()">
-                  <md-icon color="primary">reply</md-icon>
-                </a>
-                <a class="delete">
-                  <md-icon color="primary">delete</md-icon>
-                </a>
-              </div>
-              <md-divider class="comment-divider"></md-divider>
-            </div>
-          </md-card-content>
-          <div *ngIf="secShow">
-            <md-card>
-              <md-input-container floatPlaceholder="auto" fxFlexFill>
-                <input mdInput type="text" required
-                       placeholder="comment">
-              </md-input-container>
-              <a routerLink="." ><md-icon class="comment-summit" color="primary">send</md-icon></a>
-            </md-card>
-          </div>
-        </md-card>
-      </div>
-    </div>
-
-
   </md-card>
+
+
+
+
+  <md-card fxFlex="50">
+    <md-card-header>
+      <div md-card-avatar>
+        <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
+          <img src="../../../assets/images/face-2.jpg">
+        </a>
+      </div>
+      <div fxFlexOffset="1">
+        <span><strong>Shiba Inu</strong></span><br><span>Jul 8</span>
+      </div>
+    </md-card-header>
+    <md-card-content>
+      <a routerLink="/experience/experiencedetail">
+        <h4>
+          Top Features Introduced in Angular 4
+        </h4>
+        <p style="overflow:hidden;text-overflow:ellipsis;">
+          AngularJS development Services are supplying with spontaneous, interactive and clean applications with the
+          help of extra ordinary and magical features of AngularJS. The angular community has included many advanced
+          changes to angular 4 and that’s why the major version number has moved to Angular 4.
+        </p>
+      </a>
+    </md-card-content>
+    <md-card-actions fxFlexOffset="1">
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">favorite_border</md-icon>
+      </button>
+      <span fxFlex="83"></span>
+      <!--this is comment-->
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
+      </button>
+    </md-card-actions>
+  </md-card>
+
   <button md-mini-fab class="publish-button" color="primary" routerLink="/experience/publish">
     <md-icon>add</md-icon>
   </button>
