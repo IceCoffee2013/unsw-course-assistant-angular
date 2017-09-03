@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import {CommentService} from "../../../services/course/course-comment.service";
-import {Comment} from "../../../models/course/comment-model";
+import {Comment} from "../../../models/comment/comment-model";
 
 
 @Component({
@@ -14,8 +14,8 @@ export class CourseCommentComponent implements OnInit {
 
   constructor(
     public commentService: CommentService,
-    public activeRoute: ActivatedRoute)
-  {
+    public activeRoute: ActivatedRoute) {
+
   }
 
   ngOnInit() {

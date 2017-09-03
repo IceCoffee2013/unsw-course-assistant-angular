@@ -24,8 +24,8 @@ import {CommonModule} from "@angular/common";
 import {CourseListService} from "../../services/course/course-list.service";
 import {CourseDetailService} from "../../services/course/course-detail.service";
 import {CourseCommentComponent} from "./course-comment/course-comment.component"
-import {CommentService} from "../../services/course/course-comment.service";
 import {CourseRelatedComponent} from "./course-related/course-related.component";
+import {CommentModule} from "../comment/comment.module";
 
 @NgModule({
   imports: [
@@ -44,6 +44,7 @@ import {CourseRelatedComponent} from "./course-related/course-related.component"
     MdInputModule,
     FlexLayoutModule,
     RouterModule,
+    CommentModule,
     // PaginationModule.forRoot(),
     RouterModule.forChild(courseRoutes)
   ],
@@ -59,7 +60,6 @@ import {CourseRelatedComponent} from "./course-related/course-related.component"
   providers: [
     CourseListService,
     CourseDetailService,
-    CommentService
   ]
 })
 export class CourseModule {

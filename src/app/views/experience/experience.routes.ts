@@ -1,6 +1,6 @@
 import { RouterModule } from '@angular/router';
 import {ExperienceListComponent} from './experience-list/experience-list.component';
-import {ExperienceDetailMianComponent} from "./experience-detail-main/experience-detail-mian.component";
+import {ExperienceDetailMainComponent} from "./experience-detail-main/experience-detail-main.component";
 import {ExperiencePublishComponent} from "./experience-publish/experience-publish.component";
 import {ExperienceCommentComponent} from "./experience-comment/experience-comment.component";
 import {UserProfileComponent} from "../user/user-profile/user-profile.component";
@@ -17,7 +17,7 @@ export const experienceRoutes = [
   },
   {
     path: 'experiencedetail',
-    component: ExperienceDetailMianComponent
+    component: ExperienceDetailMainComponent
   },
   {
     path: 'publish',
