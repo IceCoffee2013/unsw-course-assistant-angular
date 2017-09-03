@@ -38,7 +38,7 @@
         <a *ngIf="comment.commenter == userName" class="like delete" href="javascript:void(0);" (click)="deleteComment(comment)">
           <span><md-icon color="primary">delete</md-icon></span>
         </a>
-        <a class="like delete-reply" href="javascript:void(0);" (click)="showComment()">
+        <a class="like delete-reply" href="javascript:void(0);" (click)="showReplyDialog(comment, comment.commenter)">
           <span><md-icon color="primary">reply</md-icon></span>
         </a>
       </div>

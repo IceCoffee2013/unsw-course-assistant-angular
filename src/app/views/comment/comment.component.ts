@@ -77,6 +77,19 @@ export class CommentComponent implements OnInit {
       content: this.newCommentContent
     }
 
+    // local add comment. TODO update after post
+    let tmpComment = new Comment();
+    let date = new Date();
+    tmpComment.postTime = date;
+    tmpComment.postId = this.postId;
+    tmpComment.commenter = this.userName;
+    tmpComment.content = this.newCommentContent;
+    tmpComment.avatar = "assets/images/face-5.jpg";
+    tmpComment.id = "10";
+
+    this.comments.push(tmpComment);
+    this.newCommentContent = "";
+
     console.log(data);
     this.commentService.addComment(data);
 

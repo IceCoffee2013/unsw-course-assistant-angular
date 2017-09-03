@@ -7,5 +7,5 @@ export class Comment {
   postTime: Date;
   commenter: string;
   avatar: string;
-  replies: Reply[];
+  replies: Reply[] = [];
 }
