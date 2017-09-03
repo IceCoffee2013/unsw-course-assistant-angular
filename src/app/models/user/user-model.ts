@@ -6,4 +6,7 @@ export class User {
   email: string;
   password: string;
   // confirmPassword: string;
+  bio: string;
+  image: string;
+  following: boolean;
 }

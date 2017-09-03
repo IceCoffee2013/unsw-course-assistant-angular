@@ -13,6 +13,8 @@ import {AuthService} from "./services/auth/auth.service";
 import {UserRegisterService} from "./services/user/user-register.service";
 import {UserLoginService} from "./services/user/user-login.service";
 import {ForgetPwdService} from "./services/user/forget-pwd.service";
+import {UserProfileComponent} from "./views/user/user-profile/user-profile.component";
+
 
 
 export function createTranslateLoader(http: Http) {
@@ -41,7 +43,8 @@ export function createTranslateLoader(http: Http) {
     AuthService,
     UserRegisterService,
     UserLoginService,
-    ForgetPwdService
+    ForgetPwdService,
+    UserProfileComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -13,15 +13,12 @@ import {
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {ExperienceListComponent} from "./experience-list/experience-list.component";
-import {experienceRoutes} from "./experience.routes";
-import {ExperienceDetailMianComponent} from "./experience-detail-main/experience-detail-mian.component";
-import {ExperiencePublishComponent} from "./experience-publish/experience-publish.component";
+import {userRoutes} from './user.routes';
 import { QuillModule } from 'ngx-quill';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
-import {ExperienceCommentComponent} from "./experience-comment/experience-comment.component";
-
+import {UserProfileComponent} from "./user-profile/user-profile.component";
+import {MdTabsModule} from '@angular/material';
 @NgModule({
   imports: [
     // SharedModule,
@@ -35,6 +32,7 @@ import {ExperienceCommentComponent} from "./experience-comment/experience-commen
     MdMenuModule,
     MdSlideToggleModule,
     MdGridListModule,
+    MdTabsModule,
     MdPaginatorModule,
     MdInputModule,
     FlexLayoutModule,
@@ -43,17 +41,14 @@ import {ExperienceCommentComponent} from "./experience-comment/experience-commen
     NgxDatatableModule,
     FileUploadModule,
     // PaginationModule.forRoot(),
-    RouterModule.forChild(experienceRoutes)
+    RouterModule.forChild(userRoutes)
   ],
   declarations: [
-    ExperienceListComponent,
-    ExperienceDetailMianComponent,
-    ExperiencePublishComponent,
-    ExperienceCommentComponent,
+  UserProfileComponent,
   ],
-  exports: [],
+  exports: [UserProfileComponent],
   providers: [
   ]
 })
-export class ExperienceModule {
+export class UserModule {
 }

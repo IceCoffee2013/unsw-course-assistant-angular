@@ -1,0 +1,31 @@
+
+
+.user-profile-page{
+  height: 1000px;
+}
+.bg-images-container{
+  height: 200px;
+  width:100%;
+}
+
+.bg-images{
+  height:245px;
+  background-size: cover;
+  background: center center no-repeat;
+  position: absolute;
+}
+.button-group{
+  top:190px;
+  position: absolute;
+}
+.user-image{
+  border:solid;
+  border-color: white;
+  display: inline-block;
+}
+.user-name{
+  color: white;
+}
+.user-info{
+  margin-top: 50px;
+}

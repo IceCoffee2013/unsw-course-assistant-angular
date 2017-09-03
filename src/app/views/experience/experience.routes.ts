@@ -3,6 +3,7 @@ import {ExperienceListComponent} from './experience-list/experience-list.compone
 import {ExperienceDetailMianComponent} from "./experience-detail-main/experience-detail-mian.component";
 import {ExperiencePublishComponent} from "./experience-publish/experience-publish.component";
 import {ExperienceCommentComponent} from "./experience-comment/experience-comment.component";
+import {UserProfileComponent} from "../user/user-profile/user-profile.component";
 
 export const experienceRoutes = [
   {
@@ -25,5 +26,5 @@ export const experienceRoutes = [
   {
     path: 'expcomment',
     component: ExperienceCommentComponent
-  }
+  },
 ];

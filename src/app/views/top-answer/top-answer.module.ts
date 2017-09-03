@@ -13,14 +13,14 @@ import {
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {ExperienceListComponent} from "./experience-list/experience-list.component";
-import {experienceRoutes} from "./experience.routes";
-import {ExperienceDetailMianComponent} from "./experience-detail-main/experience-detail-mian.component";
-import {ExperiencePublishComponent} from "./experience-publish/experience-publish.component";
+import {topanserRoutes} from './top-answer.routes';
 import { QuillModule } from 'ngx-quill';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
-import {ExperienceCommentComponent} from "./experience-comment/experience-comment.component";
+import {MdTabsModule} from '@angular/material';
+import {TopAnswerListComponent} from './top-answer-list/top-answer-list.component';
+import {MdDialogModule} from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -35,25 +35,24 @@ import {ExperienceCommentComponent} from "./experience-comment/experience-commen
     MdMenuModule,
     MdSlideToggleModule,
     MdGridListModule,
+    MdTabsModule,
     MdPaginatorModule,
     MdInputModule,
+    MdDialogModule,
     FlexLayoutModule,
     RouterModule,
     QuillModule,
     NgxDatatableModule,
     FileUploadModule,
     // PaginationModule.forRoot(),
-    RouterModule.forChild(experienceRoutes)
+    RouterModule.forChild(topanserRoutes)
   ],
   declarations: [
-    ExperienceListComponent,
-    ExperienceDetailMianComponent,
-    ExperiencePublishComponent,
-    ExperienceCommentComponent,
+    TopAnswerListComponent,
   ],
   exports: [],
   providers: [
   ]
 })
-export class ExperienceModule {
+export class TopAnswerModule {
 }
