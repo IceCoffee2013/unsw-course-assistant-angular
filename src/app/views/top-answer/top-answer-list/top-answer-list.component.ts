@@ -1,4 +1,5 @@
 import {Component, NgModule, OnInit} from '@angular/core';
+import {MdDialog} from "@angular/material";
 
 
 @Component({
@@ -10,10 +11,30 @@ import {Component, NgModule, OnInit} from '@angular/core';
 export class TopAnswerListComponent implements OnInit {
   show: boolean = false;
 
+  constructor(public dialog: MdDialog) {}
+
   ngOnInit() {
   }
 
   showask() {
     this.show = !this.show;
   }
+
+  public openDialog() {
+    const dialogRef = this.dialog.open(QuestionContentDialog, {
+      height: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 }
+
+@Component({
+  selector: 'question-content-dialog',
+  templateUrl: 'question-content-dialog.html',
+})
+export class QuestionContentDialog {}

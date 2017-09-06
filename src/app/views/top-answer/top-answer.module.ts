@@ -8,7 +8,7 @@ import {
   MdMenuModule,
   MdSlideToggleModule,
   MdInputModule,
-  MdGridListModule, MdChipsModule, MdPaginatorModule,
+  MdGridListModule, MdChipsModule, MdPaginatorModule, MdFormFieldModule,
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
@@ -18,7 +18,7 @@ import { QuillModule } from 'ngx-quill';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import {MdTabsModule} from '@angular/material';
-import {TopAnswerListComponent} from './top-answer-list/top-answer-list.component';
+import {TopAnswerListComponent, QuestionContentDialog} from './top-answer-list/top-answer-list.component';
 import {MdDialogModule} from '@angular/material';
 
 
@@ -39,6 +39,7 @@ import {MdDialogModule} from '@angular/material';
     MdPaginatorModule,
     MdInputModule,
     MdDialogModule,
+    MdFormFieldModule,
     FlexLayoutModule,
     RouterModule,
     QuillModule,
@@ -49,9 +50,13 @@ import {MdDialogModule} from '@angular/material';
   ],
   declarations: [
     TopAnswerListComponent,
+    QuestionContentDialog,
   ],
   exports: [],
   providers: [
+  ],
+  entryComponents: [
+    QuestionContentDialog
   ]
 })
 export class TopAnswerModule {

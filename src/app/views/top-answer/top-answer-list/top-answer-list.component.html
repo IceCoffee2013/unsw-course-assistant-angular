@@ -1,7 +1,7 @@
  <div fxLayout="row">
    <div class="answer-container" fxFlex="70" fxLayout="column">
   <md-card class="question-card">
-      <span class="ask-question" (click)=showask()><strong>What is you question?</strong></span>
+      <span class="ask-question" (click)=openDialog()><strong>What is you question?</strong></span>
       <div *ngIf="show">
           <md-input-container floatPlaceholder="auto" class="md-question-container">
             <input mdInput [(ngModel)]="modelName" type="text"

@@ -1,0 +1,34 @@
+<h2 md-dialog-title>Ask Question</h2>
+<md-dialog-content>
+
+  <form>
+    <div fxLayout="column" fxLayoutWrap="wrap">
+      <md-form-field class="full-width" fxFlexFill>
+        <input mdInput #message maxlength="24" placeholder="Question">
+        <!--<md-hint align="start"><strong>Describe your question.</strong> </md-hint>-->
+        <md-hint align="end">{{message.value.length}} / 24</md-hint>
+      </md-form-field>
+
+      <md-form-field class="full-width" fxFlexFill>
+        <textarea mdInput #description maxlength="256" rows="3" placeholder="(Optional) describe your question..."></textarea>
+        <md-hint align="end">{{description.value.length}} / 256</md-hint>
+      </md-form-field>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-md-offset-1">话题:</label>
+      <input type="text" id="tag1" name="tag1" placeholder="最多3个话题" class="form-control question_tag">
+      <input type="text" id="tag2" name="tag2" placeholder="" class="form-control question_tag" disabled>
+      <input type="text" id="tag3" name="tag3" placeholder="" class="form-control question_tag" disabled>
+    </div>
+  </form>
+
+</md-dialog-content>
+
+<md-dialog-actions>
+  <div fxLayout="column" fxlayoutalign="center" fxLayoutWrap="wrap" class="full-width">
+    <button md-raised-button md-dialog-close class="full-width">Cancel</button>
+    <button md-raised-button [md-dialog-close]="true" color="primary" class="full-width">Save</button>
+  </div>
+</md-dialog-actions>
