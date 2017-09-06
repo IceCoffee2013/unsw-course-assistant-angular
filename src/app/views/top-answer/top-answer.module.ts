@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {NgModule} from "@angular/core";
+import {RouterModule} from "@angular/router";
 import {
   MdListModule,
   MdIconModule,
@@ -8,24 +8,29 @@ import {
   MdMenuModule,
   MdSlideToggleModule,
   MdInputModule,
-  MdGridListModule, MdChipsModule, MdPaginatorModule, MdFormFieldModule,
-} from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
-import {topanserRoutes} from './top-answer.routes';
-import { QuillModule } from 'ngx-quill';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
-import {MdTabsModule} from '@angular/material';
-import {TopAnswerListComponent, QuestionContentDialog} from './top-answer-list/top-answer-list.component';
-import {MdDialogModule} from '@angular/material';
+  MdGridListModule,
+  MdChipsModule,
+  MdPaginatorModule,
+  MdFormFieldModule,
+  MdTabsModule,
+  MdDialogModule
+} from "@angular/material";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {FormsModule} from "@angular/forms";
+import {topanserRoutes} from "./top-answer.routes";
+import {QuillModule} from "ngx-quill";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {FileUploadModule} from "ng2-file-upload/ng2-file-upload";
+import {TopAnswerListComponent, QuestionContentDialog} from "./top-answer-list/top-answer-list.component";
+import {CommonModule} from "@angular/common";
+import {TagInputModule} from "ngx-chips";
 
 
 @NgModule({
   imports: [
     // SharedModule,
     CommonModule,
+    // BrowserAnimationsModule,
     FormsModule,
     MdListModule,
     MdChipsModule,
@@ -45,6 +50,7 @@ import {MdDialogModule} from '@angular/material';
     QuillModule,
     NgxDatatableModule,
     FileUploadModule,
+    TagInputModule, // chip
     // PaginationModule.forRoot(),
     RouterModule.forChild(topanserRoutes)
   ],
@@ -53,8 +59,7 @@ import {MdDialogModule} from '@angular/material';
     QuestionContentDialog,
   ],
   exports: [],
-  providers: [
-  ],
+  providers: [],
   entryComponents: [
     QuestionContentDialog
   ]

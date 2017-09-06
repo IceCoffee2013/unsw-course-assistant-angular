@@ -15,15 +15,22 @@
       </md-form-field>
     </div>
 
+    <div>
+      <!--<h3>Tags within an autocomplete component</h3>-->
+      <tag-input [(ngModel)]="items"
+                 [addOnBlur]="true"
+                 [clearOnBlur]="true"
+                 [maxItems]="5"
+                 name="tags">
+        <tag-input-dropdown [autocompleteItems]="autocompleteItems">
+        </tag-input-dropdown>
+      </tag-input>
 
-    <div class="form-group">
-      <label class="col-md-offset-1">话题:</label>
-      <input type="text" id="tag1" name="tag1" placeholder="最多3个话题" class="form-control question_tag">
-      <input type="text" id="tag2" name="tag2" placeholder="" class="form-control question_tag" disabled>
-      <input type="text" id="tag3" name="tag3" placeholder="" class="form-control question_tag" disabled>
     </div>
-  </form>
 
+
+  </form>
+  tags: {{items.length}}
 </md-dialog-content>
 
 <md-dialog-actions>

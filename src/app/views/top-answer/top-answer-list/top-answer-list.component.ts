@@ -1,5 +1,6 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MdDialog} from "@angular/material";
+import {Tag} from "../../../models/top-answer/tag-model";
 
 
 @Component({
@@ -37,4 +38,14 @@ export class TopAnswerListComponent implements OnInit {
   selector: 'question-content-dialog',
   templateUrl: 'question-content-dialog.html',
 })
-export class QuestionContentDialog {}
+export class QuestionContentDialog {
+
+  items:string[] = ['java', 'python'];
+
+  autocompleteItems: string[] = ['Item1', 'item2', 'item3'];
+
+  public onAdd(item) {
+    console.log('tag added: value is ' + item);
+  }
+
+}
