@@ -24,6 +24,7 @@ import {FileUploadModule} from "ng2-file-upload/ng2-file-upload";
 import {TopAnswerListComponent, QuestionContentDialog} from "./top-answer-list/top-answer-list.component";
 import {CommonModule} from "@angular/common";
 import {TagInputModule} from "ngx-chips";
+import {QuestionService} from "../../services/top-answer/question-service";
 
 
 @NgModule({
@@ -59,7 +60,9 @@ import {TagInputModule} from "ngx-chips";
     QuestionContentDialog,
   ],
   exports: [],
-  providers: [],
+  providers: [
+    QuestionService
+  ],
   entryComponents: [
     QuestionContentDialog
   ]

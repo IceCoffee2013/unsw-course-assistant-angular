@@ -1,6 +1,8 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {MdDialog} from "@angular/material";
-import {Tag} from "../../../models/top-answer/tag-model";
+import {Question} from "../../../models/top-answer/question-model";
+import {QuestionService} from "../../../services/top-answer/question-service";
+import {Router, ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -10,18 +12,65 @@ import {Tag} from "../../../models/top-answer/tag-model";
 })
 
 export class TopAnswerListComponent implements OnInit {
-  show: boolean = false;
+  // tags
+  tags = [];
+  autoCompleteTags: string[] = ['cse', 'java', 'php', 'unsw'];
 
-  constructor(public dialog: MdDialog) {}
+  // paginator
+  // public maxSize: number = 12;
+  public itemsPerPage: number = 8;
+  public pageSizeOptions = [8, 16, 24];
+  public totalItems: number;
+  //不要手动对这个属性进行赋值，它是和分页工具条自动绑定的
+  public currentPage: number = 1;
+
+  public searchText: string;
+  // public searchTextStream: Subject<string> = new Subject<string>();
+
+  public questionList: Array<Question>;
+
+  constructor(public dialog: MdDialog,
+              public questionService: QuestionService,
+              public router: Router,
+              public activeRoute: ActivatedRoute,) {
+  }
 
   ngOnInit() {
+
+    this.activeRoute.params.subscribe(params => {
+      // 这里可以从路由里面获取URL参数
+      console.log(params);
+      this.loadData(this.searchText, this.currentPage);
+    });
   }
 
-  showask() {
-    this.show = !this.show;
+  public loadData(searchText: string, page: number) {
+    let offset = (this.currentPage - 1) * this.itemsPerPage;
+    let end = (this.currentPage) * this.itemsPerPage;
+
+    console.log(searchText, page);
+
+    return this.questionService.getQuestionList(searchText, page).subscribe(
+      res => {
+        this.totalItems = res.length;
+        //TODO.正式环境中，需要去掉slice
+        this.questionList = res.slice(offset, end > this.totalItems ? this.totalItems : end);
+      },
+      error => {
+        console.log(error)
+      },
+      () => {
+      }
+    );
   }
 
-  public openDialog() {
+  public pageChanged(event: any): void {
+    let pageNumber = event.pageIndex + 1;
+    console.log("event page: " + pageNumber);
+    this.router.navigateByUrl("answer/page/" + pageNumber);
+  }
+
+  public showQuestionDialog() {
     const dialogRef = this.dialog.open(QuestionContentDialog, {
       height: '350px'
     });
@@ -31,6 +80,18 @@ export class TopAnswerListComponent implements OnInit {
     });
   }
 
+  public onAdd(item) {
+    console.log('tag added: value is ' + item.value);
+    // convert tag to lowercase
+    // display value
+
+    // for (let tag of this.tags) {
+    //   console.log(tag);
+    //   tag.value = tag.value.toLowerCase();
+    // }
+
+    // do search
+  }
 
 }
 
@@ -40,7 +101,7 @@ export class TopAnswerListComponent implements OnInit {
 })
 export class QuestionContentDialog {
 
-  items:string[] = ['java', 'python'];
+  items: string[] = ['java', 'python'];
 
   autocompleteItems: string[] = ['Item1', 'item2', 'item3'];
 

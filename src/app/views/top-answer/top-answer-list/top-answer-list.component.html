@@ -1,20 +1,69 @@
- <div fxLayout="row">
-   <div class="answer-container" fxFlex="70" fxLayout="column">
-  <md-card class="question-card">
-      <span class="ask-question" (click)=openDialog()><strong>What is you question?</strong></span>
-      <div *ngIf="show">
-          <md-input-container floatPlaceholder="auto" class="md-question-container">
-            <input mdInput [(ngModel)]="modelName" type="text"
-                   placeholder="">
-          </md-input-container>
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="100">
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div
+        fxFlex="100"
+        fxFlex.gt-xs="100">
+        <md-card>
+          <md-card-content class="full-width">
+            <div fxFlex="80">
+              <tag-input [(ngModel)]="tags"
+                         [addOnBlur]="true"
+                         [clearOnBlur]="true"
+                         [maxItems]="3"
+                         placeholder="Enter the tags..."
+                         (onAdd)="onAdd($event)"
+                         name="tags">
+                <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
+                </tag-input-dropdown>
+              </tag-input>
+            </div>
+            <div fxlayout="20">
+              <button md-raised-button color="primary" (click)="showQuestionDialog()">Ask Question</button>
+            </div>
+
+          </md-card-content>
+        </md-card>
       </div>
-  </md-card>
-      <md-card>
-          <h4> <strong> What was the weirdest compliment you've ever received?</strong></h4>
-        question card
-      </md-card>
     </div>
+  </div>
 
+  <div fxFlex="100">
+    <div fxLayout="row" fxLayoutWrap="wrap">
+      <div
+        fxFlex="100"
+        fxFlex.gt-xs="50" *ngFor="let question of questionList">
 
+        <md-card class="default">
+          <md-card-title>{{question.title}}</md-card-title>
+          <md-card-subtitle>Card subtitle</md-card-subtitle>
+          <md-card-content>
+            <p>
+              {{question.description}}
+            </p>
+          </md-card-content>
+          <md-divider></md-divider>
+          <md-card-actions>
+            <button md-icon-button>
+              <md-icon class="text-muted">favorite</md-icon>
+            </button>
+            <button md-icon-button>
+              <md-icon class="text-muted">share</md-icon>
+            </button>
+          </md-card-actions>
+        </md-card>
+      </div>
+
+    </div>
+  </div>
+
+  <div fxFlex="100" class="course-paginator">
+    <md-paginator
+      [length]="totalItems"
+      [pageSize]="itemsPerPage"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageChanged($event)">
+    </md-paginator>
+  </div>
 
 </div>
