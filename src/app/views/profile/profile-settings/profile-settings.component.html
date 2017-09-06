@@ -1,0 +1,147 @@
+<md-card class="p-0">
+  <md-tab-group>
+    <md-tab label="Account Settings">
+      <md-card-content class="mt-1">
+          <form>
+            <md-input-container class="full-width">
+              <input
+              mdInput
+              name="name"
+              placeholder="Name"
+              value="">
+            </md-input-container>
+            <md-input-container class="full-width">
+                <input
+                mdInput
+                name="title"
+                placeholder="Title"
+                value="">
+              </md-input-container>
+            <md-input-container class="full-width">
+              <input
+              mdInput
+              name="email"
+              placeholder="Email"
+              value="">
+            </md-input-container>
+            <md-input-container class="full-width">
+              <input
+              mdInput
+              name="phone"
+              placeholder="Phone"
+              value="">
+            </md-input-container>
+            <md-input-container class="full-width">
+              <input
+              mdInput
+              name="address"
+              placeholder="Adresss"
+              value="">
+            </md-input-container>
+            <md-input-container class="full-width">
+              <input
+              mdInput
+              name="website"
+              placeholder="Website"
+              value="">
+            </md-input-container>
+            <button md-raised-button color="primary">Save</button>
+          </form>
+      </md-card-content>
+    </md-tab>
+    <md-tab label="Profile Picture">
+      <md-card-content>
+        <div class="mb-1 mt-1">
+          <p>Upload a profile picture</p>
+          <input type="file" ng2FileSelect [uploader]="uploader" />
+        </div>
+
+        <div class="mb-1">
+          <div ng2FileDrop
+          [ngClass]="{'dz-file-over': hasBaseDropZoneOver}"
+          [uploader]="uploader"
+          (fileOver)="fileOverBase($event)"
+          class="fileupload-drop-zone">
+          Drop png/jpeg file here
+          </div>
+        </div>
+        <table class="default-table mat-box-shadow" style="width: 100%">
+          <thead>
+            <tr>
+                <th width="30%">Name</th>
+                <th>Size</th>
+                <th>Progress</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="uploader.queue.length; else tableNoData">
+            <tr *ngFor="let item of uploader.queue">
+                <td>{{ item?.file?.name }}</td>
+                <td nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                <td>
+                    <div class="progress" style="margin-bottom: 0;">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        <md-progress-bar
+                          class=""
+                          color="primary"
+                          mode="determinate"
+                          [value]="item.progress">
+                        </md-progress-bar>
+                    </div>
+                </td>
+                <td class="">
+                    <md-icon *ngIf="item.isSuccess">check</md-icon>
+                    <md-icon *ngIf="item.isCancel" color="accent">cancel</md-icon>
+                    <md-icon *ngIf="item.isError" color="warn">error</md-icon>
+                </td>
+                <td nowrap>
+                    <button
+                    md-raised-button
+                    class="mat-primary"
+                    (click)="item.upload()"
+                    [disabled]="item.isReady || item.isUploading || item.isSuccess">Upload</button>
+                    <button
+                    md-raised-button
+                    class="mat-accent"
+                    (click)="item.cancel()"
+                    [disabled]="!item.isUploading">Cancel</button>
+
+                    <button
+                    md-raised-button
+                    class="mat-warn"
+                    (click)="item.remove()">Remove</button>
+                </td>
+            </tr>
+            </tbody>
+            <ng-template #tableNoData>
+              <p [ngStyle]="{padding: '0 1.2rem'}">Queue is empty</p>
+            </ng-template>
+        </table>
+      </md-card-content>
+    </md-tab>
+    <md-tab label="Privacy Settings">
+      <md-card-content>
+        <div class="mb-1 mt-1">
+          <md-checkbox> Get weekly news in your email.</md-checkbox>
+        </div>
+        <div class="mb-1">
+          <md-checkbox> Get notification when someone follows you.</md-checkbox>
+        </div>
+        <div class="mb-1">
+          <md-checkbox> Get email when someone follows you.</md-checkbox>
+        </div>
+        <div class="mb-1">
+            <p>Choose your admin panel color schemes.</p>
+            <md-radio-group fxLayout="column" fxLayoutGap="4px">
+              <md-radio-button value="indigo">Indigo</md-radio-button>
+              <md-radio-button value="blue">Blue</md-radio-button>
+              <md-radio-button value="pink">Pink</md-radio-button>
+              <md-radio-button value="purple">Purple</md-radio-button>
+            </md-radio-group>
+        </div>
+        <button md-raised-button color="primary">Save</button>
+      </md-card-content>
+    </md-tab>
+  </md-tab-group>
+</md-card>

@@ -1,0 +1,48 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="70" fxFlex.gt-md="300px" fxFlex.gt-sm="30">
+    <md-card class="profile-sidebar mb-1 pb-0">
+      <div class="propic text-center">
+        <img md-card-md-image md-card-avatar src="assets/images/face-2.jpg" alt="">
+      </div>
+      <div class="profile-title text-center mb-1">
+        <div class="main-title">Jhone <b>Doe</b></div>
+        <div class="subtitle mb-05">Big Data Expert</div>
+        <div class="text-muted">Hi I'm Jhone, sit amet consectetur adipisicing elit. Aperiam repellendus nam perspiciatis.</div>
+      </div>
+      <div class="profile-actions text-center mb-1">
+        <button md-raised-button color="primary">Message</button>
+        <button md-raised-button color="accent">Follow</button>
+      </div>
+      <div class="profile-nav">
+        <md-nav-list>
+          <md-list-item routerLink="/profile/overview" routerLinkActive="list-item-active">
+            <md-icon>home</md-icon>
+            Overview
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item routerLink="/profile/settings" routerLinkActive="list-item-active">
+            <md-icon>settings</md-icon>
+            Settings
+          </md-list-item>
+        </md-nav-list>
+      </div>
+    </md-card>
+    <!-- Contact Information -->
+    <md-card class="default">
+      <md-card-title>Contact Information</md-card-title>
+      <md-card-content class="pt-0">
+        <md-list>
+          <md-list-item><md-icon class="mr-1">public</md-icon> www.mhrafi.com</md-list-item>
+          <md-list-item><md-icon class="mr-1">email</md-icon> example@gmail.com</md-list-item>
+          <md-list-item><md-icon class="mr-1">phone</md-icon> 8801822778800</md-list-item>
+          <md-list-item><md-icon class="mr-1">add_location</md-icon> SUST, Sylhet, BD</md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
+
+<!-- Profile Views -->
+  <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="calc(100% - 300px)">
+    <router-outlet></router-outlet>
+  </div>
+</div>

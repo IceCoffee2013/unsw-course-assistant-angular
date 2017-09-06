@@ -56,7 +56,11 @@ export const rootRouterConfig: Routes = [
         path: 'user',
         loadChildren: './views/user/user.module#UserModule',
         data: { title: 'UserProfile', breadcrumb: 'USER-PROFIlE'}
-      },
+      }, {
+        path: 'profile',
+        loadChildren: './views/profile/profile.module#ProfileModule',
+        data: { title: 'Profile', breadcrumb: 'PROFILE'}
+      }
     ]
   },
   {
