@@ -1,0 +1,29 @@
+.timeline-badge {
+  position: absolute;
+
+}
+.timeline-body{
+margin-left: 55px;
+  padding: 10px;
+
+}
+.timeline::before{
+  content:"";
+  width: 1px;
+  height: 100%;
+  float: left;
+  margin-left: 19px;
+  background: silver;
+  position: absolute;
+
+}
+.timeline-body-content > img{
+  width: 100%;
+  height: 200px;
+}
+
+.icon-badge{
+  border-radius: 50%;
+  padding: 7px;
+}
+

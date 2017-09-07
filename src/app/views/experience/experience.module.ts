@@ -11,7 +11,7 @@ import {
   MdGridListModule, MdChipsModule, MdPaginatorModule,
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ExperienceListComponent} from "./experience-list/experience-list.component";
 import {experienceRoutes} from "./experience.routes";
@@ -20,7 +20,6 @@ import {ExperiencePublishComponent} from "./experience-publish/experience-publis
 import { QuillModule } from 'ngx-quill';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
-import {ExperienceCommentComponent} from "./experience-comment/experience-comment.component";
 import {CommentModule} from "../comment/comment.module";
 
 @NgModule({
@@ -28,6 +27,7 @@ import {CommentModule} from "../comment/comment.module";
     // SharedModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MdListModule,
     MdChipsModule,
     MdIconModule,
@@ -51,7 +51,6 @@ import {CommentModule} from "../comment/comment.module";
     ExperienceListComponent,
     ExperienceDetailMainComponent,
     ExperiencePublishComponent,
-    ExperienceCommentComponent,
   ],
   exports: [],
   providers: [

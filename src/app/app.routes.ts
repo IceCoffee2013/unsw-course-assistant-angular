@@ -48,15 +48,14 @@ export const rootRouterConfig: Routes = [
         data: { title: 'Experience', breadcrumb: 'EXPERIENCE'}
       },
       {
-        path: 'answer',
-        loadChildren: './views/top-answer/top-answer.module#TopAnswerModule',
-        data: { title: 'Answer', breadcrumb: 'TOP-ANSWER'}
-      },
-      {
         path: 'user',
         loadChildren: './views/user/user.module#UserModule',
         data: { title: 'UserProfile', breadcrumb: 'USER-PROFIlE'}
-      },
+      }, {
+        path: 'profile',
+        loadChildren: './views/profile/profile.module#ProfileModule',
+        data: { title: 'Profile', breadcrumb: 'PROFILE'}
+      }
     ]
   },
   {
