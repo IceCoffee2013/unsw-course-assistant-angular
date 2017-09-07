@@ -6,7 +6,8 @@
     <md-chip selected>
       data structure
     </md-chip>
-    <button md-button color="primary" class="answer-but">answer</button>
+  <button md-icon-button class="answer-but"><md-icon color="primary">add</md-icon></button>
+  <button md-icon-button class="answer-but"><md-icon color="primary">mode_edit</md-icon></button>
   <md-card-content>
     <p>
     <h3> 提到盛世美颜你最先想到的是谁？ </h3>
@@ -67,3 +68,27 @@
   </div>
 
 </md-card>
+<md-card class="question-main-card">
+  <p>
+  <md-card-header fxLayout="row">
+    <div md-card-avatar>
+      <a href="" class="toolbar-avatar md mr-1">
+        <img src="../../../assets/images/face-2.jpg">
+      </a>
+    </div>
+    <div fxFlexOffset="1">
+      <span><strong>Shiba Inu</strong></span><br><span>computer science</span>
+    </div>
+  </md-card-header>
+  <p></p><P></P>
+  <md-divider></md-divider>
+  <md-card-content class="p-0">
+    <quill-editor
+      theme="snow"
+      [(ngModel)]="editorData"
+      (onContentChanged)="onContentChanged()"
+      onSelectionChanged="onSelectionChanged()"></quill-editor>
+    <button md-raised-button color="primary" class="submit-answer-but">submit</button>
+  </md-card-content>
+</md-card>
+
