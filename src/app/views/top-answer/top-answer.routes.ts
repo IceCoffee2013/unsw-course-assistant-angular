@@ -1,4 +1,5 @@
 import {TopAnswerListComponent} from "./top-answer-list/top-answer-list.component";
+import {TopAnswerDetailMainComponent} from "./top-answer-detail-main/top-answer-detail-main.component";
 
 export const topanserRoutes = [
   {
@@ -10,4 +11,8 @@ export const topanserRoutes = [
     path: 'page/:page',
     component: TopAnswerListComponent
   },
+  {
+    path: 'detail/:id',
+    component: TopAnswerDetailMainComponent
+  }
 ];

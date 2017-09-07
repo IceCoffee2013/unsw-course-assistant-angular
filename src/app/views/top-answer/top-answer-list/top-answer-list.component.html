@@ -35,7 +35,9 @@
         fxFlex.gt-xs="50" *ngFor="let question of questionList">
 
         <md-card class="default">
-          <md-card-title>{{question.title}}</md-card-title>
+          <md-card-title>
+            <a [routerLink]="['/answer/detail',question.id]"><span>{{question.title}}</span></a>
+          </md-card-title>
           <md-card-subtitle>Card subtitle</md-card-subtitle>
           <md-card-content>
             <p>

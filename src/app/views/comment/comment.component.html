@@ -14,15 +14,6 @@
 </form>
 </md-card>
 
-<!--<form id="comment0" *ngIf="isShowComment" novalidate>-->
-  <!--<div class="comment-text">-->
-    <!--<textarea name="content" autofocus placeholder="add a comment..." maxlength="2000" [(ngModel)]="newCommentContent"></textarea>-->
-    <!--<div style="text-align:right;">-->
-      <!--<button class="btn btn-sm btn-default" style="float:left;" (click)="showComment()">Cancel</button>-->
-      <!--<button class="btn btn-sm btn-info" (click)="addComment(postId)">Comment</button>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</form>-->
 <md-card class="comment-list">
   <!--first level comment-->
   <div class="first-level" *ngFor="let comment of comments">
@@ -74,52 +65,3 @@
     </div>
   </div>
 </md-card>
-<!--</div>-->
-
-<!--<div class="modal fade" id="commentModal" tabindex="-1" role="dialog"-->
-     <!--aria-labelledby="myModalLabel" aria-hidden="true">-->
-  <!--<div class="modal-dialog">-->
-    <!--<div class="modal-content">-->
-      <!--<div class="modal-header">-->
-        <!--<button type="button" class="close"-->
-                <!--data-dismiss="modal" aria-hidden="true">-->
-          <!--&times;-->
-        <!--</button>-->
-        <!--<h4 class="modal-title" id="myModalLabel">-->
-          <!--Delete-->
-        <!--</h4>-->
-      <!--</div>-->
-      <!--<div class="modal-body">-->
-        <!--确定删除评论?-->
-      <!--</div>-->
-      <!--<div class="modal-footer">-->
-        <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
-        <!--<button type="button" class="btn btn-danger" ng-click="confirm()">确认</button>-->
-      <!--</div>-->
-    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
-  <!--</div>-->
-<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
-
-<!--<div class="modal fade" id="slcModal" tabindex="-1" role="dialog"-->
-     <!--aria-labelledby="myModalLabel" aria-hidden="true">-->
-  <!--<div class="modal-dialog">-->
-    <!--<div class="modal-content">-->
-      <!--<div class="modal-header">-->
-        <!--<button type="button" class="close"-->
-                <!--data-dismiss="modal" aria-hidden="true">-->
-          <!--&times;-->
-        <!--</button>-->
-        <!--<h4 class="modal-title" id="myModalLabel">-->
-          <!--Delete-->
-        <!--</h4>-->
-      <!--</div>-->
-      <!--<div class="modal-body">-->
-        <!--确定删除评论?-->
-      <!--</div>-->
-      <!--<div class="modal-footer">-->
-        <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
-        <!--<button type="button" class="btn btn-danger" ng-click="confirmSlc()">确认</button>-->
-      <!--</div>-->
-    <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
-  <!--</div>-->
-<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->

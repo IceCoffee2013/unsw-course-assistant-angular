@@ -27,6 +27,8 @@ import {TagInputModule} from "ngx-chips";
 import {QuestionService} from "../../services/top-answer/question-service";
 import {QuestionInfoComponent} from "./question-info/question-info.component";
 import {QuestionStatusComponent} from "./question-status/question-status.component";
+import {TopAnswerDetailComponent} from "./top-answer-detail/top-answer-detail.component";
+import {TopAnswerDetailMainComponent} from "./top-answer-detail-main/top-answer-detail-main.component";
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import {QuestionStatusComponent} from "./question-status/question-status.compone
     TopAnswerListComponent,
     QuestionContentDialog,
     QuestionInfoComponent,
-    QuestionStatusComponent
+    QuestionStatusComponent,
+    TopAnswerDetailComponent,
+    TopAnswerDetailMainComponent
   ],
   exports: [],
   providers: [
