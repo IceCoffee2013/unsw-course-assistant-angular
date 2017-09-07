@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TopAnswerDetailComponent implements OnInit {
 
-  public question: Question;
+  public question: Question = new Question();
   public answers: Answer[];
 
   constructor(public questionService: QuestionService,
@@ -47,6 +47,43 @@ export class TopAnswerDetailComponent implements OnInit {
         data => this.answers = data,
         error => console.error(error)
       );
+  }
+
+  public showComment(answer: Answer) {
+    answer.isShowComment = !answer.isShowComment;
+  }
+
+  // public showComment
+
+  public doUp(answer: Answer) {
+
+    if (answer.isUp) {
+      // cancel like
+      answer.isUp = false;
+      answer.likes -= 1;
+      this.answerService.doLike(answer);
+    } else {
+      // do like
+      answer.isUp = true;
+      answer.isDown = false;
+      answer.likes += 1;
+      this.answerService.doLike(answer);
+    }
+  }
+
+  public doDown(answer: Answer) {
+    if (answer.isDown) {
+      // cancel down
+      answer.isDown = false;
+      answer.likes += 1;
+      this.answerService.doLike(answer);
+    } else {
+      // do down
+      answer.isDown = true;
+      answer.isUp = false;
+      answer.likes -= 1;
+      this.answerService.doLike(answer);
+    }
   }
 
 }

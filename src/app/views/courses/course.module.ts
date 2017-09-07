@@ -6,8 +6,7 @@ import {courseRoutes} from "./course.routes";
 import {CourseListComponent} from "./course-list/course-list.component";
 import {CourseDetailMainComponent} from "./course-detail-main/course-detail-main.component";
 import {CourseDetailComponent} from "./course-detail/course-detail.component";
-// import {MyCustomMaterialModule} from "../utils/my-custom-material.module";
-import { DatePipe } from '@angular/common';
+import {CommonModule} from "@angular/common";
 import {
   MdListModule,
   MdIconModule,
@@ -16,14 +15,15 @@ import {
   MdMenuModule,
   MdSlideToggleModule,
   MdInputModule,
-  MdGridListModule, MdChipsModule, MdPaginatorModule,
-} from '@angular/material';
+  MdGridListModule,
+  MdChipsModule,
+  MdPaginatorModule
+} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
 import {CourseListService} from "../../services/course/course-list.service";
 import {CourseDetailService} from "../../services/course/course-detail.service";
-import {CourseCommentComponent} from "./course-comment/course-comment.component"
+import {CourseCommentComponent} from "./course-comment/course-comment.component";
 import {CourseRelatedComponent} from "./course-related/course-related.component";
 import {CommentModule} from "../comment/comment.module";
 
@@ -55,8 +55,7 @@ import {CommentModule} from "../comment/comment.module";
     CourseCommentComponent,
     CourseRelatedComponent,
   ],
-  exports: [
-  ],
+  exports: [],
   providers: [
     CourseListService,
     CourseDetailService,

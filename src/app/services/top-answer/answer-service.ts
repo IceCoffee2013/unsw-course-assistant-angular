@@ -7,6 +7,7 @@ import {Answer} from "../../models/top-answer/answer-model";
 @Injectable()
 export class AnswerService {
   public answerListURL = 'mock-data/answer-list-mock.json';
+  public answerLikeURL = 'mock-data/answer-list-mock.json'; // TODO
 
   constructor(public http: Http) {
   }
@@ -26,9 +27,17 @@ export class AnswerService {
       .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 
-  // TODO like
-  public doLike() {
+  public doLike(answer: Answer) {
 
+    return this.http.post(this.answerLikeURL, answer)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
   }
 
 }

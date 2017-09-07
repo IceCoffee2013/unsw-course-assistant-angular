@@ -28,6 +28,9 @@ export class CommentService {
     if (type == "experience") {
       this.baseURL = type;
     }
+    if (type == "answer") {
+      this.baseURL = type;
+    }
     console.log("comment service type:", type);
   }
 

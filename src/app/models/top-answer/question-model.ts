@@ -6,6 +6,6 @@ export class Question {
   title: string;
   description: string;
   author: string;
-  tags: Tag[];
+  tags: Tag[] = [];
   postTime: Date;
 }
