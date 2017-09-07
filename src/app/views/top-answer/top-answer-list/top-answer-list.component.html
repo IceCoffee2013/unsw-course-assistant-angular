@@ -4,9 +4,9 @@
       <div
         fxFlex="100"
         fxFlex.gt-xs="100">
-        <md-card>
+        <md-card class="ask-question-card">
           <md-card-content class="full-width">
-            <div fxFlex="80">
+            <div fxFlex="88">
               <tag-input [(ngModel)]="tags"
                          [addOnBlur]="true"
                          [clearOnBlur]="true"
@@ -18,7 +18,7 @@
                 </tag-input-dropdown>
               </tag-input>
             </div>
-            <div fxlayout="20">
+            <div class="ask-question-but">
               <button md-raised-button color="primary" (click)="showQuestionDialog()">Ask Question</button>
             </div>
 

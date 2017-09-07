@@ -1,18 +1,69 @@
 <!-- Question -->
-<md-card>
-  <md-card-header>
-    Question
-  </md-card-header>
-
+<md-card class="question-main-card">
+    <md-chip selected>
+      comp9024
+    </md-chip>
+    <md-chip selected>
+      data structure
+    </md-chip>
+    <button md-button color="primary" class="answer-but">answer</button>
   <md-card-content>
-    Hello
+    <p>
+    <h3> 提到盛世美颜你最先想到的是谁？ </h3>
+    <p>
+      Allows for programmatic removal of the chip. Called by the MdChipList when the DELETE or BACKSPACE keys are
+      pressed.
+      Informs any listeners of the removal request. Does not remove the chip from the DOM.
+    </p>
   </md-card-content>
-
-  <md-card-footer>
-    time
-  </md-card-footer>
+  <div class="question-footer">
+    <md-icon class="favoite-but" color="primary">favorite</md-icon>
+    <span class="question-time">
+      Dec 29, 2017
+    </span>
+  </div>
 </md-card>
 
-<md-card>
+<md-card class="question-main-card">
+  <md-card-header fxLayout="row">
+    <div md-card-avatar>
+      <a href="" class="toolbar-avatar md mr-1">
+        <img src="../../../assets/images/face-2.jpg">
+      </a>
+    </div>
+    <div fxFlexOffset="1">
+      <span><strong>Shiba Inu</strong></span><br><span>computer science</span>
+    </div>
+    <button md-icon-button fxFlexOffset="1">
+      <md-icon color="primary">add_box</md-icon>
+    </button>
+  </md-card-header>
+  <md-card-content>
+    <div class="answer-content">
+      <p></p>
+      Angular Material buttons are native elements enhanced with Material Design styling and ink ripples.
+      Basic buttons
+      Click me!
+      Native and <a> elements are always</a> used in order to provide the most straightforward and accessible experience
+      for users. element should be used whenever some action is performed.element should be used whenever the
+      user will navigate to another view.
+      <div class="answer-content">
+        <img src="assets/images/sq-5.jpg" alt="">
+      </div>
+      Angular Material buttons are native elements enhanced with Material Design styling and ink ripples.
+      Basic buttons
+      Click me!
+      Native and <a> elements are always</a> used in order to provide the most straightforward and accessible experience
+      for users. element should be used whenever some action is performed.element should be used whenever the
+      user will navigate to another view.
+
+    </div>
+  </md-card-content>
+  <div class="question-footer">
+    <a (click)="null" routerLink=".">
+      <div class = "up">&#9650;<span>123</span></div></a>
+    <a (click)="null" routerLink=".">
+      <div class = "down">&#9660;</div></a>
+  </div>
 
 </md-card>

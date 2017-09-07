@@ -15,7 +15,7 @@
       </md-form-field>
     </div>
 
-    <div>
+    <div class="tag-input">
       <!--<h3>Tags within an autocomplete component</h3>-->
       <tag-input [(ngModel)]="items"
                  [addOnBlur]="true"
@@ -33,9 +33,7 @@
   tags: {{items.length}}
 </md-dialog-content>
 
-<md-dialog-actions>
-  <div fxLayout="column" fxlayoutalign="center" fxLayoutWrap="wrap" class="full-width">
-    <button md-raised-button md-dialog-close class="full-width">Cancel</button>
-    <button md-raised-button [md-dialog-close]="true" color="primary" class="full-width">Save</button>
-  </div>
+<md-dialog-actions  fxLayoutAlign="end">
+    <button md-raised-button md-dialog-close>Cancel</button>
+    <button md-raised-button [md-dialog-close]="true" color="primary" >Save</button>
 </md-dialog-actions>
