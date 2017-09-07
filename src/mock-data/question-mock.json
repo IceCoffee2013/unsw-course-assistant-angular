@@ -1,0 +1,17 @@
+{
+  "id": "10",
+  "title": "How to learn COMP9021",
+  "description": "This question previously had question details. You can find them in the question comments.",
+  "author": "Tom",
+  "tags": [
+    {
+      "id" : "1",
+      "name":"java"
+    },
+    {
+      "id" : "2",
+      "name":"j2ee"
+    }
+  ],
+  "postTime" : "2016-09-09 12:00:09"
+}

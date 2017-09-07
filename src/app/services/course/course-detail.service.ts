@@ -13,7 +13,7 @@ export class CourseDetailService {
   constructor(public http: Http) {
   }
 
-  public getCourse(id: number): Observable<Course> {
+  public getCourse(id: string): Observable<Course> {
     return this.http
       .get(this.courseDetailURL)
       .map((res: Response) => res.json());

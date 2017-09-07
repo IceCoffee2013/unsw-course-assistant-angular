@@ -5,10 +5,19 @@ import {Question} from "../../models/top-answer/question-model";
 
 @Injectable()
 export class QuestionService {
+  public questionURL = 'mock-data/question-mock.json';
   public questionListURL = 'mock-data/question-list-mock.json';
   public questionListSearchURL = 'mock-data/question-list-search-mock.json';
 
   constructor(public http: Http) {
+  }
+
+  public getQuestion(id: string): Observable<Question> {
+    let params = new URLSearchParams();
+    params.set('id', id);
+    return this.http
+      .get(this.questionURL, {search:params})
+      .map((res: Response) => res.json());
   }
 
   public getQuestionList(searchText: string, page: number=1): Observable<Question[]> {

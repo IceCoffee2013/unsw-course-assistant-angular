@@ -1,4 +1,5 @@
 import {Tag} from "./tag-model";
+import {Answer} from "./answer-model";
 
 export class Question {
   id: string;
@@ -7,5 +8,4 @@ export class Question {
   author: string;
   tags: Tag[];
   postTime: Date;
-
 }

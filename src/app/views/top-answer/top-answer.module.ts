@@ -29,6 +29,8 @@ import {QuestionInfoComponent} from "./question-info/question-info.component";
 import {QuestionStatusComponent} from "./question-status/question-status.component";
 import {TopAnswerDetailComponent} from "./top-answer-detail/top-answer-detail.component";
 import {TopAnswerDetailMainComponent} from "./top-answer-detail-main/top-answer-detail-main.component";
+import {MergeScanSubscriber} from "rxjs/operator/mergeScan";
+import {AnswerService} from "../../services/top-answer/answer-service";
 
 
 @NgModule({
@@ -69,7 +71,8 @@ import {TopAnswerDetailMainComponent} from "./top-answer-detail-main/top-answer-
   ],
   exports: [],
   providers: [
-    QuestionService
+    QuestionService,
+    AnswerService
   ],
   entryComponents: [
     QuestionContentDialog

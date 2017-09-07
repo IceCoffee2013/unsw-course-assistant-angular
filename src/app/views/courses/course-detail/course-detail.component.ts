@@ -25,7 +25,7 @@ export class CourseDetailComponent implements OnInit {
     );
   }
 
-  public getCourse(id: number) {
+  public getCourse(id: string) {
     this.courseDetailService
       .getCourse(id)
       .subscribe(
