@@ -4,6 +4,7 @@ import {User} from "../../models/user/user-model";
 import {CommentService} from "../../services/comment/comment.service";
 import {Comment} from "../../models/comment/comment-model";
 import {Reply} from "../../models/comment/reply-model";
+import {AppConfirmService} from "../../services/app-confirm/app-confirm.service";
 
 @Component({
   selector: 'app-comment',
@@ -21,8 +22,10 @@ export class CommentComponent implements OnInit {
   public comments: Comment[];
   public tmpReply: Reply = new Reply();
 
-  constructor(public router: Router, public activeRoute: ActivatedRoute,
-              public commentService: CommentService) {
+  constructor(public router: Router,
+              public activeRoute: ActivatedRoute,
+              public commentService: CommentService,
+              public confirmService: AppConfirmService) {
   }
 
   ngOnInit() {
@@ -96,35 +99,53 @@ export class CommentComponent implements OnInit {
   }
 
   public deleteComment(comment: Comment): void {
-    // local delete
-    this.comments.forEach(
-      (value, index) => {
-        if (value.id == comment.id) {
-          console.log('Index', index);
-          this.comments.splice(index, 1);
-        }
-      }
-    );
-    // server delete
-    this.commentService.deleteComment(comment.id);
+    let title = "Delete This Comment ?";
+    let text = "";
 
+    this.confirmService.confirm(title, text)
+      .subscribe((result) => {
+        if (result) {
+          // local delete
+          this.comments.forEach(
+            (value, index) => {
+              if (value.id == comment.id) {
+                console.log('Index', index);
+                this.comments.splice(index, 1);
+              }
+            }
+          );
+          // server delete
+          this.commentService.deleteComment(comment.id);
+        }
+      });
   }
 
   public deleteReply(comment: Comment, reply: Reply): void {
-    // local delete
-    for (let cc of this.comments) {
-      if (cc.id == comment.id) {
-        cc.replies.forEach(
-          (value, index) => {
-            if (value.id == reply.id) {
-              cc.replies.splice(index, 1)
+
+    let title = "Delete This Reply ?";
+    let text = "";
+
+    this.confirmService.confirm(title, text)
+      .subscribe((result) => {
+        if (result) {
+          // local delete
+          for (let cc of this.comments) {
+            if (cc.id == comment.id) {
+              cc.replies.forEach(
+                (value, index) => {
+                  if (value.id == reply.id) {
+                    cc.replies.splice(index, 1)
+                  }
+                }
+              );
             }
           }
-        );
-      }
-    }
-    // remote delete
-    this.commentService.deleteReply(comment.id, reply.id);
+          // remote delete
+          this.commentService.deleteReply(comment.id, reply.id);
+        }
+      });
+
+
   }
 
   public showReplyDialog(comment: Comment, toWho: string): void {

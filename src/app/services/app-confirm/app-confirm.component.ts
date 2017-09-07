@@ -15,7 +15,6 @@ import { Component } from '@angular/core';
     <span fxFlex></span>
     <button 
     type="button"
-    color="accent"
     md-raised-button 
     (click)="dialogRef.close(false)">Cancel</button>
     </div>`,

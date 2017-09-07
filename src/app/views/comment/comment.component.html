@@ -56,7 +56,7 @@
               <span class="publish-time pull-left" style="margin-top:0px;">
                 {{reply.replyTime}}
               </span>
-        <a ng-if="childComment.replier == user.username" class="like delete" href="javascript:void(0);" (click)="deleteReply(comment, reply)">
+        <a *ngIf="reply.replier == username" class="like delete" href="javascript:void(0);" (click)="deleteReply(comment, reply)">
           <span><md-icon color="primary">delete</md-icon></span>
         </a>
         <a class="like delete-reply" href="javascript:void(0);" (click)="showReplyDialog(comment, reply.replier)">

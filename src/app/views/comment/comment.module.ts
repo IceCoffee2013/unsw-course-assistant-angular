@@ -19,6 +19,7 @@ import {
 } from "@angular/material";
 import {CommentComponent} from "./comment.component";
 import {CommentService} from "../../services/comment/comment.service";
+import {AppConfirmModule} from "../../services/app-confirm/app-confirm.module";
 
 @NgModule({
   imports: [
@@ -36,7 +37,9 @@ import {CommentService} from "../../services/comment/comment.service";
     MdToolbarModule,
     MdButtonModule,
     MdRadioModule,
-    MdCardModule,  MdInputModule,
+    MdCardModule,
+    MdInputModule,
+    AppConfirmModule
   ],
   declarations: [
     CommentComponent

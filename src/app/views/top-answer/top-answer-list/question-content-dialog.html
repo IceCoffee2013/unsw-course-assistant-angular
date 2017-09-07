@@ -1,0 +1,41 @@
+<h2 md-dialog-title>Ask Question</h2>
+<md-dialog-content>
+
+  <form>
+    <div fxLayout="column" fxLayoutWrap="wrap">
+      <md-form-field class="full-width" fxFlexFill>
+        <input mdInput #message maxlength="24" placeholder="Question">
+        <!--<md-hint align="start"><strong>Describe your question.</strong> </md-hint>-->
+        <md-hint align="end">{{message.value.length}} / 24</md-hint>
+      </md-form-field>
+
+      <md-form-field class="full-width" fxFlexFill>
+        <textarea mdInput #description maxlength="256" rows="3" placeholder="(Optional) describe your question..."></textarea>
+        <md-hint align="end">{{description.value.length}} / 256</md-hint>
+      </md-form-field>
+    </div>
+
+    <div>
+      <!--<h3>Tags within an autocomplete component</h3>-->
+      <tag-input [(ngModel)]="items"
+                 [addOnBlur]="true"
+                 [clearOnBlur]="true"
+                 [maxItems]="5"
+                 name="tags">
+        <tag-input-dropdown [autocompleteItems]="autocompleteItems">
+        </tag-input-dropdown>
+      </tag-input>
+
+    </div>
+
+
+  </form>
+  tags: {{items.length}}
+</md-dialog-content>
+
+<md-dialog-actions>
+  <div fxLayout="column" fxlayoutalign="center" fxLayoutWrap="wrap" class="full-width">
+    <button md-raised-button md-dialog-close class="full-width">Cancel</button>
+    <button md-raised-button [md-dialog-close]="true" color="primary" class="full-width">Save</button>
+  </div>
+</md-dialog-actions>

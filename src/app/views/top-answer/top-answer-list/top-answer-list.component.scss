@@ -1,0 +1,18 @@
+.ask-question{
+  font-size: large;
+font-family: "Roboto", Helvetica Neue, sans-serif;
+ color: silver;
+  :hover {
+    color: #1b688e;
+  }
+}
+.question-card{
+  padding: 10px;
+  .md-question-container{
+    width: 90%;
+  }
+}
+
+.course-paginator md-paginator{
+  margin: 6px;
+}
