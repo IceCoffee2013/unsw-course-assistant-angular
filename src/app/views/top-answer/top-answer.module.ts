@@ -25,6 +25,8 @@ import {TopAnswerListComponent, QuestionContentDialog} from "./top-answer-list/t
 import {CommonModule} from "@angular/common";
 import {TagInputModule} from "ngx-chips";
 import {QuestionService} from "../../services/top-answer/question-service";
+import {QuestionInfoComponent} from "./question-info/question-info.component";
+import {QuestionStatusComponent} from "./question-status/question-status.component";
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import {QuestionService} from "../../services/top-answer/question-service";
   declarations: [
     TopAnswerListComponent,
     QuestionContentDialog,
+    QuestionInfoComponent,
+    QuestionStatusComponent
   ],
   exports: [],
   providers: [
