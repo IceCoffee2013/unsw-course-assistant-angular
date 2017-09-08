@@ -1,30 +1,20 @@
 <!-- Question -->
 <md-card class="question-main-card">
-  <md-card-header>
-    <md-chip-list fxLayoutAlign="start">
       <md-chip selected *ngFor="let tag of question.tags">
         {{ tag.name }}
       </md-chip>
-    </md-chip-list>
-
-    <div fxLayoutAlign="end">
       <button md-icon-button class="answer-but">
         <md-icon color="primary">add</md-icon>
       </button>
       <button md-icon-button class="answer-but">
         <md-icon color="primary">mode_edit</md-icon>
-      </button>
-    </div>
-  </md-card-header>
-
-  <md-card-content>
+      </button><p>
     <h3>{{ question.title }}</h3>
     <p>
       {{ question.description }}
     </p>
-  </md-card-content>
   <div class="question-footer">
-    <md-icon class="favoite-but" color="primary">favorite</md-icon>
+    <md-icon class="favoite-but" color="primary">favorite_border</md-icon>
     <span class="question-time">
       {{ question.postTime }}
     </span>
@@ -58,7 +48,7 @@
     <a (click)="!answer.isUp && doDown(answer)">
       <div class="down">&#9660;</div>
     </a>
-    <a class="material-icons" (click)="showComment(answer)">comment</a>
+    <button class="comment-icon-but" md-icon-button  (click)="showComment(answer)" ><md-icon color="primary">comment</md-icon></button>
   </div>
 
   <div *ngIf="answer.isShowComment">

@@ -32,22 +32,17 @@
   background: #ebf3fb;
   border-color: #ebf3fb;
   color:#2d84cc;
-  &:hover{
+  &:hover {
     background: #2d84cc;
     border-color: #ebf3fb;
-    color:white;
-  }
-  &:focus{
-    background: #2d84cc;
-    border-color: #ebf3fb;
-    color:white;
+    color: white;
   }
 }
 .down{
   border-radius: 3px;
-  padding: 6px 0px;
+  padding-top: 5px;
   width: 30px;
-  height: 30px;
+  height: 29px;
   text-align: center;
   display: inline-block;
   background: #ebf3fb;
@@ -58,10 +53,8 @@
     border-color: #ebf3fb;
     color:white;
   }
-  &:focus {
-    background: #2d84cc;
-    border-color: #ebf3fb;
-    color: white;
-  }
 }
 
+.comment-icon-but{
+  float: right;
+}
