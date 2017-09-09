@@ -1,7 +1,8 @@
 import {Routes} from "@angular/router";
-import {AdminLayoutComponent} from "./components/common/layouts/admin-layout/admin-layout.component";
+import {UserLayoutComponent} from "./components/common/layouts/user-layout/user-layout.component";
 import {AuthLayoutComponent} from "./components/common/layouts/auth-layout/auth-layout.component";
 import {AuthService} from "./services/auth/auth.service";
+import {AdminLayoutComponent} from "./components/common/layouts/admin-layout/admin-layout.component";
 
 export const rootRouterConfig: Routes = [
   {
@@ -22,7 +23,7 @@ export const rootRouterConfig: Routes = [
   },
   {
     path: '',
-    component: AdminLayoutComponent,
+    component: UserLayoutComponent,
     canActivate: [AuthService],
     children: [
       {
@@ -54,6 +55,38 @@ export const rootRouterConfig: Routes = [
         path: 'profile',
         loadChildren: './views/profile/profile.module#ProfileModule',
         data: {title: 'Profile', breadcrumb: 'PROFILE'}
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    canActivate: [AuthService], // TODO
+    children: [
+      {
+        path: 'home',
+        loadChildren: './views/admin-course/admin-course.module#AdminCourseModule',
+        data: {title: 'Admin', breadcrumb: 'HOME'}
+      },
+      {
+        path: 'course',
+        loadChildren: './views/admin-course/admin-course.module#AdminCourseModule',
+        data: {title: 'Admin', breadcrumb: 'COURSES MANAGEMENT'}
+      },
+      {
+        path: 'user',
+        loadChildren: './views/admin-user/admin-user.module#AdminUserModule',
+        data: {title: 'Admin', breadcrumb: 'USER MANAGEMENT'}
+      },
+      {
+        path: 'question',
+        loadChildren: './views/admin-question/admin-question.module#AdminQuestionModule',
+        data: {title: 'Admin', breadcrumb: 'QUESTION MANAGEMENT'}
+      },
+      {
+        path: 'experience',
+        loadChildren: './views/admin-experience/admin-experience.module#AdminExperienceModule',
+        data: {title: 'Admin', breadcrumb: 'EXPERIENCE MANAGEMENT'}
       }
     ]
   },

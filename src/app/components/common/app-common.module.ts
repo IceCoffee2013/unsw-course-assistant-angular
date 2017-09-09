@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { TranslateModule } from 'ng2-translate/ng2-translate';
-import { 
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {BrowserModule} from "@angular/platform-browser";
+import {RouterModule} from "@angular/router";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {TranslateModule} from "ng2-translate/ng2-translate";
+import {
   MdSidenavModule,
   MdListModule,
   MdTooltipModule,
@@ -20,16 +20,17 @@ import {
   MdRadioModule,
   MdCheckboxModule,
   MdCardModule
-} from '@angular/material';
-import { TopbarComponent } from './topbar/topbar.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { CommonDirectivesModule } from '../../directives/common/common-directives.module';
-import { ThemeService } from '../../services/theme/theme.service';
-import { CustomizerComponent } from './customizer/customizer.component';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+} from "@angular/material";
+import {TopbarComponent} from "./topbar/topbar.component";
+import {NavigationComponent} from "./navigation/navigation.component";
+import {NotificationsComponent} from "./notifications/notifications.component";
+import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
+import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
+import {CommonDirectivesModule} from "../../directives/common/common-directives.module";
+import {ThemeService} from "../../services/theme/theme.service";
+import {CustomizerComponent} from "./customizer/customizer.component";
+import {BreadcrumbComponent} from "./breadcrumb/breadcrumb.component";
+import {AdminLayoutComponent} from "./layouts/admin-layout/admin-layout.component";
 
 @NgModule({
   imports: [
@@ -56,13 +57,17 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     TranslateModule
   ],
   declarations: [
-    AdminLayoutComponent,
+    UserLayoutComponent,
     AuthLayoutComponent,
-    TopbarComponent, 
-    NavigationComponent, 
-    NotificationsComponent, CustomizerComponent, BreadcrumbComponent
+    AdminLayoutComponent,
+    TopbarComponent,
+    NavigationComponent,
+    NotificationsComponent,
+    CustomizerComponent,
+    BreadcrumbComponent
   ],
   providers: [ThemeService],
   exports: []
 })
-export class AppCommonModule {}
+export class AppCommonModule {
+}

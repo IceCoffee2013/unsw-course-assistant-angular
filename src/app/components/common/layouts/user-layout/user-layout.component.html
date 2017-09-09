@@ -3,7 +3,7 @@
   <md-sidenav #sidenav [opened]="isSidenavOpen" mode="side" class="sidebar-panel">
     <div id="scroll-area" class="navigation-hold" fxLayout="column">
       <div class="branding mat-bg-primary">
-        <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+        <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="35.435px" height="35.308px" viewBox="0 0 25.435 25.308" enable-background="new 0 0 25.435 25.308" xml:space="preserve">
 <g>
 	<path fill="#FFFFFF" d="M3.706,9.813c-0.285,0.881-0.442,1.818-0.442,2.793c0,4.86,3.827,8.833,8.624,9.091v-4.396
@@ -21,7 +21,7 @@
       <div class="app-user">
         <div class="app-user-photo">
 
-          <img src="assets/images/face-7.jpg" alt="">
+            <img src="assets/images/face-7.jpg" alt="">
         </div>
         <span class="app-user-name">
           <md-icon class="icon-xs text-muted">lock</md-icon>
@@ -71,62 +71,7 @@
           </md-menu>
         </div>
       </div>
-
-      <md-nav-list class="" role="list">
-        <!-- Regular menu items -->
-        <div>
-          <md-list-item
-            sideNavAccordion
-            class="sidebar-list-item"
-            role="listitem">
-            <a [routerLink]="['home']">
-              <md-icon>home</md-icon>
-              <span>Admin</span>
-            </a>
-          </md-list-item>
-          <md-list-item
-            sideNavAccordion
-            class="sidebar-list-item"
-            role="listitem">
-            <a [routerLink]="['course']">
-              <md-icon>bookmark</md-icon>
-              <span>Course</span>
-            </a>
-          </md-list-item>
-          <md-list-item
-            sideNavAccordion
-            class="sidebar-list-item"
-            role="listitem">
-            <a [routerLink]="['question']">
-              <md-icon>event</md-icon>
-              <span>Question</span>
-            </a>
-          </md-list-item>
-          <md-list-item
-            sideNavAccordion
-            class="sidebar-list-item"
-            role="listitem">
-            <a [routerLink]="['experience']">
-              <md-icon>feedback</md-icon>
-              <span>Experience</span>
-            </a>
-          </md-list-item>
-          <md-list-item
-            sideNavAccordion
-            class="sidebar-list-item"
-            role="listitem">
-            <a [routerLink]="['user']">
-              <md-icon>explore</md-icon>
-              <span>User</span>
-            </a>
-          </md-list-item>
-        </div>
-
-        <md-divider></md-divider>
-
-      </md-nav-list>
-
-
+      <navigation></navigation>
     </div>
   </md-sidenav>
 
@@ -134,10 +79,10 @@
   <!-- Template reference variables of Left sidebar and Right notification is supplied -->
   <!-- Listens language change event -->
   <topbar
-    [sidenav]="sidenav"
-    [notificPanel]="notificationPanel"
-    [currentUser]="currentUser"
-    (onLangChange)="translate.use($event)"></topbar>
+  [sidenav]="sidenav"
+  [notificPanel]="notificationPanel"
+  [currentUser]="currentUser"
+  (onLangChange)="translate.use($event)"></topbar>
   <!-- App content -->
   <app-breadcrumb></app-breadcrumb>
   <div class="rightside-content-hold">

@@ -1,25 +1,23 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MediaChange, ObservableMedia} from "@angular/flex-layout";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {
   Router, NavigationEnd, RouterStateSnapshot, RouterState, ActivatedRouteSnapshot,
   ActivatedRoute
 } from "@angular/router";
-import {UserRegisterService} from "../../../../services/user/user-register.service";
-import {UserLoginService} from "../../../../services/user/user-login.service";
-import {TranslateService} from "ng2-translate";
+import {Subscription} from "rxjs/Subscription";
+import {MediaChange, ObservableMedia} from "@angular/flex-layout";
 import {MdSidenav} from "@angular/material";
-import {Subscription} from "rxjs";
-import {User} from "../../../../models/user/user-model";
+import {TranslateService} from "ng2-translate/ng2-translate";
 import * as Ps from "perfect-scrollbar";
 import * as domHelper from "../../../../helpers/dom.helper";
+import {User} from "../../../../models/user/user-model";
+import {UserRegisterService} from "../../../../services/user/user-register.service";
+import {UserLoginService} from "../../../../services/user/user-login.service";
 
 @Component({
-  selector: 'app-admin-layout',
-  templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss']
+  selector: 'app-user-layout',
+  templateUrl: 'user-layout.component.html'
 })
-export class AdminLayoutComponent implements OnInit {
-
+export class UserLayoutComponent implements OnInit {
   private isMobile;
   public currentUser: User;
   screenSizeWatcher: Subscription;
