@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Subject} from "rxjs/Subject";
 import {Course} from "../../../models/course/course-model";
 import {CourseListService} from "../../../services/course/course-list.service";
-import {number} from "ng2-validation/dist/number";
 
 @Component({
   selector: 'app-course-list',
@@ -11,6 +10,11 @@ import {number} from "ng2-validation/dist/number";
   styleUrls: ['course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
+
+  // tags
+  public tags = [];
+  public autoCompleteTags: string[] = ['cse', 'java', 'php', 'unsw'];
+
   // public maxSize: number = 12;
   public itemsPerPage: number = 12;
   public pageSizeOptions = [12, 15, 24];
@@ -79,6 +83,22 @@ export class CourseListComponent implements OnInit {
   public doDetail(courseID: string): void {
     console.log("do detail: " + courseID);
     this.router.navigateByUrl("course/detail/" + courseID);
+  }
+
+  // TODO query string list.
+  public onAdd(item) {
+    console.log('tag added: value is ' + item.value);
+    this.searchText = item.value;
+    this.searchTextStream.next(this.searchText);
+    // convert tag to lowercase
+    // display value
+
+    // for (let tag of this.tags) {
+    //   console.log(tag);
+    //   tag.value = tag.value.toLowerCase();
+    // }
+
+    // do search
   }
 
   // public gotoWrite(): void {

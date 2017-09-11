@@ -12,6 +12,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TopAnswerDetailComponent implements OnInit {
 
+  public commentType:string = "answer";
+  public editorData;
   public question: Question = new Question();
   public answers: Answer[];
 
@@ -84,6 +86,27 @@ export class TopAnswerDetailComponent implements OnInit {
       answer.likes -= 1;
       this.answerService.doLike(answer);
     }
+  }
+
+  public onEditorCreated() {
+
+  }
+
+  public onContentChanged({
+    editor, html, text, source
+  }) {
+    // console.log('change', html);
+    // console.log('text', text);
+    // console.log('source', source);
+
+  }
+
+  public onSelectionChanged({editor, range, oldRange, source}) {
+    // console.log('select', source);
+    // console.log('select', range);
+    // console.log('select', oldRange);
+    // console.log('select', editor);
+
   }
 
 }

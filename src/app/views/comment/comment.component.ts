@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit, AfterViewInit} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {User} from "../../models/user/user-model";
 import {CommentService} from "../../services/comment/comment.service";

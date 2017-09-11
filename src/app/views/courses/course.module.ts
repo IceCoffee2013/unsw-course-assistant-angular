@@ -26,6 +26,7 @@ import {CourseDetailService} from "../../services/course/course-detail.service";
 import {CourseCommentComponent} from "./course-comment/course-comment.component";
 import {CourseRelatedComponent} from "./course-related/course-related.component";
 import {CommentModule} from "../comment/comment.module";
+import {TagInputModule} from "ngx-chips";
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import {CommentModule} from "../comment/comment.module";
     FlexLayoutModule,
     RouterModule,
     CommentModule,
+    TagInputModule, // chip
     // PaginationModule.forRoot(),
     RouterModule.forChild(courseRoutes)
   ],
