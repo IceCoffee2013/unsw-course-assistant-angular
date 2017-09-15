@@ -6,8 +6,7 @@
   float: right;
 }
 .question-footer{
-
-}
+  }
 .answer-content > img{
   background-size: cover;
   height: 200px;
@@ -24,9 +23,9 @@
 
 .up{
   border-radius: 3px;
-  padding: 5px 10px;
+  padding: 5px 0px;
   width: 60px;
-  height: 30px;
+  height: 20px;
   text-align: center;
   display: inline-block;
   background: #ebf3fb;
@@ -42,7 +41,7 @@
   border-radius: 3px;
   padding-top: 5px;
   width: 30px;
-  height: 29px;
+  height: 25px;
   text-align: center;
   display: inline-block;
   background: #ebf3fb;
@@ -54,7 +53,15 @@
     color:white;
   }
 }
+.upClick{
+  background: #2d84cc;
+  border-color: #ebf3fb;
+  color:white;
+}
 
 .comment-icon-but{
   float: right;
+}
+.editor-divider{
+  margin-top: 20px;
 }

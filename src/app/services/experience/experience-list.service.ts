@@ -7,21 +7,21 @@ import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {Course} from "../../models/course/course-model";
+import {Experience} from 'app/models/experience/experience-model';
 
 @Injectable()
-export class CourseListService {
-  public courseListURL = 'mock-data/course-list-mock.json';
-  public courseListSearchURL = 'mock-data/course-list-search-mock.json';
-  public courseList = this.getCourseList('', );
-  constructor(public http:Http) { }
+export class ExperienceListService {
+  public experienceListURL = 'mock-data/experience-list-mock.json';
+  public experienceListSearchURL = 'mock-data/experience-list-search-mock.json';
+  public delExperienceURL = "";
+  constructor(public http: Http) { }
 
-  public getCourseList(searchText: string,page:number=1):Observable<Course[]>{
-    let url = this.courseListURL;
+  public getExperienceList(searchText: string, page: number= 1): Observable<Experience[]>{
+    let url = this.experienceListURL;
     let params = new URLSearchParams();
     if (searchText) {
       params.set('searchText',searchText);
-      url = this.courseListSearchURL;
+      url = this.experienceListSearchURL;
       console.log(`searchText=${searchText}`);
     }
     params.set('page',String(page));
@@ -40,9 +40,13 @@ export class CourseListService {
   public doLike() {
 
   }
-  public addCourse(data: any): Observable<any> {
-    return this.http.post(this.courseListURL, data);
+  public addExperience(data: any): Observable<any> {
+    return this.http.post(this.experienceListURL, data);
   }
   public search() {
+  }
+  public deleteExperience(experienceID: number):Observable<any> {
+    return this.http.delete(this.delExperienceURL)
+      .map((res: Response) => res.json());
   }
 }

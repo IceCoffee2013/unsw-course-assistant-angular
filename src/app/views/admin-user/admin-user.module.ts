@@ -17,6 +17,7 @@ import {
   MdListModule
 } from "@angular/material";
 import {FormsModule} from "@angular/forms";
+import { AdminUserDetailComponent } from './admin-user-detail/admin-user-detail.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,7 @@ import {FormsModule} from "@angular/forms";
     FlexLayoutModule,
     RouterModule.forChild(adminUserRoutes)
   ],
-  declarations: [AdminUserListComponent]
+  declarations: [AdminUserListComponent, AdminUserDetailComponent]
 })
 export class AdminUserModule {
 }

@@ -16,7 +16,9 @@ import {
   MdChipsModule,
   MdListModule
 } from "@angular/material";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AdminQuestionDetailComponent } from './admin-question-detail/admin-question-detail.component';
+import {QuestionService} from "../../services/top-answer/question-service";
 
 @NgModule({
   imports: [
@@ -29,12 +31,16 @@ import {FormsModule} from "@angular/forms";
     MdCardModule,
     MdMenuModule,
     MdSlideToggleModule,
+    ReactiveFormsModule,
     MdGridListModule,
     MdPaginatorModule,
     MdInputModule,
     FlexLayoutModule,
     RouterModule.forChild(adminQuestionRoutes)
   ],
-  declarations: [AdminQuestionListComponent]
+  declarations: [AdminQuestionListComponent, AdminQuestionDetailComponent],
+  providers: [
+    QuestionService
+  ]
 })
 export class AdminQuestionModule { }

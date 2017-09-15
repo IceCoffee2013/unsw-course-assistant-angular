@@ -1,4 +1,5 @@
 import {AdminCourseListComponent} from "./admin-course-list/admin-course-list.component";
+import {AdminCourseDetailComponent} from "./admin-course-detail/admin-course-detail.component";
 
 export const adminCourseRoutes = [
   {
@@ -10,8 +11,8 @@ export const adminCourseRoutes = [
     path: 'page/:page',
     component: AdminCourseListComponent
   },
-  // {
-  //   path: 'detail/:id',
-  //   component: CourseDetailMainComponent
-  // }
+  {
+    path: 'detail/:id',
+    component: AdminCourseDetailComponent
+   }
 ];

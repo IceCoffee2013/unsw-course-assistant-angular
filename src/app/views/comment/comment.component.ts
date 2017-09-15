@@ -202,6 +202,4 @@ export class CommentComponent implements OnInit {
     // refresh tmp
     this.tmpReply = new Reply();
   }
-
-
 }

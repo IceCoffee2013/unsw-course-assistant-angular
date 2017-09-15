@@ -42,12 +42,8 @@
     </div>
   </md-card-content>
   <div class="question-footer">
-    <a (click)="!answer.isDown && doUp(answer)">
-      <div class="up">&#9650;<span>{{ answer.likes }}</span></div>
-    </a>
-    <a (click)="!answer.isUp && doDown(answer)">
-      <div class="down">&#9660;</div>
-    </a>
+    <a (click)="!answer.isDown && doUp(answer)" class="up" ngClass=""> &#9650;<span>{{ answer.likes }}</span></a>
+    <a (click)="!answer.isUp && doDown(answer)" class="down">&#9660;</a>
     <button class="comment-icon-but" md-icon-button  (click)="showComment(answer)" ><md-icon color="primary">comment</md-icon></button>
   </div>
 
@@ -59,7 +55,6 @@
 
 <!-- add answer -->
 <md-card class="question-main-card">
-  <p>
     <md-card-header fxLayout="row">
       <div md-card-avatar>
         <a href="" class="toolbar-avatar md mr-1">
@@ -70,10 +65,7 @@
         <span><strong>Shiba Inu</strong></span><br><span>computer science</span>
       </div>
     </md-card-header>
-  <p></p>
-  <P></P>
-  <md-divider></md-divider>
-
+  <md-divider class="editor-divider"></md-divider>
   <md-card-content class="p-0">
     <quill-editor
       theme="snow"

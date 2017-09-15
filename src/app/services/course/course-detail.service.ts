@@ -4,12 +4,12 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {Course} from "../../models/course/course-model";
+import {of} from "rxjs/observable/of";
 
 
 @Injectable()
 export class CourseDetailService {
   public courseDetailURL = "mock-data/course-mock.json";
-
   constructor(public http: Http) {
   }
 
