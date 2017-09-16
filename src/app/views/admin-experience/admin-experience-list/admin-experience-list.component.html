@@ -5,7 +5,7 @@
 <md-nav-list  fxFlex="30">
   <md-list-item *ngFor="let experience of experienceList" >
     <a md-line (click)="onSelect(experience)">
-    {{experience.title}}</a>  <button md-icon-button (click)="deleteExperience(selectedExperience)"><md-icon color="primary">clear</md-icon></button>
+    {{experience.title}}</a>  <button md-icon-button (click)="deleteExperience(experience)"><md-icon color="primary">clear</md-icon></button>
   </md-list-item>
 </md-nav-list>
 <div *ngIf="selectedExperience" fxFlex="50" fxFlexOffset="1" class="exprience-content">

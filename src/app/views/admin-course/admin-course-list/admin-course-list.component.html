@@ -7,7 +7,7 @@
     <md-list-item *ngFor="let course of courseList"><a md-line (click)="onSelect(course)">
 
       {{course.id}}</a>
-      <md-icon class="delect-icon" color="primary" (click)="deleteCourse(selectedCourse)">clear</md-icon>
+      <md-icon class="delect-icon" color="primary" (click)="deleteCourse(course)">clear</md-icon>
     </md-list-item>
   </md-nav-list>
   <div *ngIf="selectedCourse" fxFlex="38" fxFlexOffset="1">

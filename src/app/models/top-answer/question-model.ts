@@ -1,5 +1,4 @@
 import {Tag} from "./tag-model";
-import {Answer} from "./answer-model";
 
 export class Question {
   id: string;

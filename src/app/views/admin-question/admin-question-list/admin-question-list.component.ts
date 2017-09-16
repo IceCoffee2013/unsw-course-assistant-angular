@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Question} from "../../../models/top-answer/question-model";
 import {QuestionService} from "../../../services/top-answer/question-service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -29,12 +29,11 @@ export class AdminQuestionListComponent implements OnInit {
 
   public questionList: Array<Question>;
 
-  constructor(
-              public questionService: QuestionService,
+  constructor(public questionService: QuestionService,
               public router: Router,
               public fb: FormBuilder,
               public activeRoute: ActivatedRoute,) {
-  this.createForm();
+    this.createForm();
   }
 
 
@@ -66,6 +65,7 @@ export class AdminQuestionListComponent implements OnInit {
       }
     );
   }
+
   createForm() {
     this.questionForm = this.fb.group({
       id: ['', Validators.required],
@@ -75,24 +75,29 @@ export class AdminQuestionListComponent implements OnInit {
       postTime: '',
     });
   }
-  showaddform(){
+
+  showaddform() {
     this.show = !this.show;
   }
+
   selectedQuestion: Question;
-  onSelect(question: Question):void{
+
+  onSelect(question: Question): void {
     this.selectedQuestion = question;
   }
-  delectQuestion( ques: Question){
+
+  deleteQuestion(question: Question) {
     this.questionList.forEach(
       (value, index) => {
-        if (value.id === ques.id) {
+        // console.log('delete',value, index);
+        if (value.id == question.id) {
           console.log('Index', index);
           this.questionList.splice(index, 1);
         }
       }
     );
     // server delete
-    this.questionService.deleteQuestion(ques.id);
+    this.questionService.deleteQuestion(question.id);
   }
 
 }

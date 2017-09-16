@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {CourseListService} from "../../../services/course/course-list.service";
 import {Course} from "../../../models/course/course-model";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -23,6 +23,7 @@ export class AdminCourseListComponent implements OnInit {
   public searchText: string;
   public searchTextStream: Subject<string> = new Subject<string>();
   public courseList: Array<Course>;
+
   constructor(public router: Router,
               public activeRoute: ActivatedRoute,
               private fb: FormBuilder,
@@ -63,6 +64,7 @@ export class AdminCourseListComponent implements OnInit {
       }
     );
   }
+
   createForm() {
     this.courseForm = this.fb.group({
       id: ['', Validators.required],
@@ -72,15 +74,19 @@ export class AdminCourseListComponent implements OnInit {
       tags: '',
     });
   }
+
   selectedCourse: Course;
-  onSelect(course: Course):void{
+
+  onSelect(course: Course): void {
     this.selectedCourse = course;
   }
+
   addCourse(course: Course) {
     if (course) {
       this.courseService.addCourse(course);
     }
   }
+
   submitted = false;
 
   onsubmit() {
@@ -88,9 +94,11 @@ export class AdminCourseListComponent implements OnInit {
     this.addCourse(course)
     this.submitted = true;
   }
-  showaddform(){
+
+  showaddform() {
     this.show = !this.show;
   }
+
   deleteCourse(course: Course): void {
     this.courseList.forEach(
       (value, index) => {
