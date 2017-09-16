@@ -70,8 +70,10 @@
     <quill-editor
       theme="snow"
       [(ngModel)]="editorData"
-      (onContentChanged)="onContentChanged()"
-      onSelectionChanged="onSelectionChanged()"></quill-editor>
+      (onContentChanged)="onContentChanged($event)"
+      (onEditorCreated) = "onEditorCreated($event)"
+      (onSelectionChanged)="onSelectionChanged($event)">
+    </quill-editor>
     <button md-raised-button color="primary" class="submit-answer-but">submit</button>
   </md-card-content>
 </md-card>

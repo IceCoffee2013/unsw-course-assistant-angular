@@ -2,6 +2,24 @@
 <div fxLayout="row" fxLayoutWrap="wrap">
   <!-- New Users -->
   <div fxFlex="100">
+
+    <md-card class="ask-question-card">
+      <md-card-content class="full-width">
+        <!--<div fxFlex="88">-->
+        <tag-input [(ngModel)]="tags"
+                   [addOnBlur]="true"
+                   [clearOnBlur]="true"
+                   [maxItems]="4"
+                   placeholder="Enter the tags..."
+                   (onAdd)="onAdd($event)"
+                   name="tags">
+          <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
+          </tag-input-dropdown>
+        </tag-input>
+        <!--</div>-->
+      </md-card-content>
+    </md-card>
+
     <div fxLayout="row" fxLayoutWrap="wrap">
       <div
         *ngFor="let course of courseList"

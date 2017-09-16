@@ -1,28 +1,31 @@
-.ask-question{
+.ask-question {
   font-size: large;
-font-family: "Roboto", Helvetica Neue, sans-serif;
- color: silver;
+  font-family: "Roboto", Helvetica Neue, sans-serif;
+  color: silver;
   :hover {
     color: #1b688e;
   }
 }
-.question-card{
+
+.question-card {
   padding: 10px;
-  .md-question-container{
+  .md-question-container {
     width: 90%;
   }
 }
 
-.course-paginator md-paginator{
+.course-paginator md-paginator {
   margin: 6px;
 }
-.ask-question-but{
+
+.ask-question-but {
   padding-top: 5px;
   padding-bottom: 5px;
   left: 20px;
   margin-top: 6px;
   margin-left: 20px;
 }
-.ask-question-card{
-  padding: 5px 20px;
+
+.ask-question-card {
+  padding: 5px 20px 10px;
 }

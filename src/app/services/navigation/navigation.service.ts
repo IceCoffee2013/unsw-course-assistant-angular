@@ -27,13 +27,13 @@ export class NavigationService {
       icon: 'home',
       state: 'home'
     },
-    {
-      name: 'DASHBOARD',
-      type: 'link',
-      tooltip: 'Dashboard',
-      icon: 'dashboard',
-      state: 'dashboard'
-    },
+    // {
+    //   name: 'DASHBOARD',
+    //   type: 'link',
+    //   tooltip: 'Dashboard',
+    //   icon: 'dashboard',
+    //   state: 'dashboard'
+    // },
     {
       name: 'COURSE',
       type: 'link',
@@ -42,9 +42,9 @@ export class NavigationService {
       state: 'course'
     },
     {
-      name: 'TOP ANSWER',
+      name: 'Q & A',
       type: 'link',
-      tooltip: 'top answer',
+      tooltip: 'question & answer',
       icon: 'textsms',
       state: 'answer'
     },

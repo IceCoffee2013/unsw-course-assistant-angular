@@ -7,5 +7,5 @@ export class Course {
   school: string
   likes: string
   description: string
-  tag: string
+  tag: string[]
 }

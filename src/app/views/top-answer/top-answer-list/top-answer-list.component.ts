@@ -3,6 +3,7 @@ import {MdDialog} from "@angular/material";
 import {Question} from "../../../models/top-answer/question-model";
 import {QuestionService} from "../../../services/top-answer/question-service";
 import {Router, ActivatedRoute} from "@angular/router";
+import {Subject} from "rxjs";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class TopAnswerListComponent implements OnInit {
   public currentPage: number = 1;
 
   public searchText: string;
-  // public searchTextStream: Subject<string> = new Subject<string>();
+  public searchTextStream: Subject<string> = new Subject<string>();
 
   public questionList: Array<Question>;
 
@@ -42,6 +43,15 @@ export class TopAnswerListComponent implements OnInit {
       console.log(params);
       this.loadData(this.searchText, this.currentPage);
     });
+
+    this.searchTextStream
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(searchText => {
+        console.log(this.searchText);
+        this.loadData(this.searchText, this.currentPage)
+      });
+
   }
 
   public loadData(searchText: string, page: number) {
@@ -82,6 +92,9 @@ export class TopAnswerListComponent implements OnInit {
 
   public onAdd(item) {
     console.log('tag added: value is ' + item.value);
+    this.searchText = item.value;
+    this.searchTextStream.next(this.searchText);
+
     // convert tag to lowercase
     // display value
 

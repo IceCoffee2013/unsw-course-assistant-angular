@@ -2,6 +2,7 @@ import {Http, Response} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Comment} from "../../models/comment/comment-model";
+import {CoreService} from "../core.service";
 
 @Injectable()
 export class CommentService {
@@ -14,7 +15,7 @@ export class CommentService {
   public delCommentURL = "";
   public delReplyURL = "";
 
-  constructor(public http: Http) {
+  constructor(private http: Http, private coreService: CoreService) {
 
   }
 
