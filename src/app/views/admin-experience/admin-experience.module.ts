@@ -18,7 +18,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
 import {adminExperienceRoutes} from "./admin-experience.routes";
 import {ExperienceListService} from "../../services/experience/experience-list.service";
-import { AdmainExperienceDatailComponent } from './admain-experience-datail/admain-experience-datail.component';
 
 @NgModule({
   imports: [
@@ -37,7 +36,7 @@ import { AdmainExperienceDatailComponent } from './admain-experience-datail/adma
     FlexLayoutModule,
     RouterModule.forChild(adminExperienceRoutes)
   ],
-  declarations: [AdminExperienceListComponent, AdmainExperienceDatailComponent],
+  declarations: [AdminExperienceListComponent],
   providers: [
     ExperienceListService,
   ]

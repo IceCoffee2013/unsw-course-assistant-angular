@@ -8,7 +8,7 @@ export class QuestionService {
   public questionURL = 'mock-data/question-mock.json';
   public questionListURL = 'mock-data/question-list-mock.json';
   public questionListSearchURL = 'mock-data/question-list-search-mock.json';
-
+  public delQuestionURL = '';
   constructor(public http: Http) {
   }
 
@@ -47,6 +47,10 @@ export class QuestionService {
 
   public search() {
 
+  }
+  public deleteQuestion(questionID: string):Observable<any> {
+    return this.http.delete(this.delQuestionURL)
+      .map((res: Response) => res.json());
   }
 
 }

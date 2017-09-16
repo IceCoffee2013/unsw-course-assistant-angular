@@ -82,4 +82,17 @@ export class AdminQuestionListComponent implements OnInit {
   onSelect(question: Question):void{
     this.selectedQuestion = question;
   }
+  delectQuestion( ques: Question){
+    this.questionList.forEach(
+      (value, index) => {
+        if (value.id === ques.id) {
+          console.log('Index', index);
+          this.questionList.splice(index, 1);
+        }
+      }
+    );
+    // server delete
+    this.questionService.deleteQuestion(ques.id);
+  }
+
 }

@@ -1,10 +1,16 @@
-<md-nav-list  fxFlex="20">
-  <md-list-item *ngFor="let experience of experienceList" (click)="onSelect(experience)">
-    {{experience.title}}  </md-list-item>
+
+
+
+
+<md-nav-list  fxFlex="30">
+  <md-list-item *ngFor="let experience of experienceList" >
+    <a md-line (click)="onSelect(experience)">
+    {{experience.title}}</a>  <button md-icon-button (click)="deleteExperience(selectedExperience)"><md-icon color="primary">clear</md-icon></button>
+  </md-list-item>
 </md-nav-list>
 <div *ngIf="selectedExperience" fxFlex="50" fxFlexOffset="1" class="exprience-content">
+  <h4>Experience Detail</h4>
   <table>
-
     <tr>ID:<td>{{selectedExperience.id}}</td></tr>
     <tr>Title:<td>{{selectedExperience.title}}</td></tr>
     <tr>Author:<td>{{selectedExperience.author}}</td></tr>
@@ -12,6 +18,5 @@
     <tr>Likes:<td>{{selectedExperience.likes}}</td></tr>
     <tr>postTime:<td>{{selectedExperience.postTime}}</td></tr>
     <tr>Content:<td>{{selectedExperience.text}}</td></tr>
-    <button md-icon-button (click)="deleteExperience(selectedExperience)"><md-icon>delete</md-icon></button>
   </table>
 </div>

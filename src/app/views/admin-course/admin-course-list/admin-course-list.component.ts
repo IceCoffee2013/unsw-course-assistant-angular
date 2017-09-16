@@ -84,10 +84,23 @@ export class AdminCourseListComponent implements OnInit {
   submitted = false;
 
   onsubmit() {
+    const course = this.courseForm.value;
+    this.addCourse(course)
     this.submitted = true;
-    this.addCourse(this.courseForm.value)
   }
   showaddform(){
     this.show = !this.show;
+  }
+  deleteCourse(course: Course): void {
+    this.courseList.forEach(
+      (value, index) => {
+        if (value.id === course.id) {
+          console.log('Index', index);
+          this.courseList.splice(index, 1);
+        }
+      }
+    );
+    // server delete
+    this.courseService.delectCourse(course.id);
   }
 }

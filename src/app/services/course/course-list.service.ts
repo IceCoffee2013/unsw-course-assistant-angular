@@ -13,6 +13,7 @@ import {Course} from "../../models/course/course-model";
 export class CourseListService {
   public courseListURL = 'mock-data/course-list-mock.json';
   public courseListSearchURL = 'mock-data/course-list-search-mock.json';
+  public delectCourseURL  ='';
   public courseList = this.getCourseList('', );
   constructor(public http:Http) { }
 
@@ -43,6 +44,8 @@ export class CourseListService {
   public addCourse(data: any): Observable<any> {
     return this.http.post(this.courseListURL, data);
   }
-  public search() {
+  public delectCourse(courseID: string): Observable<any>{
+      return this.http.delete(this.delectCourseURL)
+        .map((res: Response) => res.json());
   }
 }

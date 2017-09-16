@@ -1,51 +1,56 @@
 <div fxLayout="row">
-  <md-nav-list  fxFlex="20">
-    <md-list-item (click)="showaddform()">New Course</md-list-item>
-<md-list-item *ngFor="let course of courseList" (click)="onSelect(course)&&showaddform()">
-{{course.id}}
-</md-list-item>
-</md-nav-list>
+  <md-nav-list fxFlex="25">
+    <md-list-item><span md-line>New Course</span>
+      <md-icon color="primary" (click)="showaddform()">add</md-icon>
+    </md-list-item>
+
+    <md-list-item *ngFor="let course of courseList"><a md-line (click)="onSelect(course)">
+
+      {{course.id}}</a>
+      <md-icon class="delect-icon" color="primary" (click)="deleteCourse(selectedCourse)">clear</md-icon>
+    </md-list-item>
+  </md-nav-list>
   <div *ngIf="selectedCourse" fxFlex="38" fxFlexOffset="1">
     <app-admin-course-detail [course]="selectedCourse"></app-admin-course-detail>
   </div>
-<div fxFlex="38" fxFlexOffset="1" *ngIf="show">
-  <h2>Add a New Course</h2>
-<form [formGroup] ="courseForm" novalidate>
-  <div class = "from-group">
-    <label class="center-block">ID</label>
-    <md-input-container fxFlexFill>
-      <input mdInput class="form-control" formControlName="id" required>
-    </md-input-container>
-  </div>
-  <div class = "from-group">
-    <label class="center-block">Name
-      <md-input-container fxFlexFill>
-        <input mdInput class="form-control" formControlName="name" required></md-input-container>
-    </label>
-  </div>
+  <div fxFlex="38" fxFlexOffset="1" *ngIf="show">
+    <h2>Add a New Course</h2>
+    <form [formGroup]="courseForm" novalidate>
+      <div class="from-group">
+        <label class="center-block">ID</label>
+        <md-input-container fxFlexFill>
+          <input mdInput class="form-control" formControlName="id" required>
+        </md-input-container>
+      </div>
+      <div class="from-group">
+        <label class="center-block">Name
+          <md-input-container fxFlexFill>
+            <input mdInput class="form-control" formControlName="name" required></md-input-container>
+        </label>
+      </div>
 
-  <div class = "from-group">
-    <label class="center-block">School
-      <md-input-container fxFlexFill>
-        <input mdInput class="form-control" formControlName="school" required>
-      </md-input-container>
-    </label>
+      <div class="from-group">
+        <label class="center-block">School
+          <md-input-container fxFlexFill>
+            <input mdInput class="form-control" formControlName="school" required>
+          </md-input-container>
+        </label>
+      </div>
+      <div class="from-group">
+        <label class="center-block">Description
+          <md-input-container fxFlexFill>
+            <input mdInput class="form-control" formControlName="description">
+          </md-input-container>
+        </label>
+      </div>
+      <div class="from-group">
+        <label class="center-block">Tags
+          <md-input-container fxFlexFill>
+            <input mdInput="" class="form-control" formControlName="tags">
+          </md-input-container>
+        </label>
+      </div>
+      <button md-raised-button (click)="onsubmit()">submit</button>
+    </form>
   </div>
-  <div class = "from-group">
-    <label class="center-block">Description
-      <md-input-container fxFlexFill>
-        <input mdInput class="form-control" formControlName="description">
-      </md-input-container>
-    </label>
-  </div>
-  <div class = "from-group">
-    <label class="center-block">Tags
-      <md-input-container fxFlexFill>
-        <input mdInput="" class="form-control" formControlName="tags">
-      </md-input-container>
-    </label>
-  </div>
-  <button md-raised-button (click)="onsubmit()">submit</button>
-</form>
-</div>
 </div>
