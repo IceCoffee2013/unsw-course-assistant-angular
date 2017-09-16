@@ -1,0 +1,40 @@
+<h2>Course detail</h2>
+<form [formGroup] ="courseForm" novalidate>
+  <div class = "from-group" >
+    <label class="center-block">ID</label>
+      <md-input-container fxFlexFill>
+        <input mdInput class="form-control" formControlName="id" required>
+      </md-input-container>
+  </div>
+  <div class = "from-group">
+    <label class="center-block">Name
+      <md-input-container fxFlexFill>
+        <input mdInput class="form-control" formControlName="name" required></md-input-container>
+    </label>
+  </div>
+
+  <div class = "from-group">
+    <label class="center-block">School
+      <md-input-container fxFlexFill>
+        <input mdInput class="form-control" formControlName="school" required>
+      </md-input-container>
+    </label>
+  </div>
+  <div class = "from-group">
+    <label class="center-block">Description
+      <md-input-container fxFlexFill>
+        <input mdInput class="form-control" formControlName="description">
+      </md-input-container>
+    </label>
+  </div>
+  <div class = "from-group">
+    <label class="center-block">Tags
+      <md-input-container fxFlexFill>
+        <input mdInput="" class="form-control" formControlName="tags">
+      </md-input-container>
+    </label>
+  </div>
+  <button md-raised-button type="submit" (click)="onSubmit()">Save</button> &nbsp;
+  <button md-raised-button type="reset" (click)="revert()">Revert</button>
+</form>
+
