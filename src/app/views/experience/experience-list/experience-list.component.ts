@@ -107,6 +107,11 @@ const SYING: Sying[] = [{
 
 
 export class ExperienceListComponent implements OnInit {
+
+  // tags
+  public tags = [];
+  public autoCompleteTags: string[] = ['cse', 'java', 'php', 'unsw'];
+
   show: boolean = false;
   saying = SYING;
   flcs = FLCS;
@@ -121,5 +126,10 @@ export class ExperienceListComponent implements OnInit {
   showSlvComment() {
     this.secShow = !this.secShow;
   }
+
+  onAdd(item) {
+
+  }
+
 }
 

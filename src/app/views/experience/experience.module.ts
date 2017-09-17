@@ -45,6 +45,7 @@ import {TagInputModule} from "ngx-chips";
     NgxDatatableModule,
     TagInputModule,
     FileUploadModule,
+    TagInputModule, // chip
     CommentModule,
     // PaginationModule.forRoot(),
     RouterModule.forChild(experienceRoutes)

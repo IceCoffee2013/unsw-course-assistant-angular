@@ -1,78 +1,96 @@
-<div fxLayout="row">
-  <md-card fxFlex="50">
-    <md-card-header>
-      <div md-card-avatar>
-        <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
-          <img src="../../../assets/images/face-2.jpg">
-        </a>
-      </div>
-      <div fxFlexOffset="1">
-        <span><strong>Shiba Inu</strong></span><br><span>Jul 8</span>
-      </div>
-    </md-card-header>
-    <md-card-content>
-      <a routerLink="/experience/experiencedetail">
-        <h4>
-          Top Features Introduced in Angular 4
-        </h4>
-        <p style="overflow:hidden;text-overflow:ellipsis;">
-          AngularJS development Services are supplying with spontaneous, interactive and clean applications with the
-          help of extra ordinary and magical features of AngularJS. The angular community has included many advanced
-          changes to angular 4 and that’s why the major version number has moved to Angular 4.
-        </p>
-      </a>
+<div fxFlex="100">
+  <md-card class="ask-question-card">
+    <md-card-content class="full-width">
+      <!--<div fxFlex="88">-->
+      <tag-input [(ngModel)]="tags"
+                 [addOnBlur]="true"
+                 [clearOnBlur]="true"
+                 [maxItems]="4"
+                 placeholder="Enter the tags..."
+                 (onAdd)="onAdd($event)"
+                 name="tags">
+        <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
+        </tag-input-dropdown>
+      </tag-input>
+      <!--</div>-->
     </md-card-content>
-    <md-card-actions fxFlexOffset="1">
-      <button md-icon-button>
-        <md-icon color="primary" aria-hidden="true">favorite_border</md-icon>
-      </button>
-      <span fxFlex="83"></span>
-      <!--this is comment-->
-      <button md-icon-button>
-        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
-      </button>
-    </md-card-actions>
   </md-card>
-
-
-
-
-  <md-card fxFlex="50">
-    <md-card-header>
-      <div md-card-avatar>
-        <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
-          <img src="../../../assets/images/face-2.jpg">
-        </a>
-      </div>
-      <div fxFlexOffset="1">
-        <span><strong>Shiba Inu</strong></span><br><span>Jul 8</span>
-      </div>
-    </md-card-header>
-    <md-card-content>
-      <a routerLink="/experience/experiencedetail">
-        <h4>
-          Top Features Introduced in Angular 4
-        </h4>
-        <p style="overflow:hidden;text-overflow:ellipsis;">
-          AngularJS development Services are supplying with spontaneous, interactive and clean applications with the
-          help of extra ordinary and magical features of AngularJS. The angular community has included many advanced
-          changes to angular 4 and that’s why the major version number has moved to Angular 4.
-        </p>
-      </a>
-    </md-card-content>
-    <md-card-actions fxFlexOffset="1">
-      <button md-icon-button>
-        <md-icon color="primary" aria-hidden="true">favorite_border</md-icon>
-      </button>
-      <span fxFlex="83"></span>
-      <!--this is comment-->
-      <button md-icon-button>
-        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
-      </button>
-    </md-card-actions>
-  </md-card>
-
-  <button md-mini-fab class="publish-button" color="primary" routerLink="/experience/publish">
-    <md-icon>add</md-icon>
-  </button>
 </div>
+
+<div fxLayout="row" fxFlex="100">
+  <md-card fxFlex="50">
+    <md-card-header>
+      <div md-card-avatar>
+        <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
+          <img src="../../../assets/images/face-2.jpg">
+        </a>
+      </div>
+      <div fxFlexOffset="1">
+        <span><strong>Shiba Inu</strong></span><br><span>Jul 8</span>
+      </div>
+    </md-card-header>
+    <md-card-content>
+      <a routerLink="/experience/experiencedetail">
+        <h4>
+          Top Features Introduced in Angular 4
+        </h4>
+        <p style="overflow:hidden;text-overflow:ellipsis;">
+          AngularJS development Services are supplying with spontaneous, interactive and clean applications with the
+          help of extra ordinary and magical features of AngularJS. The angular community has included many advanced
+          changes to angular 4 and that’s why the major version number has moved to Angular 4.
+        </p>
+      </a>
+    </md-card-content>
+    <md-card-actions fxFlexOffset="1">
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">favorite_border</md-icon>
+      </button>
+      <span fxFlex="83"></span>
+      <!--this is comment-->
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
+      </button>
+    </md-card-actions>
+  </md-card>
+
+
+  <md-card fxFlex="50">
+    <md-card-header>
+      <div md-card-avatar>
+        <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
+          <img src="../../../assets/images/face-2.jpg">
+        </a>
+      </div>
+      <div fxFlexOffset="1">
+        <span><strong>Shiba Inu</strong></span><br><span>Jul 8</span>
+      </div>
+    </md-card-header>
+    <md-card-content>
+      <a routerLink="/experience/experiencedetail">
+        <h4>
+          Top Features Introduced in Angular 4
+        </h4>
+        <p style="overflow:hidden;text-overflow:ellipsis;">
+          AngularJS development Services are supplying with spontaneous, interactive and clean applications with the
+          help of extra ordinary and magical features of AngularJS. The angular community has included many advanced
+          changes to angular 4 and that’s why the major version number has moved to Angular 4.
+        </p>
+      </a>
+    </md-card-content>
+    <md-card-actions fxFlexOffset="1">
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">favorite_border</md-icon>
+      </button>
+      <span fxFlex="83"></span>
+      <!--this is comment-->
+      <button md-icon-button>
+        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
+      </button>
+    </md-card-actions>
+  </md-card>
+</div>
+
+
+<button md-mini-fab class="publish-button" color="primary" routerLink="/experience/publish">
+  <md-icon>add</md-icon>
+</button>
