@@ -32,7 +32,7 @@ export const rootRouterConfig: Routes = [
         data: {title: 'Courses', breadcrumb: 'COURSES'}
       },
       {
-        path: 'course',
+        path: 'newCourse',
         loadChildren: './views/courses/course.module#CourseModule',
         data: {title: 'Courses', breadcrumb: 'COURSES'}
       },
@@ -69,7 +69,7 @@ export const rootRouterConfig: Routes = [
         data: {title: 'Admin', breadcrumb: 'HOME'}
       },
       {
-        path: 'course',
+        path: 'newCourse',
         loadChildren: './views/admin-course/admin-course.module#AdminCourseModule',
         data: {title: 'Admin', breadcrumb: 'COURSES MANAGEMENT'}
       },

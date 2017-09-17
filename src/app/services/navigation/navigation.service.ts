@@ -39,7 +39,7 @@ export class NavigationService {
       type: 'link',
       tooltip: 'Course',
       icon: 'insert_drive_file',
-      state: 'course'
+      state: 'newCourse'
     },
     {
       name: 'Q & A',

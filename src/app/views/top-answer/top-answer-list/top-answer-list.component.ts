@@ -15,7 +15,7 @@ import {Subject} from "rxjs";
 export class TopAnswerListComponent implements OnInit {
   // tags
   tags = [];
-  autoCompleteTags: string[] = ['cse', 'java', 'php', 'unsw'];
+  autoCompleteTags: string[] = ['CSE', 'JAVA', 'AI', 'UNSW'];
 
   // paginator
   // public maxSize: number = 12;
@@ -92,7 +92,7 @@ export class TopAnswerListComponent implements OnInit {
 
   public onAdd(item) {
     console.log('tag added: value is ' + item.value);
-    this.searchText = item.value;
+    this.searchText = item.value.toUpperCase();
     this.searchTextStream.next(this.searchText);
 
     // convert tag to lowercase

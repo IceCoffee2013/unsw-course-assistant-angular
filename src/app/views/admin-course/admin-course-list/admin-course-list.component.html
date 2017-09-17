@@ -10,29 +10,34 @@
   <div *ngIf="selectedCourse" fxFlex="50" fxFlexOffset="4" class="course-detail-container">
     <h2>Course detail</h2>
     <div class="course-form">
-      <form [formGroup]="courseForm">
+      <form [formGroup]="courseForm" novalidate>
         <div class="from-group">
           <label class="center-block">ID</label>
           <md-input-container fxFlexFill>
-            <input mdInput class="form-control" formControlName="id" required>
-            <!--<div *ngIf="id.invalid && (id.dirty || id.touched)"-->
-            <!--class="alert alert-danger">-->
-            <!--<div *ngIf="id.errors.required">-->
-            <!--Name is required.-->
-            <!--</div>-->
-            <!--<div *ngIf="id.error.minlength">-->
-            <!--ID must be at least 4 characters long.-->
-            <!--</div>-->
-            <!--<div *ngIf="id.error().maxlength">-->
-            <!--ID must te at most 20 characters long.-->
-            <!--</div>-->
-            <!--</div>-->
+            <input mdInput class="form-control" formControlName="id" #idContent>
+            <md-hint align="end">{{idContent.value.length}} / 20</md-hint>
+            <!--id:{{id}} {{courseForm.value | json}}-->
+            <div *ngIf="courseForm.controls['id'].hasError('required') && courseForm.controls['id'].touched"
+                 class="form-error-msg">
+              id is required.
+            </div>
+            <div *ngIf="courseForm.controls['id'].hasError('minlength') && courseForm.controls['id'].touched"
+                 class="form-error-msg">
+              min length is 4.
+            </div>
+            <div *ngIf="courseForm.controls['id'].hasError('maxlength') && courseForm.controls['id'].touched"
+                 class="form-error-msg">
+              max length is 20.
+            </div>
           </md-input-container>
-
 
           <label class="center-block">Name
             <md-input-container fxFlexFill>
               <input mdInput class="form-control" formControlName="name" required>
+              <div *ngIf="courseForm.controls['name'].hasError('required') && courseForm.controls['name'].touched"
+                   class="form-error-msg">
+                name is required.
+              </div>
             </md-input-container>
           </label>
         </div>
@@ -41,17 +46,36 @@
           <label class="center-block">School
             <md-input-container fxFlexFill>
               <input mdInput class="form-control" formControlName="school" required>
+              <div *ngIf="courseForm.controls['school'].hasError('required') && courseForm.controls['school'].touched"
+                   class="form-error-msg">
+                school is required.
+              </div>
             </md-input-container>
           </label>
         </div>
 
 
         <div class="from-group">
-          <label class="center-block">Description
-            <md-input-container fxFlexFill>
-              <input mdInput class="form-control" formControlName="description">
-            </md-input-container>
-          </label>
+          <label class="center-block">Description</label>
+          <md-input-container fxFlexFill>
+            <textarea mdInput rows="3" class="form-control" formControlName="description" #content></textarea>
+            <md-hint align="end">{{content.value.length}} / 256</md-hint>
+            <div
+              *ngIf="courseForm.controls['description'].hasError('required') && courseForm.controls['description'].touched"
+              class="form-error-msg">
+              description is required.
+            </div>
+            <div
+              *ngIf="courseForm.controls['description'].hasError('minlength') && courseForm.controls['description'].touched"
+              class="form-error-msg">
+              min length is 4.
+            </div>
+            <div
+              *ngIf="courseForm.controls['description'].hasError('maxlength') && courseForm.controls['description'].touched"
+              class="form-error-msg">
+              max length is 256.
+            </div>
+          </md-input-container>
         </div>
         <div class="tag-input">
           <!--<h3>Tags within an autocomplete component</h3>-->

@@ -4,7 +4,7 @@
     "name": "Foundations of Computer Science",
     "school": "UNSW",
     "tag": [
-      "CSE"
+      "CSE","UNSW"
     ],
     "likes": 12,
     "description": "Mathematical methods for designing correct and efficient programs."

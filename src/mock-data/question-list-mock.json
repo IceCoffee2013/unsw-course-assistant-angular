@@ -119,23 +119,6 @@
     "postTime" : "2016-09-09 12:00:09"
   },
   {
-    "id": "7",
-    "title": "How to learn COMP9323",
-    "description": "This question previously had question details. You can find them in the question comments.",
-    "author": "Obama",
-    "tags": [
-      {
-        "id" : "1",
-        "name":"cse"
-      },
-      {
-        "id" : "2",
-        "name":"unsw"
-      }
-    ],
-    "postTime" : "2016-09-09 12:00:09"
-  },
-  {
     "id": "8",
     "title": "How to learn COMP9323",
     "description": "This question previously had question details. You can find them in the question comments.",

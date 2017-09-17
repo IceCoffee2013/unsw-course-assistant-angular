@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {CourseListService} from "../../../services/course/course-list.service";
 import {Course} from "../../../models/course/course-model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subject} from "rxjs/Subject";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-course-list',
@@ -66,21 +66,21 @@ export class AdminCourseListComponent implements OnInit {
     );
   }
 
-  createForm() {
+  createForm(): void {
     this.courseForm = this.fb.group({
-      'id': new FormControl(this.selectedCourse.id, [
+      'id': [this.selectedCourse.id, [
         Validators.required,
-        Validators.maxLength(20),
         Validators.minLength(4),
-      ]),
-      'name': new FormControl(this.selectedCourse.name),
-      'school': new FormControl(this.selectedCourse.school),
-      'description': new FormControl(this.selectedCourse.description, [
+        Validators.maxLength(20)
+      ]],
+      'name': [this.selectedCourse.name, Validators.required],
+      'school': [this.selectedCourse.school, Validators.required],
+      'description': [this.selectedCourse.description, [
         Validators.required,
-        Validators.minLength(20),
+        Validators.minLength(4),
         Validators.maxLength(256)
-      ]),
-      'tags': new FormControl(this.selectedCourse.tag)
+      ]],
+      'tags': [this.selectedCourse.tag]
     })
   }
 
@@ -100,8 +100,6 @@ export class AdminCourseListComponent implements OnInit {
     this.createForm();
   }
 
-  submitted = false;
-
   onSubmit() {
     this.course = this.courseForm.value;
     if (this.course.id !== this.selectedCourse.id) {
@@ -112,7 +110,6 @@ export class AdminCourseListComponent implements OnInit {
       const a = this.courseList.indexOf(this.selectedCourse);
       this.courseList[a] = this.course;
     }
-    this.submitted = true;
   }
 
   deleteCourse(course: Course): void {
