@@ -21,6 +21,7 @@ import { QuillModule } from 'ngx-quill';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import {CommentModule} from "../comment/comment.module";
+import {TagInputModule} from "ngx-chips";
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import {CommentModule} from "../comment/comment.module";
     RouterModule,
     QuillModule,
     NgxDatatableModule,
+    TagInputModule,
     FileUploadModule,
     CommentModule,
     // PaginationModule.forRoot(),

@@ -1,8 +1,9 @@
-import {Component, Input, OnInit,OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Course} from "../../../models/course/course-model";
 import {CourseListService} from "../../../services/course/course-list.service";
 import {CourseDetailService} from "../../../services/course/course-detail.service";
+
 @Component({
   selector: 'app-admin-course-detail',
   templateUrl: './admin-course-detail.component.html',
@@ -42,11 +43,16 @@ export class AdminCourseDetailComponent implements OnInit {
       tags: '',
     });
   }
+
   submit = false;
+
   onSubmit() {
     this.course = this.courseForm.value;
     this.courseService.addCourse(this.course);
     this.ngOnChanges();
   }
-  revert() { this.ngOnChanges(); }
+
+  revert() {
+    this.ngOnChanges();
+  }
 }

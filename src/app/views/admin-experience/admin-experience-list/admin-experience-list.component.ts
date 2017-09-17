@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs/Subject";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
@@ -22,10 +22,12 @@ export class AdminExperienceListComponent implements OnInit {
   public searchText: string;
   public searchTextStream: Subject<string> = new Subject<string>();
   public experienceList: Array<Experience>;
+
   constructor(public router: Router,
               public activeRoute: ActivatedRoute,
               public experienceListService: ExperienceListService) {
   }
+
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       // 这里可以从路由里面获取URL参数
@@ -41,6 +43,7 @@ export class AdminExperienceListComponent implements OnInit {
         this.loadData(this.searchText, this.currentPage)
       });
   }
+
   public loadData(searchText: string, page: number) {
     let offset = (this.currentPage - 1) * this.itemsPerPage;
     let end = (this.currentPage) * this.itemsPerPage;
@@ -58,21 +61,25 @@ export class AdminExperienceListComponent implements OnInit {
       }
     );
   }
+
   selectedExperience: Experience;
 
-  onSelect(exp: Experience):void{
+  onSelect(exp: Experience): void {
     this.selectedExperience = exp;
   }
+
   public deleteExperience(experience: Experience): void {
-          this.experienceList.forEach(
-            (value, index) => {
-              if (value.id === experience.id) {
-                console.log('Index', index);
-                this.experienceList.splice(index, 1);
-              }
-            }
-          );
-          // server delete
-          this.experienceListService.deleteExperience(experience.id);
+    this.experienceList.forEach(
+      (value, index) => {
+        if (value.id === experience.id) {
+          console.log('Index', index);
+          this.experienceList.splice(index, 1);
         }
+      }
+    );
+    // server delete
+    this.experienceListService.deleteExperience(experience.id);
+    this.selectedExperience = null;
+  }
+
 }

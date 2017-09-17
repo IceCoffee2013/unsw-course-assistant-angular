@@ -9,10 +9,11 @@ import {
   MdButtonModule, MdCardModule, MdChipsModule, MdIconModule, MdListModule
 } from "@angular/material";
 import {FormsModule} from "@angular/forms";
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {CourseListService} from "../../services/course/course-list.service";
-import { AdminCourseDetailComponent } from './admin-course-detail/admin-course-detail.component';
+import {AdminCourseDetailComponent} from './admin-course-detail/admin-course-detail.component';
 import {CourseDetailService} from "../../services/course/course-detail.service";
+import {TagInputModule} from "ngx-chips";
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {CourseDetailService} from "../../services/course/course-detail.service";
     MdInputModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    TagInputModule,
     RouterModule,
     RouterModule.forChild(adminCourseRoutes)
   ],

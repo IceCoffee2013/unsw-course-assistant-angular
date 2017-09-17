@@ -11,13 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class AdminQuestionListComponent implements OnInit {
 
-  show: boolean = false;
-  questionForm: FormGroup;
-  tags = [];
-  autoCompleteTags: string[] = ['cse', 'java', 'php', 'unsw'];
 
-  // paginator
-  // public maxSize: number = 12;
   public itemsPerPage: number = 8;
   public pageSizeOptions = [8, 16, 24];
   public totalItems: number;
@@ -31,9 +25,7 @@ export class AdminQuestionListComponent implements OnInit {
 
   constructor(public questionService: QuestionService,
               public router: Router,
-              public fb: FormBuilder,
               public activeRoute: ActivatedRoute,) {
-    this.createForm();
   }
 
 
@@ -66,20 +58,6 @@ export class AdminQuestionListComponent implements OnInit {
     );
   }
 
-  createForm() {
-    this.questionForm = this.fb.group({
-      id: ['', Validators.required],
-      title: '',
-      description: '',
-      author: '',
-      postTime: '',
-    });
-  }
-
-  showaddform() {
-    this.show = !this.show;
-  }
-
   selectedQuestion: Question;
 
   onSelect(question: Question): void {
@@ -98,6 +76,7 @@ export class AdminQuestionListComponent implements OnInit {
     );
     // server delete
     this.questionService.deleteQuestion(question.id);
+    this.selectedQuestion = null;
   }
 
 }

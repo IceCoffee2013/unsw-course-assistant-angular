@@ -17,6 +17,6 @@
     <tr>Tag:<td>{{selectedExperience.tag}}</td></tr>
     <tr>Likes:<td>{{selectedExperience.likes}}</td></tr>
     <tr>postTime:<td>{{selectedExperience.postTime}}</td></tr>
-    <tr>Content:<td>{{selectedExperience.text}}</td></tr>
+    <tr>Content:<td [innerHTML]="selectedExperience.text"></td></tr>
   </table>
 </div>

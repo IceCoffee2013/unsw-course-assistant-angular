@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {CourseListService} from "../../../services/course/course-list.service";
 import {Course} from "../../../models/course/course-model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subject} from "rxjs/Subject";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-course-list',
@@ -13,7 +13,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class AdminCourseListComponent implements OnInit {
   // public maxSize: number = 12;
   courseForm: FormGroup;
-  show: boolean = false;
+  course = new Course();
+  selectedCourse = new Course();
   public itemsPerPage: number = 12;
   public pageSizeOptions = [12, 15, 24];
   public totalItems: number;
@@ -67,36 +68,51 @@ export class AdminCourseListComponent implements OnInit {
 
   createForm() {
     this.courseForm = this.fb.group({
-      id: ['', Validators.required],
-      name: '',
-      school: '',
-      description: '',
-      tags: '',
-    });
+      'id': new FormControl(this.selectedCourse.id, [
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(4),
+      ]),
+      'name': new FormControl(this.selectedCourse.name),
+      'school': new FormControl(this.selectedCourse.school),
+      'description': new FormControl(this.selectedCourse.description, [
+        Validators.required,
+        Validators.minLength(20),
+        Validators.maxLength(256)
+      ]),
+      'tags': new FormControl(this.selectedCourse.tag)
+    })
   }
-
-  selectedCourse: Course;
 
   onSelect(course: Course): void {
     this.selectedCourse = course;
+    this.createForm();
   }
 
-  addCourse(course: Course) {
-    if (course) {
-      this.courseService.addCourse(course);
-    }
+  addCourse(course: Course): void {
+    this.courseList.push(course);
+    this.newCourse();
+    this.courseService.addCourse(course);
+  }
+
+  newCourse() {
+    this.selectedCourse = new Course();
+    this.createForm();
   }
 
   submitted = false;
 
-  onsubmit() {
-    const course = this.courseForm.value;
-    this.addCourse(course)
+  onSubmit() {
+    this.course = this.courseForm.value;
+    if (this.course.id !== this.selectedCourse.id) {
+      this.addCourse(this.course);
+    } else {
+      console.log(this.course.tag);
+      console.log(this.selectedCourse.tag);
+      const a = this.courseList.indexOf(this.selectedCourse);
+      this.courseList[a] = this.course;
+    }
     this.submitted = true;
-  }
-
-  showaddform() {
-    this.show = !this.show;
   }
 
   deleteCourse(course: Course): void {
@@ -110,5 +126,14 @@ export class AdminCourseListComponent implements OnInit {
     );
     // server delete
     this.courseService.delectCourse(course.id);
+    this.selectedCourse = null;
   }
+
+  items: string[] = ['java', 'python'];
+  autocompleteItems: string[] = ['Item1', 'item2', 'item3'];
+
+  public onAdd(item) {
+    console.log('tag added: value is ' + item);
+  }
+
 }

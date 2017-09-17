@@ -144,8 +144,6 @@ export class CommentComponent implements OnInit {
           this.commentService.deleteReply(comment.id, reply.id);
         }
       });
-
-
   }
 
   public showReplyDialog(comment: Comment, toWho: string): void {
