@@ -89,6 +89,10 @@ export class TopAnswerListComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  onLike(question:Question){
+    question.liked = !question.liked;
+  }
+
 
   public onAdd(item) {
     console.log('tag added: value is ' + item.value);

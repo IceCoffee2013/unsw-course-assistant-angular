@@ -46,8 +46,8 @@
           </md-card-content>
           <md-divider></md-divider>
           <md-card-actions>
-            <button md-icon-button>
-              <md-icon class="text-muted">favorite</md-icon>
+            <button md-icon-button (click)="onLike(question)">
+              <md-icon class="text-muted" color="primary">{{question.liked ? "favorite":"favorite_border"}}</md-icon>
             </button>
             <button md-icon-button>
               <md-icon class="text-muted">share</md-icon>

@@ -17,7 +17,6 @@ import {
   MdListModule
 } from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { AdminQuestionDetailComponent } from './admin-question-detail/admin-question-detail.component';
 import {QuestionService} from "../../services/top-answer/question-service";
 
 @NgModule({
@@ -38,9 +37,10 @@ import {QuestionService} from "../../services/top-answer/question-service";
     FlexLayoutModule,
     RouterModule.forChild(adminQuestionRoutes)
   ],
-  declarations: [AdminQuestionListComponent, AdminQuestionDetailComponent],
+  declarations: [AdminQuestionListComponent],
   providers: [
     QuestionService
   ]
 })
-export class AdminQuestionModule { }
+export class AdminQuestionModule {
+}

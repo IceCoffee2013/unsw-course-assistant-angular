@@ -22,6 +22,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import {CommentModule} from "../comment/comment.module";
 import {TagInputModule} from "ngx-chips";
+import {ExperienceListService} from "../../services/experience/experience-list.service";
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import {TagInputModule} from "ngx-chips";
   ],
   exports: [],
   providers: [
+    ExperienceListService,
   ]
 })
 export class ExperienceModule {

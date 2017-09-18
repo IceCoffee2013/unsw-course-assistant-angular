@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, AfterViewInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Experience} from "../../../models/experience/experience-model";
 
@@ -11,17 +11,10 @@ import {Experience} from "../../../models/experience/experience-model";
 
 export class ExperiencePublishComponent implements OnInit {
   public editor;
-  public experienceForm:FormGroup;
-  public editExperience =new Experience();
-  editorData = `<h1>Egret | Angular material admin</h1>
-  <p><a href="http:themegret.com" target="_blank"><strong>ThemEgret</strong></a></p>
-  <p><br></p><p><strong >Lorem Ipsum</strong>
-  <span>&nbsp;is simply dummy text of the printing and typesetting industry. 
-  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a 
-  galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</span></p>`;
+  public experienceForm: FormGroup;
+  public editExperience = new Experience();
 
-
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder) {
     this.createForm();
   }
 
@@ -29,25 +22,28 @@ export class ExperiencePublishComponent implements OnInit {
   }
 
 
-  createForm(){
+  createForm() {
     this.experienceForm = this.fb.group({
-      title:['',Validators.required,Validators.maxLength(50),Validators.minLength(5)],
+      title: ['', Validators.required, Validators.maxLength(50), Validators.minLength(5)],
       text: '',
-      tags:''
+      tags: ''
     })
   }
+
   summit = false;
-  onSubmit(){
+
+  onSubmit() {
     this.editExperience = this.experienceForm.value;
     console.log(this.editExperience.text);
     this.summit = true;
   }
-  onContentChanged() { }
+
+  onContentChanged() {
+  }
 
 
-
-
-  onSelectionChanged() { }
+  onSelectionChanged() {
+  }
 
   // public fileInputChangeHandler(): void {
   //   let fileInput = <HTMLInputElement>document.getElementById('img_input');

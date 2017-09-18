@@ -5,6 +5,7 @@ export class Question {
   title: string;
   description: string;
   author: string;
+  liked: boolean = false;
   tags: Tag[] = [];
   postTime: Date;
 }
