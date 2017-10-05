@@ -3,7 +3,7 @@
     <md-card class="user-card p-0">
       <md-card-title class="mat-bg-primary">
         <div class="card-title-text">
-          <span>{{ course.id }}</span>
+          <span>{{ course.code }}</span>
           <span fxFlex></span>
           <button md-icon-button [mdMenuTriggerFor]="userMenu" class="">
             <md-icon class="">more_vert</md-icon>
@@ -23,16 +23,18 @@
           </p>
           <p>
             <md-icon class="text-muted">date_range</md-icon>
-            {{ course.tag }}
+            {{ course.career }}
           </p>
           <p>
             <md-icon class="text-muted">location_on</md-icon>
             {{ course.school }}
           </p>
-          <p>
-            <md-icon class="text-muted">drafts</md-icon>
-            {{ course.description }}
-          </p>
+          <md-divider></md-divider>
+          <div>
+            <!--<md-icon class="text-muted">drafts</md-icon>-->
+            <div [innerHTML]="course.description"></div>
+            <!--{{ course.description }}-->
+          </div>
         </div>
       </md-card-content>
       <md-card-footer class="course-detail-footer"></md-card-footer>

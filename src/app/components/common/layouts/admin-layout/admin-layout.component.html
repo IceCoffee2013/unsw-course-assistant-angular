@@ -18,14 +18,14 @@
       </div>
 
       <!-- user icon -->
-      <div class="app-user" *ngIf="currentUser?.userName">
+      <div class="app-user" *ngIf="currentUser?.username">
         <div class="app-user-photo">
 
           <img src="assets/images/face-7.jpg" alt="">
         </div>
         <span class="app-user-name">
           <md-icon class="icon-xs text-muted">lock</md-icon>
-          {{ currentUser.userName }}
+          {{ currentUser.username }}
         </span>
         <div class="app-user-controls">
           <button

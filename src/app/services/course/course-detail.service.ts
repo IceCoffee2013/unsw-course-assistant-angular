@@ -8,13 +8,13 @@ import {Course} from "../../models/course/course-model";
 
 @Injectable()
 export class CourseDetailService {
-  public courseDetailURL = "mock-data/course-mock.json";
+  public courseDetailURL = "http://localhost:8080/api/course";
   constructor(public http: Http) {
   }
 
   public getCourse(id: string): Observable<Course> {
     return this.http
-      .get(this.courseDetailURL)
+      .get(this.courseDetailURL + "/" + id)
       .map((res: Response) => res.json());
   }
 

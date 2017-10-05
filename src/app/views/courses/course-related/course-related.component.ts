@@ -19,12 +19,13 @@ export class CourseRelatedComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => this.getrelatityCourse(params["tag"])
+      params => this.getRelatedCourse(params["id"])
     );
   }
-  public getrelatityCourse(tag: string) {
+
+  public getRelatedCourse(id: string) {
     this.courseListService
-      .getCourseList(tag)
+      .getCourseList(id)
       .subscribe(
         data => this.course = data,
         error => console.error(error)

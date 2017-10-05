@@ -16,9 +16,9 @@
                 type="username"
                 name="username"
                 required
-                [(ngModel)]="signupData.userName"
+                [(ngModel)]="signupData.nickname"
                 #userName="ngModel"
-                placeholder="Username (no less the 4 character)"
+                placeholder="Nickname (no less the 4 character)"
                 minlength="4"
                 maxlength="20"
                 value="">
@@ -47,7 +47,7 @@
                 type="email"
                 name="email"
                 required
-                [(ngModel)]="signupData.email"
+                [(ngModel)]="signupData.username"
                 #email="ngModel"
                 placeholder="Your Email"
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"

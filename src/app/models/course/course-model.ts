@@ -3,9 +3,14 @@
  */
 export class Course {
   id: string
+  code: string
   name: string
+  faculty: string
   school: string
   likes: string
   description: string
+  credit: string
+  career: string
+  requirement: string
   tag: string[]
 }

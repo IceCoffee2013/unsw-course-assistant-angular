@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit {
   signinData = {
     email: '',
     password: '',
-    rememberMe:''
+    rememberMe: ''
   }
 
   constructor(public userLoginService: UserLoginService,
@@ -33,8 +33,9 @@ export class SigninComponent implements OnInit {
     this.progressBar.mode = 'indeterminate';
 
     let user = new User();
-    user.email = this.signinData.email;
+    user.username = this.signinData.email;
     user.password = this.signinData.password;
+
     console.log(user);
     this.userLoginService.login(user).subscribe(
       data => {

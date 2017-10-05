@@ -74,7 +74,7 @@
     <span class="notification-number mat-bg-warn">3</span>
   </button>
 
-  <button *ngIf="!currentUser?.userName"
+  <button *ngIf="!currentUser?.username"
           md-icon-button
           mdTooltip="SignIn"
           [routerLink]="['/sessions/signin']"
@@ -83,7 +83,7 @@
   </button>
 
   <!-- Top left user menu -->
-  <button *ngIf="currentUser?.userName" md-icon-button [mdMenuTriggerFor]="accountMenu" class="topbar-button-right">
+  <button *ngIf="currentUser?.username" md-icon-button [mdMenuTriggerFor]="accountMenu" class="topbar-button-right">
     <md-icon>person</md-icon>
   </button>
   <md-menu #accountMenu="mdMenu">

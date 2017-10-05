@@ -10,5 +10,5 @@ export class CoreService {
 
   constructor() { }
 
-  public baseUrl: string = '';
+  public baseUrl: string = "http://localhost:8080";
 }

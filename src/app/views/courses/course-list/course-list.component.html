@@ -12,6 +12,7 @@
                    [maxItems]="4"
                    placeholder="Enter the tags..."
                    (onAdd)="onAdd($event)"
+                   (onRemove)="onAdd($event)"
                    name="tags">
           <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
           </tag-input-dropdown>
@@ -29,7 +30,7 @@
         <md-card class="user-card p-0">
           <md-card-title class="mat-bg-primary">
             <div class="card-title-text">
-              <a [routerLink]="['/course/detail',course.id]"><span>{{ course.id }}</span></a>
+              <a [routerLink]="['/course/detail',course.id]"><span>{{ course.code }}</span></a>
               <span fxFlex></span>
               <button md-icon-button [mdMenuTriggerFor]="userMenu" class="">
                 <md-icon class="">more_vert</md-icon>
@@ -49,7 +50,7 @@
               </p>
               <p>
                 <md-icon class="text-muted">date_range</md-icon>
-                {{ course.tag }}
+                {{ course.career }}
               </p>
               <p>
                 <md-icon class="text-muted">location_on</md-icon>

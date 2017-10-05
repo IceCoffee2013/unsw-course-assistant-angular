@@ -13,8 +13,8 @@ export class SignupComponent implements OnInit {
   @ViewChild(MdProgressBar) progressBar: MdProgressBar;
   @ViewChild(MdButton) submitButton: MdButton;
   signupData = {
-    userName: '',
-    email: '',
+    username: '',
+    nickname: '',
     password: '',
     confirmPassword: '',
     isAgreed: ''
@@ -32,8 +32,8 @@ export class SignupComponent implements OnInit {
     this.submitButton.disabled = true;
     this.progressBar.mode = 'indeterminate';
     let user: User = new User();
-    user.userName = this.signupData.userName;
-    user.email = this.signupData.email;
+    user.nickname = this.signupData.nickname;
+    user.username = this.signupData.username;
     user.password = this.signupData.password;
     console.log(user);
 

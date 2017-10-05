@@ -46,8 +46,8 @@ export class ExperienceListComponent implements OnInit {
       console.log("CommentComponent: not log in");
       this.userName = "";
     } else {
-      console.log(user.userName);
-      this.userName = user.userName;
+      console.log(user.username);
+      this.userName = user.username;
     }
     this.activeRoute.params.subscribe(params => {
       // 这里可以从路由里面获取URL参数
