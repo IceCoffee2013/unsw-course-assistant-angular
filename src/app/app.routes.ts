@@ -37,7 +37,7 @@ export const rootRouterConfig: Routes = [
         data: {title: 'Courses', breadcrumb: 'COURSES'}
       },
       {
-        path: 'answer',
+        path: 'question',
         loadChildren: './views/top-answer/top-answer.module#TopAnswerModule',
         data: {title: 'Question', breadcrumb: 'QUESTION'}
       },

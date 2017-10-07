@@ -46,7 +46,7 @@ export class NavigationService {
       type: 'link',
       tooltip: 'question & answer',
       icon: 'textsms',
-      state: 'answer'
+      state: 'question'
     },
     {
       name: 'EXPERIENCES',

@@ -1,16 +1,29 @@
 <h2 md-dialog-title>Ask Question</h2>
-<md-dialog-content>
-
-  <form>
+<form #askForm="ngForm" (ngSubmit)="askQuestion()">
+  <md-dialog-content>
     <div fxLayout="column" fxLayoutWrap="wrap">
       <md-form-field class="full-width" fxFlexFill>
-        <input mdInput #message maxlength="24" placeholder="Question">
+        <input
+          mdInput
+          #message
+          name="title"
+          maxlength="24"
+          required
+          [(ngModel)]="askData.title"
+          placeholder="Question">
         <!--<md-hint align="start"><strong>Describe your question.</strong> </md-hint>-->
         <md-hint align="end">{{message.value.length}} / 24</md-hint>
       </md-form-field>
 
       <md-form-field class="full-width" fxFlexFill>
-        <textarea mdInput #description maxlength="256" rows="3" placeholder="(Optional) describe your question..."></textarea>
+        <textarea mdInput
+                  #description
+                  name="description"
+                  maxlength="256"
+                  required
+                  rows="3"
+                  [(ngModel)]="askData.description"
+                  placeholder="(Optional) describe your question..."></textarea>
         <md-hint align="end">{{description.value.length}} / 256</md-hint>
       </md-form-field>
     </div>
@@ -27,10 +40,11 @@
       </tag-input>
 
     </div>
-  </form>
-</md-dialog-content>
 
-<md-dialog-actions  fxLayoutAlign="end">
+  </md-dialog-content>
+
+  <md-dialog-actions fxLayoutAlign="end">
     <button md-raised-button md-dialog-close>Cancel</button>
-    <button md-raised-button [md-dialog-close]="true" color="primary" >Save</button>
-</md-dialog-actions>
+    <button md-raised-button [md-dialog-close]="true" color="primary" [disabled]="askForm.invalid" (click)="askQuestion()">Save</button>
+  </md-dialog-actions>
+</form>

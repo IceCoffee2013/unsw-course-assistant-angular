@@ -37,8 +37,13 @@ export class TopAnswerDetailComponent implements OnInit {
     this.questionService
       .getQuestion(questionId)
       .subscribe(
-        data => this.question = data,
-        error => console.error(error)
+        data => {
+          this.question = data;
+          console.log("load question", data);
+        },
+        error => {
+          console.error(error);
+        }
       );
   }
 

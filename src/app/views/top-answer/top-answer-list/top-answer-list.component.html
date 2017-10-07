@@ -11,7 +11,7 @@
                          [addOnBlur]="true"
                          [clearOnBlur]="true"
                          [maxItems]="3"
-                         placeholder="Enter the tags..."
+                         placeholder="Search the question..."
                          (onAdd)="onAdd($event)"
                          name="tags">
                 <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
@@ -36,9 +36,13 @@
 
         <md-card class="default">
           <md-card-title>
-            <a [routerLink]="['/answer/detail',question.id]"><span>{{question.title}}</span></a>
+            <a [routerLink]="['/question/detail',question.id]"><span>{{question.title}}</span></a>
           </md-card-title>
-          <md-card-subtitle>Card subtitle</md-card-subtitle>
+          <md-card-subtitle>
+            <md-chip selected *ngFor="let tag of question?.tags">
+              {{ tag.name }}
+            </md-chip>
+          </md-card-subtitle>
           <md-card-content>
             <p>
               {{question.description}}

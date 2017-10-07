@@ -4,6 +4,7 @@ import {Question} from "../../../models/top-answer/question-model";
 import {QuestionService} from "../../../services/top-answer/question-service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Subject} from "rxjs";
+import {Tag} from "../../../models/top-answer/tag-model";
 
 
 @Component({
@@ -11,7 +12,6 @@ import {Subject} from "rxjs";
   templateUrl: 'top-answer-list.component.html',
   styleUrls: ['top-answer-list.component.scss']
 })
-
 export class TopAnswerListComponent implements OnInit {
   // tags
   tags = [];
@@ -40,6 +40,7 @@ export class TopAnswerListComponent implements OnInit {
 
     this.activeRoute.params.subscribe(params => {
       // 这里可以从路由里面获取URL参数
+      this.currentPage = params["page"];
       console.log(params);
       this.loadData(this.searchText, this.currentPage);
     });
@@ -47,8 +48,9 @@ export class TopAnswerListComponent implements OnInit {
     this.searchTextStream
       .debounceTime(500)
       .distinctUntilChanged()
-      .subscribe(searchText => {
-        console.log(this.searchText);
+      .subscribe(
+        searchText => {
+        console.log("query", this.searchText);
         this.loadData(this.searchText, this.currentPage)
       });
 
@@ -77,7 +79,7 @@ export class TopAnswerListComponent implements OnInit {
   public pageChanged(event: any): void {
     let pageNumber = event.pageIndex + 1;
     console.log("event page: " + pageNumber);
-    this.router.navigateByUrl("answer/page/" + pageNumber);
+    this.router.navigateByUrl("question/page/" + pageNumber);
   }
 
   public showQuestionDialog() {
@@ -87,25 +89,20 @@ export class TopAnswerListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.loadData(this.searchText, 1);
     });
   }
-  onLike(question:Question){
+
+  public onLike(question: Question) {
     question.liked = !question.liked;
   }
 
 
   public onAdd(item) {
     console.log('tag added: value is ' + item.value);
-    this.searchText = item.value.toUpperCase();
+    this.searchText = item.value.toLowerCase();
     this.searchTextStream.next(this.searchText);
 
-    // convert tag to lowercase
-    // display value
-
-    // for (let tag of this.tags) {
-    //   console.log(tag);
-    //   tag.value = tag.value.toLowerCase();
-    // }
 
     // do search
   }
@@ -118,12 +115,46 @@ export class TopAnswerListComponent implements OnInit {
 })
 export class QuestionContentDialog {
 
-  items: string[] = ['java', 'python'];
+  items = [];
 
-  autocompleteItems: string[] = ['Item1', 'item2', 'item3'];
+  autocompleteItems: string[] = ['comp', 'art', 'cse'];
+
+  askData = {
+    title: '',
+    description: '',
+    tags: []
+  }
+
+  constructor(public questionService: QuestionService, public router: Router) {
+
+  }
 
   public onAdd(item) {
     console.log('tag added: value is ' + item);
+  }
+
+  public askQuestion() {
+
+    let tags: Tag[] = [];
+
+    for (let item of this.items) {
+      let t = new Tag();
+      t.name = item.value;
+      tags.push(t);
+    }
+
+    this.askData.tags = tags;
+
+    this.questionService.addQuestion(this.askData).subscribe(
+      data => {
+        console.log("add question success", data);
+      },
+      err => {
+        console.log("Error occured");
+      }
+    );
+
+    console.log(this.askData);
   }
 
 }

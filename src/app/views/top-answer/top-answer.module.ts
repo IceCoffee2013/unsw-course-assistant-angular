@@ -17,7 +17,7 @@ import {
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule} from "@angular/forms";
-import {topanserRoutes} from "./top-answer.routes";
+import {topAnswerRoutes} from "./top-answer.routes";
 import {QuillModule} from "ngx-quill";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {FileUploadModule} from "ng2-file-upload/ng2-file-upload";
@@ -60,7 +60,7 @@ import {CommentModule} from "../comment/comment.module";
     TagInputModule, // chip
     CommentModule,  // comment
     // PaginationModule.forRoot(),
-    RouterModule.forChild(topanserRoutes)
+    RouterModule.forChild(topAnswerRoutes)
   ],
   declarations: [
     TopAnswerListComponent,

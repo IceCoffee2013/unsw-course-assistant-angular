@@ -1,6 +1,6 @@
 <!-- Question -->
 <md-card class="question-main-card">
-      <md-chip selected *ngFor="let tag of question.tags">
+      <md-chip selected *ngFor="let tag of question?.tags">
         {{ tag.name }}
       </md-chip>
       <button md-icon-button class="answer-but">
@@ -16,7 +16,7 @@
   <div class="question-footer">
     <md-icon class="favoite-but" color="primary">favorite_border</md-icon>
     <span class="question-time">
-      {{ question.postTime }}
+      {{ question.postTime | date:'medium'}}
     </span>
   </div>
 </md-card>
