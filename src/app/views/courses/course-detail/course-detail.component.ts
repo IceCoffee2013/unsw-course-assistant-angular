@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Course} from "../../../models/course/course-model";
-import {CourseDetailService} from "../../../services/course/course-detail.service";
+import {CourseListService} from "../../../services/course/course-list.service";
 
 
 @Component({
@@ -14,9 +14,9 @@ export class CourseDetailComponent implements OnInit {
   public commentType: string = "course";
   public course: Course = new Course();
 
-  constructor(public courseDetailService: CourseDetailService,
+  constructor(public courseListService: CourseListService,
               public activeRoute: ActivatedRoute) {
-    console.log(this.courseDetailService);
+    console.log(this.courseListService);
   }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   public getCourse(id: string) {
-    this.courseDetailService
+    this.courseListService
       .getCourse(id)
       .subscribe(
         data => this.course = data,

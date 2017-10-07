@@ -1,7 +1,6 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
-import {Http, HttpModule} from "@angular/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TranslateModule, TranslateLoader, TranslateStaticLoader} from "ng2-translate/ng2-translate";
 import {rootRouterConfig} from "./app.routes";
@@ -15,6 +14,9 @@ import {UserLoginService} from "./services/user/user-login.service";
 import {ForgetPwdService} from "./services/user/forget-pwd.service";
 import {CommentModule} from "./views/comment/comment.module";
 import {CoreService} from "./services/core.service";
+import {HttpModule, Http} from "@angular/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
+import {JWTInterceptor} from "./services/auth/jwt.Interceptor";
 
 
 export function createTranslateLoader(http: Http) {
@@ -26,6 +28,7 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    HttpClientModule,
     AppCommonModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
@@ -45,7 +48,12 @@ export function createTranslateLoader(http: Http) {
     UserLoginService,
     ForgetPwdService,
     CoreService,
-    CommentModule
+    CommentModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JWTInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

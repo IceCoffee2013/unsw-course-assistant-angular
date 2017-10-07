@@ -1,12 +1,12 @@
 /**
  * Created by langley on 15/8/17.
  */
-
 import {Injectable} from "@angular/core";
 import {User} from "../../models/user/user-model";
 import {Observable, Subject} from "rxjs";
-import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {CoreService} from "../core.service";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UserRegisterService {
@@ -15,15 +15,15 @@ export class UserRegisterService {
   public testEmailURL = "";
   public subject: Subject<User> = new Subject<User>();
 
-  constructor(public http:Http,
+  constructor(public http: HttpClient, public router: Router,
               public coreService: CoreService) {
   }
 
-  public get currentUser():Observable<User>{
+  public get currentUser(): Observable<User> {
     return this.subject.asObservable();
   }
 
-  public register(user: User){
+  public register(user: User) {
     console.log(user);
 
     //向后台post数据的写法如下
@@ -33,29 +33,34 @@ export class UserRegisterService {
     // return this.http.post(this.userRegisterURL,data);
 
     let data = {
-      "nickname" : user.nickname,
-      "username" : user.username,
-      "password" : user.password,
-      "role" : "ROLE_USER"
+      "nickname": user.nickname,
+      "username": user.username,
+      "password": user.password,
+      "role": "ROLE_USER"
     }
 
     let body = JSON.stringify(data);
     // console.log("body", body);
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json");
 
     return this.http
-      .post(this.coreService.baseUrl + "/api/register", body, options)
-      .map((response: Response) => {
-        let user = response.json();
-        console.log("register result", user);
-        localStorage.setItem("currentUser",JSON.stringify(user));
-        this.subject.next(user);
-      });
+      .post<User>(this.coreService.baseUrl + "/api/register", body, {headers})
+      .subscribe(
+        data => {
+          console.log("register result", data);
+          // localStorage.setItem("currentUser", JSON.stringify(data));
+          this.subject.next(data);
+          this.router.navigateByUrl("sessions/signin");
+        },
+        error => {
+          console.error(error);
+        }
+      );
   }
 
-  public testEmail(email:string){
+  public testEmail(email: string) {
     return this.http.get(this.testEmailURL)
       .map((response: Response) => response.json());
   }

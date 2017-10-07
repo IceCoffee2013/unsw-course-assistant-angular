@@ -10,4 +10,5 @@ export class User {
   image: string;
   following: boolean;
   role: string;
+  token: string;
 }

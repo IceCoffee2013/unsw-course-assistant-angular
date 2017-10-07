@@ -37,16 +37,16 @@ export class SignupComponent implements OnInit {
     user.password = this.signupData.password;
     console.log(user);
 
-    this.userRegisterService.register(user)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.router.navigateByUrl("home");
-        },
-        error => {
-          console.error(error);
-        }
-      );
+    this.userRegisterService.register(user);
+      // .subscribe(
+      //   data => {
+      //     console.log(data);
+      //     this.router.navigateByUrl("home");
+      //   },
+      //   error => {
+      //     console.error(error);
+      //   }
+      // );
 
   }
 

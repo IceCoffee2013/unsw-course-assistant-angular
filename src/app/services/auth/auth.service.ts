@@ -18,7 +18,11 @@ export class AuthService implements CanActivate {
   }
 
   public getToken(): string {
-    return localStorage.getItem('currentUser');
+
+    if (localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser')).token) {
+      return JSON.parse(localStorage.getItem('currentUser')).token;
+    }
+    return null;
   }
 
 }

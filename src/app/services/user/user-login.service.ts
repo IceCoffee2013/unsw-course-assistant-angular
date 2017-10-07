@@ -1,8 +1,9 @@
 import {User} from "../../models/user/user-model";
 import {Subject, Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
 import {CoreService} from "../core.service";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 /**
  * Created by langley on 16/8/17.
  */
@@ -12,7 +13,7 @@ export class UserLoginService {
   // public userLoginURL = 'mock-data/user-login-mock.json';
   public subject: Subject<User> = new Subject<User>();
 
-  constructor(public http: Http,
+  constructor(public http: HttpClient, public router: Router,
               public coreService: CoreService) {
   }
 
@@ -23,16 +24,29 @@ export class UserLoginService {
   public login(user: User) {
     console.log("login service:", user);
     return this.http
-      .post(this.coreService.baseUrl + "/api/login", JSON.stringify(user))
-      .map((response: Response) => {
-        let user = response.json();
-        console.log("user object -> " + user);
-        if (user && user.token) {
-          localStorage.setItem("currentUser", JSON.stringify(user));
-          this.subject.next(Object.assign({}, user));
+      .post<User>(this.coreService.baseUrl + "/api/login", JSON.stringify(user))
+      .subscribe(
+        data => {
+          console.log("login success>" + data)
+          if (data && data.token) {
+            localStorage.setItem("currentUser", JSON.stringify(data));
+            this.subject.next(Object.assign({}, data));
+          }
+          this.router.navigateByUrl("home");
+        },
+        error => {
+          console.error(error);
         }
-        return response;
-      });
+      );
+    // .map((response: Response) => {
+    //   let user = response.json();
+    //   console.log("user object -> " + user);
+    //   if (user && user.token) {
+    //     localStorage.setItem("currentUser", JSON.stringify(user));
+    //     this.subject.next(Object.assign({}, user));
+    //   }
+    //   return response;
+    // });
     // .subscribe(
     //   data => {
     //     console.log("login success>" + data);

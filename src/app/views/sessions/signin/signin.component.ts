@@ -37,15 +37,7 @@ export class SigninComponent implements OnInit {
     user.password = this.signinData.password;
 
     console.log(user);
-    this.userLoginService.login(user).subscribe(
-      data => {
-        console.log("login success>" + data)
-        this.router.navigateByUrl("home");
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    this.userLoginService.login(user);
 
     // TODO deal with login result
 

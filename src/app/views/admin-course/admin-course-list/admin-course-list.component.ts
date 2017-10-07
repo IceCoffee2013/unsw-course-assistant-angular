@@ -122,7 +122,7 @@ export class AdminCourseListComponent implements OnInit {
       }
     );
     // server delete
-    this.courseService.delectCourse(course.id);
+    this.courseService.deleteCourse(course.id);
     this.selectedCourse = null;
   }
 

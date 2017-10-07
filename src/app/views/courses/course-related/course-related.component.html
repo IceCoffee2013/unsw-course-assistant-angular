@@ -7,12 +7,11 @@
     </div>
   </md-card-title>
 <md-nav-list>
-  <md-list-item *ngFor="let cour of course">
-    <a md-line [routerLink]="['/course/detail',cour.id]">{{ cour.id }}</a>
+  <md-list-item *ngFor="let c of course">
+    <a md-line [routerLink]="['/course/detail',c.id]">{{ c.code }}</a>
     <button md-icon-button>
       <md-icon>info_outline</md-icon>
     </button>
   </md-list-item>
 </md-nav-list>
 </md-card>
-

@@ -25,7 +25,7 @@ export class CourseRelatedComponent implements OnInit {
 
   public getRelatedCourse(id: string) {
     this.courseListService
-      .getCourseList(id)
+      .getRelatedCourses(id)
       .subscribe(
         data => this.course = data,
         error => console.error(error)
