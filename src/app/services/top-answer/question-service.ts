@@ -20,15 +20,14 @@ export class QuestionService {
   }
 
   public getQuestionList(searchText: string, page: number = 1): Observable<Question[]> {
-    const params = new HttpParams();
+    let options = {};
     if (searchText) {
-      params.set('searchText', searchText).set('page', String(page));
-      console.log(`searchText=${searchText}`);
-    } else {
-      params.set('page', String(page));
+      const params: HttpParams = new HttpParams().set('searchText', searchText);
+      options = {params: params};
+      console.log(`set searchText = ${searchText}`, params);
     }
 
-    return this.http.get<Question[]>(this.coreService.baseUrl + "/api/question", {params});
+    return this.http.get<Question[]>(this.coreService.baseUrl + "/api/question", options);
   }
 
   public addQuestion(data: any): Observable<Question> {

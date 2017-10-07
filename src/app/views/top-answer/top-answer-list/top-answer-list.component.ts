@@ -26,7 +26,6 @@ export class TopAnswerListComponent implements OnInit {
   public currentPage: number = 1;
 
   public searchText: string;
-  public searchTextStream: Subject<string> = new Subject<string>();
 
   public questionList: Array<Question>;
 
@@ -44,15 +43,6 @@ export class TopAnswerListComponent implements OnInit {
       console.log(params);
       this.loadData(this.searchText, this.currentPage);
     });
-
-    this.searchTextStream
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .subscribe(
-        searchText => {
-        console.log("query", this.searchText);
-        this.loadData(this.searchText, this.currentPage)
-      });
 
   }
 
@@ -101,10 +91,13 @@ export class TopAnswerListComponent implements OnInit {
   public onAdd(item) {
     console.log('tag added: value is ' + item.value);
     this.searchText = item.value.toLowerCase();
-    this.searchTextStream.next(this.searchText);
+    this.loadData(this.searchText, 1);
+  }
 
-
-    // do search
+  public onRemove(item) {
+    console.log('tag remove: value is ' + item.value);
+    this.searchText = null;
+    this.loadData(null, 1);
   }
 
 }
