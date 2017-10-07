@@ -12,6 +12,11 @@ export class CourseDetailService {
   constructor(public http: Http) {
   }
 
+  /**
+   * @Deprecated
+   * @param id
+   * @returns {Observable<R>}
+   */
   public getCourse(id: string): Observable<Course> {
     return this.http
       .get(this.courseDetailURL + "/" + id)

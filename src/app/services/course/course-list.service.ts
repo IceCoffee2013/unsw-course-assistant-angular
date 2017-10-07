@@ -46,12 +46,11 @@ export class CourseListService {
   }
 
   public addCourse(data: any): Observable<any> {
-    return this.http.post(this.courseListURL, data);
+    return this.http.post(this.coreService.baseUrl + "/api/course", data);
   }
 
-  public deleteCourse(courseID: string): Observable<any> {
-    return this.http.delete(this.deleteCourseURL)
-      .map((res: Response) => res.json());
+  public deleteCourse(id: string): Observable<any> {
+    return this.http.delete(this.coreService.baseUrl + "/api/course/" + id);
   }
 
   public getCourse(id: string): Observable<Course> {
