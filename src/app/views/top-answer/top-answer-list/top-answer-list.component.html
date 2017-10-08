@@ -33,14 +33,13 @@
     <div fxLayout="row" fxLayoutWrap="wrap">
       <div
         fxFlex="100"
-        fxFlex.gt-xs="50" *ngFor="let question of questionList">
-
-        <md-card class="default">
+        fxFlex.gt-xs="100" *ngFor="let question of questionList">
+        <md-card class="question-card">
           <md-card-title>
             <a [routerLink]="['/question/detail',question.id]"><span>{{question.title}}</span></a>
           </md-card-title>
           <md-card-subtitle>
-            <md-chip selected *ngFor="let tag of question?.tags">
+            <md-chip selected *ngFor="let tag of question?.tags" class="question-chips">
               {{ tag.name }}
             </md-chip>
           </md-card-subtitle>
@@ -51,7 +50,7 @@
           </md-card-content>
           <md-divider></md-divider>
           <md-card-actions>
-            <button md-icon-button (click)="onLike(question)">
+            <button md-icon-button class="question-btn" (click)="onLike(question)">
               <md-icon class="text-muted" color="primary">{{question.liked ? "favorite":"favorite_border"}}</md-icon>
             </button>
             <button md-icon-button>
@@ -60,7 +59,6 @@
           </md-card-actions>
         </md-card>
       </div>
-
     </div>
   </div>
 

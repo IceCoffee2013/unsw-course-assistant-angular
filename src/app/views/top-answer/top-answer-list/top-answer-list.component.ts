@@ -116,7 +116,7 @@ export class QuestionContentDialog {
     title: '',
     description: '',
     tags: []
-  }
+  };
 
   constructor(public questionService: QuestionService, public router: Router) {
 

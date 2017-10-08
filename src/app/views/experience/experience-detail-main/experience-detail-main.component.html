@@ -13,13 +13,13 @@
         <md-icon color="primary">add_box</md-icon>
       </button>
     </md-card-header>
-    <md-card-content>
+    <md-card-content class="article-content">
+      <h4>{{experience.title}}</h4>
       <div [innerHtml]="experience.content">
-
       </div>
     </md-card-content>
     <md-card-actions fxFlexOffset="1">
-      <md-chip selected *ngFor="let tag of experience?.tags">
+      <md-chip selected *ngFor="let tag of experience?.tags" class="experience-chip">
         {{ tag.name }}
       </md-chip>
     </md-card-actions>

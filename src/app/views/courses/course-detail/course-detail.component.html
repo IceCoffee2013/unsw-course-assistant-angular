@@ -29,13 +29,14 @@
             <md-icon class="text-muted">location_on</md-icon>
             {{ course.school }}
           </p>
-          <md-divider></md-divider>
-          <div>
+          <md-divider class="mat-bg-primary"></md-divider>
+          <div class="course-description">
             <!--<md-icon class="text-muted">drafts</md-icon>-->
             <div [innerHTML]="course.description"></div>
             <!--{{ course.description }}-->
           </div>
         </div>
+
       </md-card-content>
       <md-card-footer class="course-detail-footer"></md-card-footer>
     </md-card>

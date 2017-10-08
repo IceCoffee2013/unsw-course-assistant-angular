@@ -9,7 +9,7 @@
         </div>
         <form #signinForm="ngForm" (ngSubmit)="signin()">
           <div class="">
-            <md-input-container class="full-width">
+            <md-input-container class="signin-width">
               <input
                 mdInput
                 name="email"
@@ -24,8 +24,8 @@
               class="form-error-msg"> Email is required </small>
           </div>
 
-          <div class="">
-            <md-input-container class="full-width">
+          <div class="full-width">
+            <md-input-container class="signin-width">
               <input
                 type="password"
                 name="password"
@@ -40,14 +40,19 @@
               *ngIf="password.errors && (password.dirty || password.touched) && (password.errors.required)"
               class="form-error-msg"> Password is required </small>
           </div>
-
-          <div class="pb-1">
+<div class="pd-1">
             <md-checkbox
+              color="primary"
               name="rememberMe"
               [(ngModel)]="signinData.rememberMe"
               class="pb-1">Remember this computer</md-checkbox>
-          </div>
-
+            <md-slide-toggle
+              class="slide-margin"
+              [color]="color"
+              [checked]="isAdmin" (change)="changeuser()">
+              {{ isAdmin ? "Admin" : "User" }}
+            </md-slide-toggle>
+</div>
           <button md-raised-button class="mat-primary full-width mb-1" [disabled]="signinForm.invalid">Sign in</button>
           <div class="text-center">
             <a [routerLink]="['/sessions/forgot-password']" class="mat-primary text-center full-width">Forgot password</a>

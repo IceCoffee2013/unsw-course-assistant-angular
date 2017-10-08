@@ -25,7 +25,6 @@ export class ExperienceListComponent implements OnInit {
   //不要手动对这个属性进行赋值，它是和分页工具条自动绑定的
   public currentPage: number = 1;
   // public numPages
-
   public searchText: string;
   public searchTextStream: Subject<string> = new Subject<string>();
 
@@ -104,6 +103,10 @@ export class ExperienceListComponent implements OnInit {
     let pageNumber = event.pageIndex + 1;
     console.log("event page: " + pageNumber);
     this.router.navigateByUrl("experience/page/" + pageNumber);
+  }
+
+  public bookExperience(experience: Experience){
+    experience.marked = !experience.marked;
   }
 
 }

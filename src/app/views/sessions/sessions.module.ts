@@ -10,7 +10,7 @@ import {LockscreenComponent} from "./lockscreen/lockscreen.component";
 import {SigninComponent} from "./signin/signin.component";
 import {SignupComponent} from "./signup/signup.component";
 import {SessionsRoutes} from "./sessions.routing";
-
+import {MdSlideToggleModule} from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +20,7 @@ import {SessionsRoutes} from "./sessions.routing";
     MdInputModule,
     MdCardModule,
     MdCheckboxModule,
+    MdSlideToggleModule,
     FlexLayoutModule,
     CommonDirectivesModule,
     RouterModule.forChild(SessionsRoutes)

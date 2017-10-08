@@ -13,6 +13,8 @@ export class SigninComponent implements OnInit {
   @ViewChild(MdProgressBar) progressBar: MdProgressBar;
   @ViewChild(MdButton) submitButton: MdButton;
 
+  isAdmin = false;
+  color = 'primary';
   signinData = {
     email: '',
     password: '',
@@ -41,6 +43,9 @@ export class SigninComponent implements OnInit {
 
     // TODO deal with login result
 
+  }
+  changeuser(){
+    this.isAdmin = !this.isAdmin;
   }
 
 }

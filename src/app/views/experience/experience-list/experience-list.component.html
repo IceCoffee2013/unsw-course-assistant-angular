@@ -34,20 +34,21 @@
     </md-card-header>
     <div class="experience-content">
       <a [routerLink]="['/experience/detail',experience.id]">
-        <h4>
-          <i>{{experience.title}}</i>
-        </h4>
+        <h5>
+          <strong><i>{{experience.title}}</i></strong>
+        </h5>
         <p [innerHTML]="experience.content"></p>
       </a>
     </div>
+
     <div fxFlexOffset="1" class="experience-button">
       <button md-icon-button class="md-like-button" (click)="onLike(experience)">
         <md-icon color="primary" aria-hidden="true">{{experience.liked ? "favorite" : "favorite_border"}}</md-icon>
       </button>
       <span fxFlex="83"></span>
       <!--this is comment-->
-      <button md-icon-button>
-        <md-icon color="primary" aria-hidden="true">bookmark_border</md-icon>
+      <button md-icon-button (click)="bookExperience(experience)">
+        <md-icon color="primary" aria-hidden="true">{{experience.marked ? "bookmark" : "bookmark_border"}}</md-icon>
       </button>
     </div>
   </md-card>

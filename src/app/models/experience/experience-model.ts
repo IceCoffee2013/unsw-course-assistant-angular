@@ -7,6 +7,6 @@ export class Experience {
   postTime: Date
   tags: Tag[] = [];
   liked: boolean = false;
-
+  marked:boolean = false;
 }
 
