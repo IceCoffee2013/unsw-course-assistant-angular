@@ -194,31 +194,37 @@ export class CommentComponent implements OnInit {
     let data = {
       commentId: this.tmpReply.commentId,
       replyContent: this.tmpReply.replyContent,
-      replier: this.tmpReply.replier,
+      replier: this.userName,
       toWho: this.tmpReply.toWho
     }
+
+    data.replyContent = data.replyContent.replace("@"+data.toWho, "");
+    console.log("data content reply", data);
+
     let date = new Date();
     this.tmpReply.replyTime = date;
     console.log("add reply", this.tmpReply);
 
-    // local add TODO add time after post
-    this.comments.forEach(
-      value => {
-        if (value.id == this.tmpReply.commentId) {
-          value.replies.push(this.tmpReply);
-        }
-      }
-    );
+    // // local add time after post
+    // this.comments.forEach(
+    //   value => {
+    //     if (value.id == this.tmpReply.commentId) {
+    //       value.replies.push(this.tmpReply);
+    //     }
+    //   }
+    // );
 
     // remote add
     this.commentService.addReply(data).subscribe(
       data => {
         console.log("reply success", data);
-        for (let i in this.comments) {
-          if (this.comments[i].id === data.id) {
-            this.comments[i] = data;
-          }
-        }
+        this.loadComment(this.postId);
+        // for (let i in this.comments) {
+        //   if (this.comments[i].id === data.id) {
+        //     this.comments[i] = data;
+        //     console.log("insert", data);
+        //   }
+        // }
       },
       err => {
         console.log("add reply err", err);

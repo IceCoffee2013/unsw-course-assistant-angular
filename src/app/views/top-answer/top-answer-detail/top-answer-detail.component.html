@@ -30,7 +30,7 @@
       </a>
     </div>
     <div fxFlexOffset="1">
-      <span><strong>{{ answer.author }}</strong></span><br><span>computer science</span>
+      <span><strong>{{ answer.author }}</strong></span><br><span>{{ answer.postTime | date:'medium'}}</span>
     </div>
     <button md-icon-button fxFlexOffset="1">
       <md-icon color="primary">add_box</md-icon>
