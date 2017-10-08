@@ -1,9 +1,9 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {User} from "../../../models/user/user-model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ExperienceListService} from "../../../services/experience/experience-list.service";
 import {Experience} from "../../../models/experience/experience-model";
 import {Subject} from "rxjs/Subject";
+import {ExperienceListService} from "../../../services/experience/experience-list.service";
 
 @Component({
   selector: 'app-experience-list',
@@ -17,7 +17,7 @@ export class ExperienceListComponent implements OnInit {
   // tags
   public tags = [];
   public autoCompleteTags: string[] = ['cse', 'java', 'php', 'unsw'];
-  public userName:String;
+  public userName: String;
   // public maxSize: number = 12;
   public itemsPerPage: number = 12;
   public pageSizeOptions = [12, 15, 24];
@@ -32,38 +32,30 @@ export class ExperienceListComponent implements OnInit {
   public experienceList: Array<Experience>;
 
 
-
-
   constructor(public router: Router,
               public activeRoute: ActivatedRoute,
               public experienceService: ExperienceListService) {
 
   }
+
   ngOnInit() {
-    let user: User = JSON.parse(localStorage.getItem("currentUser"));
-    // console.log('test1', user);
-    if (user == null) {
-      console.log("CommentComponent: not log in");
-      this.userName = "";
-    } else {
-      console.log(user.username);
-      this.userName = user.username;
-    }
     this.activeRoute.params.subscribe(params => {
       // 这里可以从路由里面获取URL参数
       console.log(params);
+      this.currentPage = params['page'];
       this.loadData(this.searchText, this.currentPage);
     });
 
-    this.searchTextStream
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .subscribe(searchText => {
-        console.log(this.searchText);
-        this.loadData(this.searchText, this.currentPage)
-      });
+    // this.searchTextStream
+    //   .debounceTime(500)
+    //   .distinctUntilChanged()
+    //   .subscribe(searchText => {
+    //     console.log(this.searchText);
+    //     this.loadData(this.searchText, this.currentPage)
+    //   });
 
   }
+
   public loadData(searchText: string, page: number) {
     let offset = (this.currentPage - 1) * this.itemsPerPage;
     let end = (this.currentPage) * this.itemsPerPage;
@@ -71,6 +63,7 @@ export class ExperienceListComponent implements OnInit {
     return this.experienceService.getExperienceList(searchText, page).subscribe(
       res => {
         this.totalItems = res.length;
+        console.log("ex", res);
         //TODO.正式环境中，需要去掉slice
         this.experienceList = res.slice(offset, end > this.totalItems ? this.totalItems : end);
       },
@@ -81,11 +74,36 @@ export class ExperienceListComponent implements OnInit {
       }
     );
   }
-  onLike(experience:Experience){
+
+  public onLike(experience: Experience) {
     experience.liked = !experience.liked;
   }
 
-  onAdd(item) {
+  public onAdd(item) {
+    console.log('tag added: value is ' + item.value);
+    this.searchText = item.value.toLowerCase();
+    this.loadData(this.searchText, 1);
+  }
+
+  public onRemove(item) {
+    console.log('tag remove: value is ' + item.value);
+    this.searchText = null;
+    this.loadData(null, 1);
+  }
+
+  public goToPublish() {
+    let user: User = JSON.parse(localStorage.getItem("currentUser"));
+    if (user) {
+      this.router.navigateByUrl("experience/publish");
+    } else {
+      this.router.navigateByUrl("sessions/signin");
+    }
+  }
+
+  public pageChanged(event: any): void {
+    let pageNumber = event.pageIndex + 1;
+    console.log("event page: " + pageNumber);
+    this.router.navigateByUrl("experience/page/" + pageNumber);
   }
 
 }
