@@ -7,7 +7,7 @@ export class Reply {
   commentId: string;
   replyContent: string;
   replier: string;
-  to: string;
+  toWho: string;
   replyTime: Date;
-  isShow: boolean = false; // using to fold reply dialog
+  isShow: boolean = false; // using toWho fold reply dialog
 }

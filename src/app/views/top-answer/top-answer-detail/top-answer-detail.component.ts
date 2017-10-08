@@ -4,6 +4,7 @@ import {Answer} from "../../../models/top-answer/answer-model";
 import {QuestionService} from "../../../services/top-answer/question-service";
 import {AnswerService} from "../../../services/top-answer/answer-service";
 import {ActivatedRoute} from "@angular/router";
+import {User} from "../../../models/user/user-model";
 
 @Component({
   selector: 'app-top-answer-detail',
@@ -13,9 +14,10 @@ import {ActivatedRoute} from "@angular/router";
 export class TopAnswerDetailComponent implements OnInit {
 
   public commentType:string = "answer";
-  public editorData;
+  public editorData: string = "";
   public question: Question = new Question();
   public answers: Answer[];
+  public user: User;
 
   constructor(public questionService: QuestionService,
               public answerService: AnswerService,
@@ -31,6 +33,9 @@ export class TopAnswerDetailComponent implements OnInit {
         this.loadAnswerList(questionId);
       }
     );
+    if (localStorage.getItem("currentUser") && JSON.parse(localStorage.getItem("currentUser"))) {
+      this.user = JSON.parse(localStorage.getItem("currentUser"));
+    }
   }
 
   public loadQuestion(questionId: string) {
@@ -91,6 +96,22 @@ export class TopAnswerDetailComponent implements OnInit {
       answer.likes -= 1;
       this.answerService.doLike(answer);
     }
+  }
+
+  public addAnswer() {
+    let ans = new Answer();
+    ans.author = this.user.username;
+    ans.content = this.editorData;
+    ans.questionId = this.question.id;
+    this.answerService.addAnswer(ans).subscribe(
+      data => {
+        console.log("ans", data);
+        this.loadAnswerList(this.question.id);
+      },
+      err => {
+        console.log("add answer err", err);
+      }
+    );
   }
 
   public onEditorCreated() {

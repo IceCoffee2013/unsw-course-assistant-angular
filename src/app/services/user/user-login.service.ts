@@ -21,7 +21,7 @@ export class UserLoginService {
     return this.subject.asObservable();
   }
 
-  public login(user: User) {
+  public login(user: User, isAdmin: boolean) {
     console.log("login service:", user);
     return this.http
       .post<User>(this.coreService.baseUrl + "/api/login", JSON.stringify(user))
@@ -32,7 +32,11 @@ export class UserLoginService {
             localStorage.setItem("currentUser", JSON.stringify(data));
             this.subject.next(Object.assign({}, data));
           }
-          this.router.navigateByUrl("home");
+          if (isAdmin) {
+            this.router.navigateByUrl("admin/home");
+          } else {
+            this.router.navigateByUrl("home");
+          }
         },
         error => {
           console.error(error);

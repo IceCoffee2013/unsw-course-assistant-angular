@@ -15,6 +15,7 @@ export class SigninComponent implements OnInit {
 
   isAdmin = false;
   color = 'primary';
+
   signinData = {
     email: '',
     password: '',
@@ -39,12 +40,13 @@ export class SigninComponent implements OnInit {
     user.password = this.signinData.password;
 
     console.log(user);
-    this.userLoginService.login(user);
+    this.userLoginService.login(user, this.isAdmin);
 
     // TODO deal with login result
 
   }
-  changeuser(){
+
+  changeUser(){
     this.isAdmin = !this.isAdmin;
   }
 

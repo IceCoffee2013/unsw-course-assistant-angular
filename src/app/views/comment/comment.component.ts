@@ -54,7 +54,7 @@ export class CommentComponent implements OnInit {
   }
 
   public loadComment(postId: string) {
-    return this.commentService.getComments(postId).subscribe(
+    return this.commentService.getComments(postId, this.type).subscribe(
       data => this.comments = data,
       error => console.error(error)
     );
@@ -94,7 +94,15 @@ export class CommentComponent implements OnInit {
     this.newCommentContent = "";
 
     console.log(data);
-    this.commentService.addComment(data);
+    this.commentService.addComment(data, this.type).subscribe(
+      data => {
+        console.log("add comment", data);
+        this.loadComment(this.postId);
+      },
+      err => {
+        console.log("add comment err", err);
+      }
+    );
 
   }
 
@@ -141,7 +149,15 @@ export class CommentComponent implements OnInit {
             }
           }
           // remote delete
-          this.commentService.deleteReply(comment.id, reply.id);
+          this.commentService.deleteReply(reply.id).subscribe(
+            data => {
+              console.log("delete reply", data);
+              this.loadComment(this.postId);
+            },
+            err => {
+              console.log("delete reply err", err);
+            }
+          );
         }
       });
   }
@@ -149,19 +165,19 @@ export class CommentComponent implements OnInit {
   public showReplyDialog(comment: Comment, toWho: string): void {
     if (!this.tmpReply.isShow) {
       this.tmpReply.replyContent = "@" + toWho + " ";
-      this.tmpReply.to = toWho;
+      this.tmpReply.toWho = toWho;
       this.tmpReply.commentId = comment.id;
       this.tmpReply.isShow = true;
     } else {
-      if (toWho == this.tmpReply.to) {
+      if (toWho == this.tmpReply.toWho) {
         this.tmpReply.replyContent = "";
-        this.tmpReply.to = "";
+        this.tmpReply.toWho = "";
         this.tmpReply.commentId = "";
         this.tmpReply.isShow = false;
       } else {
         this.tmpReply.replyContent = "@" + toWho + " ";
         this.tmpReply.commentId = comment.id;
-        this.tmpReply.to = toWho;
+        this.tmpReply.toWho = toWho;
       }
     }
   }
@@ -169,7 +185,7 @@ export class CommentComponent implements OnInit {
   public hideReplyDialog(): void {
     this.tmpReply.isShow = false;
     this.tmpReply.replyContent = "";
-    this.tmpReply.to = "";
+    this.tmpReply.toWho = "";
     this.tmpReply.commentId = "";
   }
 
@@ -179,7 +195,7 @@ export class CommentComponent implements OnInit {
       commentId: this.tmpReply.commentId,
       replyContent: this.tmpReply.replyContent,
       replier: this.tmpReply.replier,
-      to: this.tmpReply.to
+      toWho: this.tmpReply.toWho
     }
     let date = new Date();
     this.tmpReply.replyTime = date;
@@ -195,7 +211,19 @@ export class CommentComponent implements OnInit {
     );
 
     // remote add
-    this.commentService.addRelpy(data);
+    this.commentService.addReply(data).subscribe(
+      data => {
+        console.log("reply success", data);
+        for (let i in this.comments) {
+          if (this.comments[i].id === data.id) {
+            this.comments[i] = data;
+          }
+        }
+      },
+      err => {
+        console.log("add reply err", err);
+      }
+    );
 
     // refresh tmp
     this.tmpReply = new Reply();

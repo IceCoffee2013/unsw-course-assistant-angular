@@ -5,7 +5,7 @@ export class Answer {
   avatar: string;
   content: string;
   postTime: Date;
-  likes: number;
+  likes: number = 0;
   isUp: boolean = false;    // vote
   isDown: boolean = false;
   isShowComment = false;

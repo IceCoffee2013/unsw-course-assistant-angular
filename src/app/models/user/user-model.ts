@@ -7,7 +7,7 @@ export class User {
   nickname: string;
   // confirmPassword: string;
   bio: string;
-  image: string;
+  avatar: string;
   following: boolean;
   role: string;
   token: string;

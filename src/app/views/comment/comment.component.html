@@ -22,7 +22,7 @@
         <a class="name" href="javascript:void(0);">{{comment.commenter}}</a>
       </p>
       <div class="comment-footer clearfix">
-        <span class="publish-time pull-left" style="margin-top:0px;">{{comment.postTime}}</span>
+        <span class="publish-time pull-left" style="margin-top:0px;">{{comment.postTime | date:'medium'}}</span>
         <a *ngIf="comment.commenter == userName" class="like delete" href="javascript:void(0);" (click)="deleteComment(comment)">
           <span><md-icon color="primary">delete</md-icon></span>
         </a>
@@ -37,12 +37,12 @@
     <div class="second-level" *ngFor="let reply of comment.replies">
       <p class="reply">
         <a href="javascript:void(0);" class="blue-link">{{reply.replier}}</a>:
-        <a href="javascript:void(0);" class="blue-link">@{{reply.to}}</a>
+        <a href="javascript:void(0);" class="blue-link">@{{reply.toWho}}</a>
         <span>{{reply.replyContent}}</span>
       </p>
       <div class="comment-footer clearfix">
               <span class="publish-time pull-left" style="margin-top:0px;">
-                {{reply.replyTime}}
+                {{reply.replyTime | date:'medium'}}
               </span>
         <a *ngIf="reply.replier == username" class="like delete" href="javascript:void(0);" (click)="deleteReply(comment, reply)">
           <span><md-icon color="primary">delete</md-icon></span>
