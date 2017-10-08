@@ -1,10 +1,12 @@
+import {Tag} from "../top-answer/tag-model";
 export class Experience {
-  id: number
+  id: string
+  title: string
   author: string
-  postTime:Date
-  liked:boolean=false
-  tag:string
-  title:string
-  text:string
+  content: string
+  postTime: Date
+  tags: Tag[] = [];
+  liked: boolean = false;
+
 }
 

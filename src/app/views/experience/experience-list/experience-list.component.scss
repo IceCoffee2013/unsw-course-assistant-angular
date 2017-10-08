@@ -1,11 +1,10 @@
-
-
 $font-size: 15px;
 $line-height: 1.4;
 $lines-to-show: 3;
 .ask-question-card {
   padding: 5px 20px 10px;
 }
+
 .comment-input {
   width: 450px;
   height: 80px;
@@ -35,22 +34,27 @@ $lines-to-show: 3;
 .comment-divider {
   margin-top: 30px;
 }
-.comment-summit{
+
+.comment-summit {
   float: right;
   font-size: 18px;
   display: inline-block;
 }
-.experience-content{
-p{
-  display:block ;
-  height: $font-size*$line-height*$lines-to-show;
-  font-size: $font-size;
-  line-height: $line-height;
-  margin: 0 auto;
-  -webkit-line-clamp: $lines-to-show;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
+.experience-content {
+  p {
+    display: block;
+    height: $font-size*$line-height*$lines-to-show;
+    font-size: $font-size;
+    line-height: $line-height;
+    margin: 0 auto;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
+.course-paginator md-paginator {
+  margin: 6px;
+}

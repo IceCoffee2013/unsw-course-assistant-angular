@@ -1,6 +1,7 @@
-import {Component, OnInit, AfterViewInit, OnDestroy} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Experience} from "../../../models/experience/experience-model";
+import {Component, OnInit} from "@angular/core";
+import {ExperienceListService} from "../../../services/experience/experience-list.service";
+import {Tag} from "../../../models/top-answer/tag-model";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,32 +11,46 @@ import {Experience} from "../../../models/experience/experience-model";
 })
 
 export class ExperiencePublishComponent implements OnInit {
-  public editor;
-  public experienceForm: FormGroup;
-  public editExperience = new Experience();
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
+  items = []
+  autocompleteItems: string[] = ['comp', 'art', 'cse'];
+
+  writeData = {
+    title: '',
+    content: '',
+    tags: []
+  }
+
+  constructor(public experienceService: ExperienceListService, public router: Router) {
+
   }
 
   ngOnInit() {
   }
 
 
-  createForm() {
-    this.experienceForm = this.fb.group({
-      title: ['', Validators.required, Validators.maxLength(50), Validators.minLength(5)],
-      text: '',
-      tags: ''
-    })
-  }
-
-  summit = false;
-
   onSubmit() {
-    this.editExperience = this.experienceForm.value;
-    console.log(this.editExperience.text);
-    this.summit = true;
+    let tags: Tag[] = [];
+
+    for (let item of this.items) {
+      let t = new Tag();
+      t.name = item.value;
+      tags.push(t);
+    }
+
+    this.writeData.tags = tags;
+
+    this.experienceService.addExperience(this.writeData).subscribe(
+      data => {
+        console.log("add experience success", data);
+        this.router.navigateByUrl("experience");
+      },
+      err => {
+        console.log("Error occured");
+        this.router.navigateByUrl("experience");
+      }
+    );
+
   }
 
   onContentChanged() {
@@ -45,85 +60,4 @@ export class ExperiencePublishComponent implements OnInit {
   onSelectionChanged() {
   }
 
-  // public fileInputChangeHandler(): void {
-  //   let fileInput = <HTMLInputElement>document.getElementById('img_input');
-  //   let inputValue = fileInput.value;
-  //   if (!inputValue) {
-  //     return;
-  //   }
-  //   let fileForm=<HTMLFormElement>document.getElementById('file_upload_form');
-  //   fileForm.action="fileuploadurl";
-  //   fileForm.onsubmit=function(event){
-  //     console.log(event);
-  //     event.preventDefault();
-  //     let file=fileInput.files[0];
-  //     let formData = new FormData();
-  //     formData.append('file', file, file.name);
-  //
-  //     let xhr = new XMLHttpRequest();
-  //     xhr.withCredentials = false;
-  //     xhr.open('POST', 'file_upload_URL.php');
-  //     xhr.onload = function() {
-  //       let json;
-  //       if (xhr.status !== 200) {
-  //         console.log('HTTP Error: ' + xhr.status);
-  //         return;
-  //       }
-  //       json = JSON.parse(xhr.responseText);
-  //       if (!json || typeof json.location != 'string') {
-  //         console.log('Invalid JSON: ' + xhr.responseText);
-  //         return;
-  //       }
-  //       console.log(json.location);
-  //       fileInput.value='';
-  //     };
-  //     xhr.send(formData);
-  //   }
-  //   fileForm.submit();
-  //   fileInput.value='';
-  // }
-  //
-  // ngAfterViewInit() {
-  //   /**
-  //    *  【非常重要】
-  //    *  关于TinyMCE的完整文档，请查看这里https://www.tinymce.com/docs/
-  //    */
-  //   tinymce.init({
-  //     selector: '#post_editor',
-  //     plugins: [
-  //       'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-  //       'searchreplace wordcount visualblocks visualchars code fullscreen',
-  //       'insertdatetime media nonbreaking save table contextmenu directionality',
-  //       'emoticons template paste textcolor colorpicker textpattern imagetools codesample'
-  //     ],
-  //     toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-  //     toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-  //     image_advtab: true,
-  //     file_browser_callback_types: 'image',
-  //     file_browser_callback: function(field_name, url, type, win) {
-  //       console.log(type);
-  //       console.log(type=='image');
-  //       if(type=='image'){
-  //         let event = new MouseEvent('click', {
-  //           'view': window,
-  //           'bubbles': true,
-  //           'cancelable': true
-  //         });
-  //         let fileInput = document.getElementById('img_input');
-  //         fileInput.dispatchEvent(event);
-  //       }
-  //     },
-  //     setup: editor => {
-  //       this.editor = editor;
-  //       editor.on('keyup', () => {
-  //         const content = editor.getContent();
-  //         console.log(content);
-  //       });
-  //     }
-  //   });
-  // }
-  //
-  // ngOnDestroy() {
-  //   tinymce.remove(this.editor);
-  // }
 }

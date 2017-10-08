@@ -49,6 +49,10 @@ export class CourseListService {
     return this.http.post(this.coreService.baseUrl + "/api/course", data);
   }
 
+  public updateCourse(data: any): Observable<any> {
+    return this.http.put(this.coreService.baseUrl + "/api/course", data);
+  }
+
   public deleteCourse(id: string): Observable<any> {
     return this.http.delete(this.coreService.baseUrl + "/api/course/" + id);
   }

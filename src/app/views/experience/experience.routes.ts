@@ -14,7 +14,7 @@ export const experienceRoutes = [
     component: ExperienceListComponent
   },
   {
-    path: 'experiencedetail',
+    path: 'detail/:id',
     component: ExperienceDetailMainComponent
   },
   {

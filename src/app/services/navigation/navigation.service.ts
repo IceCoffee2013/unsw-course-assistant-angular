@@ -55,13 +55,14 @@ export class NavigationService {
       icon: 'live_help',
       state: 'experience'
     },
-    {
-      name: 'MESSAGES',
-      type: 'link',
-      tooltip: 'messages',
-      icon: 'chat',
-      state: 'messages'
-    }
+    // {
+    //   name: 'MESSAGES',
+    //   type: 'link',
+    //   tooltip: 'messages',
+    //   icon: 'chat',
+    //   state: 'messages'
+    // }
+    // TODO
   ]
 
   // Icon menu TITLE at the very top of navigation.

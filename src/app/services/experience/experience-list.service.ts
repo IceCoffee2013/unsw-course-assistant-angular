@@ -1,52 +1,54 @@
 /**
  * Created by langley on 6/8/17.
  */
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions,URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import {Experience} from 'app/models/experience/experience-model';
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs/Rx";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
+import {Experience} from "app/models/experience/experience-model";
+import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
+import {CoreService} from "../core.service";
 
 @Injectable()
 export class ExperienceListService {
   public experienceListURL = 'mock-data/experience-list-mock.json';
   public experienceListSearchURL = 'mock-data/experience-list-search-mock.json';
-  public delExperienceURL = "";
-  constructor(public http: Http) { }
 
-  public getExperienceList(searchText: string, page: number= 1): Observable<Experience[]>{
-    let url = this.experienceListURL;
-    let params = new URLSearchParams();
+  constructor(public http: HttpClient, public coreService: CoreService) {
+  }
+
+  public getExperienceList(searchText: string, page: number = 1): Observable<Experience[]> {
+    let options = {};
     if (searchText) {
-      params.set('searchText',searchText);
-      url = this.experienceListSearchURL;
-      console.log(`searchText=${searchText}`);
+      const params: HttpParams = new HttpParams().set('searchText', searchText);
+      options = {params: params};
+      console.log(`set searchText = ${searchText}`, params);
     }
-    params.set('page',String(page));
 
-    return this.http
-      .get(url,{search:params})
-      .map((res:Response) => {
-        let result = res.json();
-        // console.log(result);
-        return result;
-      })
-      .catch((error:any) => Observable.throw(error || 'Server error'));
+    return this.http.get<Experience[]>(this.coreService.baseUrl + "/api/article", options);
   }
 
   // TODO like
   public doLike() {
 
   }
-  public addExperience(data: any): Observable<any> {
-    return this.http.post(this.experienceListURL, data);
+
+  public getExperience(id: string): Observable<Experience> {
+    const params = new HttpParams().set('id', id);
+    return this.http
+      .get<Experience>(this.coreService.baseUrl + "/api/article/" + id);
   }
+
+  public addExperience(data: any): Observable<any> {
+    const headers = new HttpHeaders()
+      .set("Content-Type", "application/json");
+    return this.http.post<Experience>(this.coreService.baseUrl + "/api/article", JSON.stringify(data), {headers});
+  }
+
   public search() {
   }
-  public deleteExperience(experienceID: number):Observable<any> {
-    return this.http.delete(this.delExperienceURL)
-      .map((res: Response) => res.json());
+
+  public deleteExperience(id: string): Observable<any> {
+    return this.http.delete(this.coreService.baseUrl + "/api/article/" + id);
   }
 }

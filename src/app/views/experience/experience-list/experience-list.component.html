@@ -1,45 +1,48 @@
 <div fxLayout="row" fxLayoutWrap="true">
-<md-card class="ask-question-card" fxFlex="97">
-  <md-card-content class="full-width">
-    <!--<div fxFlex="88">-->
-    <tag-input [(ngModel)]="tags"
-               [addOnBlur]="true"
-               [clearOnBlur]="true"
-               [maxItems]="4"
-               placeholder="Enter the tags..."
-               (onAdd)="onAdd($event)"
-               name="tags" fxFlex="90">
-      <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
-      </tag-input-dropdown>
-    </tag-input>
-    <!--</div>-->
-    <button md-raised-button [disabled]="!userName" color="primary" fxFlexAlign="end" fxFlexOffset="1"
-            routerLink="/experience/publish">write
-    </button>
-  </md-card-content>
-</md-card>
-  <md-card *ngFor="let experience of  experienceList" fxFlex="48" fxFlex.sm="98">
+  <md-card class="ask-question-card" fxFlex="97">
+    <md-card-content class="full-width">
+      <!--<div fxFlex="88">-->
+      <tag-input [(ngModel)]="tags"
+                 [addOnBlur]="true"
+                 [clearOnBlur]="true"
+                 [maxItems]="1"
+                 placeholder="Enter the tags..."
+                 (onAdd)="onAdd($event)"
+                 (onRemove)="onRemove($event)"
+                 name="tags" fxFlex="90">
+        <tag-input-dropdown [autocompleteItems]="autoCompleteTags">
+        </tag-input-dropdown>
+      </tag-input>
+      <!--</div>-->
+      <button md-raised-button
+              color="primary" fxFlexAlign="end" fxFlexOffset="1"
+              (click)="goToPublish()">
+        Write
+      </button>
+    </md-card-content>
+  </md-card>
+  <md-card *ngFor="let experience of experienceList" fxFlex="48" fxFlex.sm="98">
     <md-card-header>
       <div md-card-avatar>
         <a href="" class="toolbar-avatar md mr-1" routerLink="/user/user">
-          <img src="../../../assets/images/face-2.jpg">
+          <img src="assets/images/face-2.jpg">
         </a>
       </div>
       <div fxFlexOffset="1">
-        <span><strong>{{experience.author}}</strong></span><br><span>{{experience.postTime}}</span>
+        <span><strong>{{experience.author}}</strong></span><br><span>{{ experience.postTime | date:'medium' }}</span>
       </div>
     </md-card-header>
     <div class="experience-content">
-      <a routerLink="/experience/experiencedetail">
+      <a [routerLink]="['/experience/detail',experience.id]">
         <h4>
           <i>{{experience.title}}</i>
         </h4>
-        <p [innerHTML]="experience.text"></p>
+        <p [innerHTML]="experience.content"></p>
       </a>
     </div>
     <div fxFlexOffset="1" class="experience-button">
-      <button md-icon-button class="md-like-button" (click)="onLike(experience)" >
-        <md-icon color="primary" aria-hidden="true">{{experience.liked ? "favorite":"favorite_border"}}</md-icon>
+      <button md-icon-button class="md-like-button" (click)="onLike(experience)">
+        <md-icon color="primary" aria-hidden="true">{{experience.liked ? "favorite" : "favorite_border"}}</md-icon>
       </button>
       <span fxFlex="83"></span>
       <!--this is comment-->
@@ -48,4 +51,14 @@
       </button>
     </div>
   </md-card>
+
+  <div fxFlex="100" class="course-paginator">
+    <md-paginator
+      [length]="totalItems"
+      [pageSize]="itemsPerPage"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageChanged($event)">
+    </md-paginator>
+  </div>
+
 </div>

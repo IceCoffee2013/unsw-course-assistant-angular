@@ -1,34 +1,42 @@
 <div class="edit-experience-container">
-    <form [formGroup]="experienceForm">
-      <div class="from-group">
-        <label class="center-block">
-          <md-input-container fxFlexFill>
-            <input mdInput class="form-control" placeholder="Title" formControlName="title" required>
-          </md-input-container>
-        </label>
-      </div>
+  <form #writeForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="from-group">
+      <label class="center-block">
+        <md-input-container fxFlexFill>
+          <input mdInput
+                 name="title"
+                 class="form-control"
+                 placeholder="Title"
+                 [(ngModel)]="writeData.title"
+                 required>
+        </md-input-container>
+      </label>
+    </div>
 
-        <div class="form-group" fxFlexFill>
-          <quill-editor
-            theme="snow"
-            [(ngModel)]="editExperience.text"
-            (onContentChanged)="onContentChanged()"
-            formControlName="text"
-            onSelectionChanged="onSelectionChanged()"></quill-editor>
-          </div>
-      <div class="tag-input">
-        <!--<h3>Tags within an autocomplete component</h3>-->
-        <tag-input [(ngModel)]="editExperience.tag"
-                   [addOnBlur]="true"
-                   [clearOnBlur]="true"
-                   [maxItems]="5"
-                   formControlName="tags">
-          <tag-input-dropdown [autocompleteItems]="autocompleteItems">
-          </tag-input-dropdown>
-        </tag-input>
-      </div>
+    <div class="form-group" fxFlexFill>
+      <quill-editor
+        theme="snow"
+        name="content"
+        [(ngModel)]="writeData.content"
+        (onContentChanged)="onContentChanged()"
+        required
+      >
+      </quill-editor>
+    </div>
+    <div class="tag-input">
+      <!--<h3>Tags within an autocomplete component</h3>-->
+      <tag-input [(ngModel)]="items"
+                 [addOnBlur]="true"
+                 [clearOnBlur]="true"
+                 [maxItems]="3"
+                 name="tags"
+      >
+        <tag-input-dropdown [autocompleteItems]="autocompleteItems">
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
 
-          <button md-raised-button color="primary" class="edit-summit-button" (click)="onSubmit()">submit</button>
-    </form>
+    <button md-raised-button color="primary" class="edit-summit-button">submit</button>
+  </form>
 </div>
 
