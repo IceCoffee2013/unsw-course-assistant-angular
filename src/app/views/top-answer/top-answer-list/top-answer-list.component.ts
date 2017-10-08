@@ -74,7 +74,7 @@ export class TopAnswerListComponent implements OnInit {
 
   public showQuestionDialog() {
     const dialogRef = this.dialog.open(QuestionContentDialog, {
-      height: '350px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
