@@ -11,7 +11,7 @@
 </form>
 </md-card>
 
-<md-card class="comment-list">
+<md-card class="comment-list" *ngIf="comments?.length > 0">
   <!--first level comment-->
   <div class="first-level" *ngFor="let comment of comments">
     <div class="meta-top">
