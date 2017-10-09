@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class AdminQuestionListComponent implements OnInit {
 
-
+public tags = [];
   public itemsPerPage: number = 8;
   public pageSizeOptions = [8, 16, 24];
   public totalItems: number;
@@ -22,21 +22,29 @@ export class AdminQuestionListComponent implements OnInit {
   // public searchTextStream: Subject<string> = new Subject<string>();
 
   public questionList: Array<Question>;
-
+  public totalQuestionList: Array<Question>;
   constructor(public questionService: QuestionService,
               public router: Router,
               public activeRoute: ActivatedRoute,) {
   }
 
-
   ngOnInit() {
-
     this.activeRoute.params.subscribe(params => {
-      // 这里可以从路由里面获取URL参数
-      console.log(params);
-      this.loadData(this.searchText, this.currentPage);
+      // console.log(params);
+      this.currentPage = params["page"];
+      if (this.totalQuestionList && this.totalQuestionList.length > 0) {
+        console.log("loadDataByPage", this.currentPage);
+        this.loadDataByPage(this.currentPage);
+      } else {
+        this.loadData(this.searchText, this.currentPage);
+        console.log("loadData", this.currentPage);
+      }
+
     });
   }
+
+
+
 
   public loadData(searchText: string, page: number) {
     let offset = (this.currentPage - 1) * this.itemsPerPage;
@@ -57,6 +65,28 @@ export class AdminQuestionListComponent implements OnInit {
       }
     );
   }
+  public loadDataByPage(page: number) {
+    if (!this.totalQuestionList) {
+      this.loadData("", page);
+      return;
+    }
+
+    let offset = (this.currentPage - 1) * this.itemsPerPage;
+    let end = (this.currentPage) * this.itemsPerPage;
+
+    if (this.tags && this.tags.length > 0) {
+      let filterQuestion = Array<Question>();
+
+      this.totalItems = filterQuestion.length;
+      this.questionList = filterQuestion.slice(offset, end > this.totalItems ? this.totalItems : end);
+      console.log("filter size:", filterQuestion.length);
+      return;
+    }
+
+    this.totalItems = this.totalQuestionList.length;
+    this.questionList = this.totalQuestionList.slice(offset, end > this.totalItems ? this.totalItems : end);
+  }
+
 
   selectedQuestion: Question;
 
@@ -75,8 +105,21 @@ export class AdminQuestionListComponent implements OnInit {
       }
     );
     // server delete
-    this.questionService.deleteQuestion(question.id);
+    console.log(question);
+    this.questionService.deleteQuestion(question.id).subscribe(
+      data => {
+        console.log("delete success", data);
+      },
+      err => {
+        console.log("delete err", err);
+      }
+    );
+    console.log(question);
     this.selectedQuestion = null;
   }
-
+  public pageChanged(event: any): void {
+    let pageNumber = event.pageIndex + 1;
+    console.log("event page: " + pageNumber);
+    this.router.navigateByUrl("admin/question/page/" + pageNumber);
+  }
 }

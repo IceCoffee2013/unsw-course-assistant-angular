@@ -1,15 +1,5 @@
+<div>
 <div fxLayout="row">
-<!--<md-nav-list fxFlex="25">-->
-  <!--<md-list-item (click)="showaddform()"><span class="new-question">Add New Question</span></md-list-item>-->
-  <!--<md-list-item *ngFor="let question of questionList"(click)="onSelect(question)">-->
-    <!--{{question.id}} <span class="question-title">{{question.title}}</span>-->
-  <!--</md-list-item>-->
-<!--</md-nav-list>-->
-
-<!--<div *ngIf="selectedQuestion" fxFlex="30" fxFlexOffset="1">-->
-  <!--<app-admin-question-detail [question]="selectedQuestion"></app-admin-question-detail>-->
-<!--</div>-->
-
   <md-nav-list  fxFlex="40">
     <md-list-item *ngFor="let question of questionList"><a md-line (click)="onSelect(question)">{{question.title}}</a> <button class="delect-button" md-icon-button (click)="deleteQuestion(question)"><md-icon color="primary">clear</md-icon></button>
     </md-list-item>
@@ -22,8 +12,24 @@
       <tr>Author:<td>{{selectedQuestion.author}}</td></tr>
       <tr>postTime:<td>{{selectedQuestion.postTime}}</td></tr>
       <tr>Content:<td>{{selectedQuestion.description}}</td></tr>
-      <tr>Tags:<td>{{selectedQuestion.tags}}</td></tr>
+      <tr>Tags:<td>
+      <md-chip selected *ngFor="let tag of selectedQuestion.tags" class="question-chips">
+        {{ tag.name }}
+      </md-chip></td></tr>
     </table>
+  </div>
+</div>
+  <div>
+    <div>
+      <div fxFlex="100" class="course-paginator">
+        <md-paginator
+          [length]="totalItems"
+          [pageSize]="itemsPerPage"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="pageChanged($event)">
+        </md-paginator>
+      </div>
+    </div>
   </div>
   <!--<div fxFlex="30" *ngIf="show" fxFlexOffset="1">-->
   <!--<h4>New Question</h4>-->

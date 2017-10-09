@@ -48,5 +48,4 @@ export class QuestionService {
   public deleteQuestion(id: string): Observable<any> {
     return this.http.delete(this.coreService.baseUrl + "/api/question/" + id);
   }
-
 }

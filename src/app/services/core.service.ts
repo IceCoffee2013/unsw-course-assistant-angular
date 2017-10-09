@@ -9,6 +9,5 @@ import { Injectable } from '@angular/core';
 export class CoreService {
 
   constructor() { }
-
   public baseUrl: string = "http://localhost:8080";
 }

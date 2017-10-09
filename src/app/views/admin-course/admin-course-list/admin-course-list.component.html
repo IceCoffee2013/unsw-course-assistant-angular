@@ -1,100 +1,161 @@
-<div fxLayout="row">
-  <md-list fxFlex="20" fxFlexOffset="2">
-    <h2>Courses List</h2>
-    <md-list-item *ngFor="let course of courseList">
-      <a md-line (click)="onSelect(course)">
-        <span>{{course.id}}</span></a>
-      <md-icon (click)=deleteCourse(course)>clear</md-icon>
-    </md-list-item>
-  </md-list>
-  <div *ngIf="selectedCourse" fxFlex="50" fxFlexOffset="4" class="course-detail-container">
-    <h2>Course detail</h2>
-    <div class="course-form">
-      <form [formGroup]="courseForm" novalidate>
-        <div class="from-group">
-          <label class="center-block">ID</label>
-          <md-input-container fxFlexFill>
-            <input mdInput class="form-control" formControlName="id" #idContent>
-            <md-hint align="end">{{idContent.value.length}} / 20</md-hint>
-            <!--id:{{id}} {{courseForm.value | json}}-->
-            <div *ngIf="courseForm.controls['id'].hasError('required') && courseForm.controls['id'].touched"
-                 class="form-error-msg">
-              id is required.
-            </div>
-            <div *ngIf="courseForm.controls['id'].hasError('minlength') && courseForm.controls['id'].touched"
-                 class="form-error-msg">
-              min length is 4.
-            </div>
-            <div *ngIf="courseForm.controls['id'].hasError('maxlength') && courseForm.controls['id'].touched"
-                 class="form-error-msg">
-              max length is 20.
-            </div>
-          </md-input-container>
+<div>
+  <div fxLayout="row">
+    <md-list fxFlex="50" fxFlexOffset="2">
+      <h2>Courses List</h2>
+      <md-list-item *ngFor="let course of courseList">
+        <a md-line (click)="onSelect(course)">
+          <span>{{course.code}}</span></a>
+        <md-icon (click)=deleteCourse(course)>clear</md-icon>
+      </md-list-item>
+    </md-list>
 
-          <label class="center-block">Name
-            <md-input-container fxFlexFill>
-              <input mdInput class="form-control" formControlName="name" required>
-              <div *ngIf="courseForm.controls['name'].hasError('required') && courseForm.controls['name'].touched"
-                   class="form-error-msg">
-                name is required.
-              </div>
-            </md-input-container>
-          </label>
-        </div>
-
-        <div class="from-group">
-          <label class="center-block">School
-            <md-input-container fxFlexFill>
-              <input mdInput class="form-control" formControlName="school" required>
-              <div *ngIf="courseForm.controls['school'].hasError('required') && courseForm.controls['school'].touched"
-                   class="form-error-msg">
-                school is required.
-              </div>
-            </md-input-container>
-          </label>
-        </div>
-
-
-        <div class="from-group">
-          <label class="center-block">Description</label>
-          <md-input-container fxFlexFill>
-            <textarea mdInput rows="3" class="form-control" formControlName="description" #content></textarea>
-            <md-hint align="end">{{content.value.length}} / 256</md-hint>
-            <div
-              *ngIf="courseForm.controls['description'].hasError('required') && courseForm.controls['description'].touched"
-              class="form-error-msg">
-              description is required.
+    <div *ngIf="selectedCourse" fxFlex="50" fxFlexOffset="4" class="course-detail-container">
+      <h2>Course detail</h2>
+      <div class="course-form">
+        <form [formGroup]="courseForm" novalidate>
+            <div class="from-group">
+              <label class="center-block">Code</label>
+              <md-input-container fxFlexFill>
+                <input mdInput rows="3" class="form-control" formControlName="code" #content>
+                <div
+                  *ngIf="courseForm.controls['code'].hasError('required') && courseForm.controls['code'].touched"
+                  class="form-error-msg">
+                  code is required.
+                </div>
+              </md-input-container>
             </div>
-            <div
-              *ngIf="courseForm.controls['description'].hasError('minlength') && courseForm.controls['description'].touched"
-              class="form-error-msg">
-              min length is 4.
+            <div class="from-group">
+              <label class="center-block">Credit</label>
+              <md-input-container fxFlexFill>
+                <input mdInput rows="3" class="form-control" formControlName="credit" #content>
+                <div
+                  *ngIf="courseForm.controls['credit'].hasError('required') && courseForm.controls['credit'].touched"
+                  class="form-error-msg">
+                  credit is required.
+                </div>
+              </md-input-container>
             </div>
-            <div
-              *ngIf="courseForm.controls['description'].hasError('maxlength') && courseForm.controls['description'].touched"
-              class="form-error-msg">
-              max length is 256.
+            <div class="from-group">
+              <label class="center-block">faculty</label>
+              <md-input-container fxFlexFill>
+                <input mdInput rows="3" class="form-control" formControlName="faculty" #content>
+                <div
+                  *ngIf="courseForm.controls['faculty'].hasError('required') && courseForm.controls['faculty'].touched"
+                  class="form-error-msg">
+                  code is required.
+                </div>
+              </md-input-container>
             </div>
-          </md-input-container>
-        </div>
-        <div class="tag-input">
-          <!--<h3>Tags within an autocomplete component</h3>-->
-          <tag-input [(ngModel)]="selectedCourse.tag"
-                     [addOnBlur]="true"
-                     [clearOnBlur]="true"
-                     [maxItems]="5"
-                     formControlName="tags">
-            <tag-input-dropdown [autocompleteItems]="autocompleteItems">
-            </tag-input-dropdown>
-          </tag-input>
-        </div>
-        <div class="button">
-          <button md-raised-button type="submit" [disabled]="!courseForm.valid" (click)="onSubmit()" color="primary">
-            Save
-          </button>
-          <button md-raised-button color="primary" (click)="newCourse(selectedCourse)">new</button>
-        </div>
-      </form>
+            <div class="from-group">
+              <label class="center-block">requirement</label>
+              <md-input-container fxFlexFill>
+                <input mdInput rows="3" class="form-control" formControlName="requirement" #content>
+              </md-input-container>
+            </div>
+            <div class="from-group">
+              <label class="center-block">Code</label>
+              <md-input-container fxFlexFill>
+                <input mdInput rows="3" class="form-control" formControlName="code" #content>
+                <div
+                  *ngIf="courseForm.controls['code'].hasError('required') && courseForm.controls['code'].touched"
+                  class="form-error-msg">
+                  code is required.
+                </div>
+              </md-input-container>
+            </div>
+            <div class="from-group">
+              <label class="center-block">Name
+                <md-input-container fxFlexFill>
+                  <input mdInput class="form-control" formControlName="name" required>
+                  <div *ngIf="courseForm.controls['name'].hasError('required') && courseForm.controls['name'].touched"
+                       class="form-error-msg">
+                    name is required.
+                  </div>
+                </md-input-container>
+              </label>
+            </div>
+
+            <div class="from-group">
+              <label class="center-block">School
+                <md-input-container fxFlexFill>
+                  <input mdInput class="form-control" formControlName="school" required>
+                  <div
+                    *ngIf="courseForm.controls['school'].hasError('required') && courseForm.controls['school'].touched"
+                    class="form-error-msg">
+                    school is required.
+                  </div>
+                </md-input-container>
+              </label>
+            </div>
+
+            <div class="from-group">
+              <label class="center-block">Career</label>
+              <md-input-container fxFlexFill>
+                <input mdInput rows="3" class="form-control" formControlName="career" #content>
+                <div
+                  *ngIf="courseForm.controls['career'].hasError('required') && courseForm.controls['career'].touched"
+                  class="form-error-msg">
+                  career is required.
+                </div>
+              </md-input-container>
+            </div>
+
+
+            <div class="from-group">
+              <label class="center-block">Description</label>
+              <md-input-container fxFlexFill>
+                <textarea mdInput rows="3" class="form-control" formControlName="description" #content></textarea>
+                <md-hint align="end">{{content.value.length}} / 2048</md-hint>
+                <div
+                  *ngIf="courseForm.controls['description'].hasError('required') && courseForm.controls['description'].touched"
+                  class="form-error-msg">
+                  description is required.
+                </div>
+
+                <div
+                  *ngIf="courseForm.controls['description'].hasError('minlength') && courseForm.controls['description'].touched"
+                  class="form-error-msg">
+                  min length is 4.
+                </div>
+                <div
+                  *ngIf="courseForm.controls['description'].hasError('maxlength') && courseForm.controls['description'].touched"
+                  class="form-error-msg">
+                  max length is 256.
+                </div>
+              </md-input-container>
+            </div>
+
+            <div class="tag-input">
+              <!--<h3>Tags within an autocomplete component</h3>-->
+              <tag-input [(ngModel)]="selectedCourse.tag"
+                         [addOnBlur]="true"
+                         [clearOnBlur]="true"
+                         [maxItems]="5"
+                         formControlName="tags">
+                <tag-input-dropdown [autocompleteItems]="autocompleteItems">
+                </tag-input-dropdown>
+              </tag-input>
+            </div>
+
+            <div class="button">
+              <button md-raised-button type="submit" [disabled]="!courseForm.valid" (click)="onSubmit()"
+                      color="primary">
+                Save
+              </button>
+              <button md-raised-button color="primary" (click)="newCourse(selectedCourse)">new</button>
+            </div>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
+<div>
+  <div fxFlex="100" class="course-paginator">
+    <md-paginator
+      [length]="totalItems"
+      [pageSize]="itemsPerPage"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageChanged($event)">
+    </md-paginator>
   </div>
 </div>

@@ -12,6 +12,7 @@ import {ExperienceListService} from "../../../services/experience/experience-lis
 })
 export class AdminExperienceListComponent implements OnInit {
 
+  public tags = [];
   show: boolean = false;
   public itemsPerPage: number = 12;
   public pageSizeOptions = [12, 15, 24];
@@ -22,6 +23,7 @@ export class AdminExperienceListComponent implements OnInit {
   public searchText: string;
   public searchTextStream: Subject<string> = new Subject<string>();
   public experienceList: Array<Experience>;
+  public totalExperienceList: Array<Experience>;
 
   constructor(public router: Router,
               public activeRoute: ActivatedRoute,
@@ -32,6 +34,7 @@ export class AdminExperienceListComponent implements OnInit {
     this.activeRoute.params.subscribe(params => {
       // 这里可以从路由里面获取URL参数
       console.log(params);
+      this.currentPage = params['page'];
       this.loadData(this.searchText, this.currentPage);
     });
 
@@ -43,7 +46,6 @@ export class AdminExperienceListComponent implements OnInit {
         this.loadData(this.searchText, this.currentPage)
       });
   }
-
   public loadData(searchText: string, page: number) {
     let offset = (this.currentPage - 1) * this.itemsPerPage;
     let end = (this.currentPage) * this.itemsPerPage;
@@ -68,18 +70,53 @@ export class AdminExperienceListComponent implements OnInit {
     this.selectedExperience = exp;
   }
 
-  public deleteExperience(experience: Experience): void {
-    this.experienceList.forEach(
-      (value, index) => {
-        if (value.id === experience.id) {
-          console.log('Index', index);
-          this.experienceList.splice(index, 1);
-        }
-      }
-    );
-    // server delete
-    this.experienceListService.deleteExperience(experience.id);
-    this.selectedExperience = null;
+  public loadDataByPage(page: number) {
+    if (!this.totalExperienceList) {
+      this.loadData("", page);
+      return;
+    }
+
+    let offset = (this.currentPage - 1) * this.itemsPerPage;
+    let end = (this.currentPage) * this.itemsPerPage;
+
+    if (this.tags && this.tags.length > 0) {
+      let filterQuestion = Array<Experience>();
+
+      this.totalItems = filterQuestion.length;
+      this.experienceList = filterQuestion.slice(offset, end > this.totalItems ? this.totalItems : end);
+      console.log("filter size:", filterQuestion.length);
+      return;
+    }
+
+    this.totalItems = this.totalExperienceList.length;
+    this.experienceList = this.totalExperienceList.slice(offset, end > this.totalItems ? this.totalItems : end);
   }
 
+
+  public deleteExperience(experience: Experience): void {
+    // this.experienceList.forEach(
+    //   (value, index) => {
+    //     if (value.id === experience.id) {
+    //       console.log('Index', index);
+    //       this.experienceList.splice(index, 1);
+    //     }
+    //   }
+    // );
+    // server delete
+    this.experienceListService.deleteExperience(experience.id).subscribe(
+      data => {
+        console.log("delete success", data);
+        this.loadData(this.searchText, this.currentPage);
+      },
+      err => {
+        console.log("delete err", err);
+      }
+    );
+    this.selectedExperience = null;
+  }
+  public pageChanged(event: any): void {
+    let pageNumber = event.pageIndex + 1;
+    console.log("event page: " + pageNumber);
+    this.router.navigateByUrl("admin/course/page/" + pageNumber);
+  }
 }

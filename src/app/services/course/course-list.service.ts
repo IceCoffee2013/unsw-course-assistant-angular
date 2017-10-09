@@ -15,6 +15,7 @@ export class CourseListService {
   public courseListURL = 'http://localhost:8080/api/course';
   public courseListSearchURL = 'mock-data/course-list-search-mock.json';
   public deleteCourseURL = '';
+  public headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(public http: HttpClient, public coreService: CoreService) {
   }
@@ -52,7 +53,6 @@ export class CourseListService {
   public updateCourse(data: any): Observable<any> {
     return this.http.put(this.coreService.baseUrl + "/api/course", data);
   }
-
   public deleteCourse(id: string): Observable<any> {
     return this.http.delete(this.coreService.baseUrl + "/api/course/" + id);
   }

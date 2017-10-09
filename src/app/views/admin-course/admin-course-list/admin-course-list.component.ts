@@ -35,6 +35,7 @@ export class AdminCourseListComponent implements OnInit {
               public courseService: CourseListService) {
     this.createForm();
   }
+
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       // console.log(params);
@@ -127,15 +128,13 @@ export class AdminCourseListComponent implements OnInit {
 
   createForm(): void {
     this.courseForm = this.fb.group({
-      'id': [this.selectedCourse.id, [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(20)
-      ]],
       'code': [this.selectedCourse.code, Validators.required],
+      'credit': [this.selectedCourse.credit, Validators.required],
+      'faculty': [this.selectedCourse.faculty, Validators.required],
+      'requirement': [this.selectedCourse.requirement],
       'name': [this.selectedCourse.name, Validators.required],
       'school': [this.selectedCourse.school, Validators.required],
-      'career':[this.selectedCourse.career, Validators.required],
+      'career': [this.selectedCourse.career, Validators.required],
       'description': [this.selectedCourse.description, [
         Validators.required,
         Validators.minLength(4),
@@ -166,54 +165,60 @@ export class AdminCourseListComponent implements OnInit {
     if (this.course.id !== this.selectedCourse.id) {
       this.addCourse(this.course);
     } else {
-      this.courseList.forEach(
-        (value, index) => {
-          if (value.id === this.course.id) {
-            console.log('Index', index);
-            const a = this.courseList.indexOf(this.selectedCourse);
-            this.courseList[a] = this.course;
-          }
+      this.courseService.updateCourse(this.course).subscribe(
+        data => {
+          console.log("update success", data);
+          this.loadData(this.searchText, this.currentPage);
+        },
+        err => {
+          console.log("update err", err);
         }
       );
-      console.log(this.selectedCourse);
-      this.updateCourse(this.course);
-      console.log(this.course);
     }
   }
 
   deleteCourse(course: Course): void {
-    this.courseList.forEach(
-      (value, index) => {
-        if (value.id === course.id) {
-          console.log('Index', index);
-          this.courseList.splice(index, 1);
-        }
+    // this.courseList.forEach(
+    //   (value, index) => {
+    //     if (value.id === course.id) {
+    //       console.log('Index', index);
+    //       this.courseList.splice(index, 1);
+    //     }
+    //   }
+    // );
+    // // server delete
+    this.courseService.deleteCourse(course.id).subscribe(
+      data => {
+        console.log("delete success", data);
+        this.loadData(this.searchText, this.currentPage);
+      },
+      err => {
+        console.log("delete err", err);
       }
     );
-    // server delete
-    console.log(this.course);
-    this.courseService.deleteCourse(course.id);
     this.selectedCourse = null;
   }
 
-  updateCourse(course:Course): void{
-    this.selectedCourse = null;
+  updateCourse(course: Course): void {
     this.courseService.updateCourse(course.id).subscribe(
       data => {
         console.log("update success" + data)
+        this.loadData(this.searchText, this.currentPage);
       },
       err => {
         console.log("update fail" + err)
       }
     );
-
+    this.selectedCourse = null;
   }
+
   items: string[] = ['java', 'python'];
   autocompleteItems: string[] = ['Item1', 'item2', 'item3'];
 
   public onAdd(item) {
     console.log('tag added: value is ' + item);
   }
+
   public pageChanged(event: any): void {
     let pageNumber = event.pageIndex + 1;
     console.log("event page: " + pageNumber);
