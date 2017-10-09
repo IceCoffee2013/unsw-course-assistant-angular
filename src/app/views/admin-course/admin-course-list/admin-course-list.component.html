@@ -138,7 +138,7 @@
             </div>
 
             <div class="button">
-              <button md-raised-button type="submit" [disabled]="!courseForm.valid" (click)="onSubmit()"
+              <button md-raised-button type="submit" [disabled]="!courseForm.valid" (click)="updateCourse(selectedCourse)"
                       color="primary">
                 Save
               </button>

@@ -128,6 +128,7 @@ export class AdminCourseListComponent implements OnInit {
 
   createForm(): void {
     this.courseForm = this.fb.group({
+      'id':[this.selectedCourse.id],
       'code': [this.selectedCourse.code, Validators.required],
       'credit': [this.selectedCourse.credit, Validators.required],
       'faculty': [this.selectedCourse.faculty, Validators.required],
@@ -160,22 +161,25 @@ export class AdminCourseListComponent implements OnInit {
     this.createForm();
   }
 
-  onSubmit() {
-    this.course = this.courseForm.value;
-    if (this.course.id !== this.selectedCourse.id) {
-      this.addCourse(this.course);
-    } else {
-      this.courseService.updateCourse(this.course).subscribe(
-        data => {
-          console.log("update success", data);
-          this.loadData(this.searchText, this.currentPage);
-        },
-        err => {
-          console.log("update err", err);
-        }
-      );
-    }
-  }
+  // onSubmit() {
+  //   this.course = this.courseForm.value;
+  //   console.log(this.course.id);
+  //   console.log(this.selectedCourse.id);
+  //   if (this.course.id !== this.selectedCourse.id) {
+  //     this.addCourse(this.course);
+  //   } else {
+  //     this.courseService.updateCourse(this.course).subscribe(
+  //       data => {
+  //         console.log("update success", data);
+  //         this.selectedCourse = this.course;
+  //         this.loadData(this.searchText, this.currentPage);
+  //       },
+  //       err => {
+  //         console.log("update err", err);
+  //       }
+  //     );
+  //   }
+  // }
 
   deleteCourse(course: Course): void {
     // this.courseList.forEach(
@@ -200,16 +204,17 @@ export class AdminCourseListComponent implements OnInit {
   }
 
   updateCourse(course: Course): void {
-    this.courseService.updateCourse(course.id).subscribe(
+    course = this.courseForm.value;
+    this.courseService.updateCourse(course).subscribe(
       data => {
         console.log("update success" + data)
         this.loadData(this.searchText, this.currentPage);
+        this.selectedCourse  = course;
       },
       err => {
         console.log("update fail" + err)
       }
     );
-    this.selectedCourse = null;
   }
 
   items: string[] = ['java', 'python'];
