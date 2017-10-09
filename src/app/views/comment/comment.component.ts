@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, AfterViewInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {User} from "../../models/user/user-model";
 import {CommentService} from "../../services/comment/comment.service";
 import {Comment} from "../../models/comment/comment-model";
 import {Reply} from "../../models/comment/reply-model";
 import {AppConfirmService} from "../../services/app-confirm/app-confirm.service";
+import {letProto} from "rxjs/operator/let";
 
 @Component({
   selector: 'app-comment',
@@ -55,8 +56,12 @@ export class CommentComponent implements OnInit {
 
   public loadComment(postId: string) {
     return this.commentService.getComments(postId, this.type).subscribe(
-      data => this.comments = data,
-      error => console.error(error)
+      data => {
+        this.comments = data;
+      },
+      error => {
+        console.error(error);
+      }
     );
   }
 
@@ -90,7 +95,7 @@ export class CommentComponent implements OnInit {
     tmpComment.avatar = "assets/images/face-5.jpg";
     tmpComment.id = "10";
 
-    this.comments.push(tmpComment);
+    // this.comments.push(tmpComment);
     this.newCommentContent = "";
 
     console.log(data);
@@ -114,31 +119,40 @@ export class CommentComponent implements OnInit {
       .subscribe((result) => {
         if (result) {
           // local delete
-          this.comments.forEach(
-            (value, index) => {
-              if (value.id == comment.id) {
-                console.log('Index', index);
-                this.comments.splice(index, 1);
-              }
+          // this.comments.forEach(
+          //   (value, index) => {
+          //     if (value.id == comment.id) {
+          //       console.log('Index', index);
+          //       this.comments.splice(index, 1);
+          //     }
+          //   }
+          // );
+          // server delete
+          this.commentService.deleteComment(comment.id).subscribe(
+            data => {
+              this.loadComment(this.postId);
+            },
+            err => {
+              console.log("del comment err", err);
             }
           );
-          // server delete
-          this.commentService.deleteComment(comment.id);
         }
       });
   }
 
-  public deleteReply(comment: Comment, reply: Reply): void {
+  public deleteReply(reply: Reply): void {
 
     let title = "Delete This Reply ?";
     let text = "";
+
+    console.log("del", reply);
 
     this.confirmService.confirm(title, text)
       .subscribe((result) => {
         if (result) {
           // local delete
           for (let cc of this.comments) {
-            if (cc.id == comment.id) {
+            if (cc.id == reply.commentId) {
               cc.replies.forEach(
                 (value, index) => {
                   if (value.id == reply.id) {
@@ -198,7 +212,7 @@ export class CommentComponent implements OnInit {
       toWho: this.tmpReply.toWho
     }
 
-    data.replyContent = data.replyContent.replace("@"+data.toWho, "");
+    data.replyContent = data.replyContent.replace("@" + data.toWho, "");
     console.log("data content reply", data);
 
     let date = new Date();
